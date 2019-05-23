@@ -9,6 +9,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <nav>
+    <%= link_to "Register", paypal_register_path %>
+    <%= link_to "Log In", paypal_login_path %>
+    </nav>
+
   <body>
     <%= yield %>
   </body>
