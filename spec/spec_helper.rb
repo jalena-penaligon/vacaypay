@@ -1,5 +1,5 @@
 require 'simplecov'
-Simplecov.start do
+SimpleCov.start do
   add_filter '/spec/rails_helper.rb'
 end
 
