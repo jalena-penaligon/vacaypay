@@ -1,4 +1,4 @@
 class VacationUser < ApplicationRecord
-  belongs_to :user
   belongs_to :vacation
+  belongs_to :user
 end
