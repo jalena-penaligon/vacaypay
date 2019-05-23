@@ -10,6 +10,5 @@ describe User do
   describe 'relationships' do
     it { should have_many :user_activities }
     it { should have_many(:activities).through(:user_activities) }
-    it { should have_one :vacation_user }
   end
 end
