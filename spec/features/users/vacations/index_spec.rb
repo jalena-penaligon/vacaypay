@@ -7,6 +7,7 @@ describe 'as a registered user' do
       user = User.create(name: "Name", email: "email@email.com", paypal_token: ENV['PAYPAL_TOKEN_KEY'])
       vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 10.days.from_now, end_date: 15.days.from_now)
       owner.vacation_users.create(role: 1, vacation: vacation)
+      binding.pry
       user.vacation_users.create(role: 0, vacation: vacation)
     end
 
