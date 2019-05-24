@@ -2,12 +2,28 @@
   <section class="right links overflow-auto table mr4">
     <% if current_user %>
       <div class="align-middle table-cell p3">
-        <%= link_to "Profile", dashboard_path %>
+        <%# <%= link_to "Profile", dashboard_path %> %>
       </div>
     <% else %>
-      <div class="align-middle table-cell p3">
-        <%= button_to 'Sign In with PayPal', '/auth/paypal_oauth2', class: "btn btn-primary mb1 bg-teal" %>
-      </div>
+    <span id='cwppButton'></span>
+    <script src='https://www.paypalobjects.com/js/external/connect/api.js'></script>
+    <script>
+    paypal.use( ['login'], function (login) {
+      login.render ({
+        "appid":"AZeVZe2FMylbbNMoGi5y4JgzjlsxZaFXD4WsUCmkIjBTf_04TSEiDnuS56EGyxS4GtDH21CXxZKZLpgn",
+        "authend":"sandbox",
+        "scopes":"email profile",
+        "containerid":"cwppButton",
+        "responseType":"code",
+        "locale":"en-us",
+        "buttonType":"CWP",
+        "buttonShape":"pill",
+        "buttonSize":"lg",
+        "fullPage":"true",
+        "returnurl":"http://127.0.0.1:3000/users/auth/paypal_oauth2/callback"
+      });
+    });
+    </script>
     <% end %>
   </section>
 </nav>

@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
-  get '/register', to: 'users#new'
-  get '/auth/github/callback', to: 'users#update'
+  get '/users/auth/:provider/callback', to: 'users#create'
+
+  get '/dashboard', to: 'users#show'
+
 
 end
