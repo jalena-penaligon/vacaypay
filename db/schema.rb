@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_23_210747) do
+ActiveRecord::Schema.define(version: 2019_05_24_171534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,12 +20,12 @@ ActiveRecord::Schema.define(version: 2019_05_23_210747) do
     t.integer "num_attendees", default: 0
     t.text "description"
     t.string "name"
-    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "vacation_id"
     t.bigint "user_id"
     t.date "cutoff_date"
+    t.integer "no_of_days", default: 1
     t.index ["user_id"], name: "index_activities_on_user_id"
     t.index ["vacation_id"], name: "index_activities_on_vacation_id"
   end
