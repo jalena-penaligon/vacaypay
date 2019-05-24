@@ -22,7 +22,7 @@ bachelorette = Vacation.create!(name: "bachelorette", location: "Hawaii", start_
 
     chi_hawaii_hotel = hawaii_hotel.user_activities.create!(user_id: chi.id, quantity: 1, price: 300.00, paid: false)
 
-  snorkling = bachelorette.activities.create!(price: 200.00, num_attendees: 2, description: "Swim with the fishes", name: "Snorkeling", no_of_days: 1, cutoff_date: "2019-06-12")
+  snorkeling = bachelorette.activities.create!(price: 200.00, num_attendees: 2, description: "Swim with the fishes", name: "Snorkeling", no_of_days: 1, cutoff_date: "2019-06-12")
 
     jalena_snorkeling = snorkeling.user_activities.create!(user_id: jalena.id, quantity: 1, price: 100.00, paid: true)
 
