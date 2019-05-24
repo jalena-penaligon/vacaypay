@@ -1,0 +1,14 @@
+<%= facade.vacation_name %>
+Hosted By: <%= facade.vacation_host %>
+
+<% facade.attending_activities(current_user).each do |activity| %>
+  <div id="activity-<%= activity.id %>">
+    <%= activity.name %>
+    <%= activity.price %>
+    <% if facade.paid?(activity) %>
+      You're all settled up!
+    <% else %>
+      <%= button_to "Settle Up" %>
+    <% end %>
+  </div>
+<% end %>
