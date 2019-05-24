@@ -27,4 +27,6 @@
 /config/master.key
 /coverage/*
 /config/application.yml
+/config/newrelic.yml
+
 
