@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Terrificus</title>
+    <title>VacayPay</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+
   </head>
+
+  <nav>
+  <section class="logo">
+    <%= image_tag('logo.png', :size => "400x109") %>
+    </section>
+  <section class="align-right">
+    <%= link_to "Sign in with PayPal" %>
+  </nav>
 
   <body>
     <%= yield %>
