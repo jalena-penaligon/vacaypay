@@ -14,7 +14,7 @@ chi = User.create!(name: "Chi", email: "chi@example.com", paypal_token:"ENV[CHI_
 bachelorette = Vacation.create!(name: "bachelorette", location: "Hawaii", start_date: "2019-06-12", end_date: "2019-06-15")
 
   bachelorette_user_1 = bachelorette.vacation_users.create!(user_id: jalena.id, role: 1)
-  bachelorette_user_2 = bachelotte.vacation_users.create!(user_id: chi.id, role: 0)
+  bachelorette_user_2 = bachelorette.vacation_users.create!(user_id: chi.id, role: 0)
 
   hawaii_hotel = bachelorette.activities.create!(price: 600.00, num_attendees: 2, description: "Double Room", name: "Hawaii Hotel", no_of_days: 3, cutoff_date: "2019-06-10")
 

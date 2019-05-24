@@ -1,10 +1,11 @@
-<%= facade.vacation_name %>
-Hosted By: <%= facade.vacation_host %>
+<h1><%= facade.vacation_name %></h1>
+<li>Hosted By: <%= facade.vacation_host %></li>
+<li>Total Owed: <%= number_to_currency(facade.outstanding_balance(current_user)) %></li>
 
 <% facade.attending_activities(current_user).each do |activity| %>
   <div id="activity-<%= activity.id %>">
-    <%= activity.name %>
-    <%= activity.price %>
+    <li><%= activity.name %></li>
+    <li><%= activity.price %></li>
     <% if facade.paid?(activity) %>
       You're all settled up!
     <% else %>

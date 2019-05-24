@@ -11,8 +11,8 @@ class VacationsFacade
     vacation.host.name
   end
 
-  def attending_activities(current_user)
-    ids = UserActivity.where(user_id: current_user.id).pluck(:activity_id)
+  def attending_activities(user)
+    ids = activities(user).pluck(:activity_id)
     Activity.find(ids)
   end
 
@@ -20,7 +20,15 @@ class VacationsFacade
     UserActivity.find_by(activity_id: activity.id).paid?
   end
 
+  def outstanding_balance(user)
+    activities(user).where(paid: false).sum(:price)
+  end
+
   private
+
+  def activities(user)
+    UserActivity.where(user_id: user.id)
+  end
 
   def vacation
     @vacation ||= Vacation.find(@vacation_id)
