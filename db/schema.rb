@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_171534) do
+ActiveRecord::Schema.define(version: 2019_05_24_221258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_171534) do
     t.bigint "user_id"
     t.date "cutoff_date"
     t.integer "no_of_days", default: 1
+    t.string "type", null: false
     t.index ["user_id"], name: "index_activities_on_user_id"
     t.index ["vacation_id"], name: "index_activities_on_vacation_id"
   end
