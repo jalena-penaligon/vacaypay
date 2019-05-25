@@ -3,10 +3,10 @@ require 'rails_helper'
 describe 'as a registered user' do
   describe 'who has been invited to a vacation' do
     it 'shows all of the activities that I am attending' do
-      user = User.create(name: "Participant Name", email: "email@email.com", paypal_token: "412346346")
+      user = User.create(first_name: "Participant", last_name: "Name", email: "email@email.com", password: "password")
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      owner = User.create!(name: "Owner Name", email: "owner@email.com", paypal_token: "12345677")
+      owner = User.create!(first_name: "Owner", last_name: "Name", email: "owner@email.com", password: "password")
       vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 10.days.from_now, end_date: 15.days.from_now)
       owner.vacation_users.create!(role: 1, vacation: vacation)
       user.vacation_users.create(role: 0, vacation: vacation)
@@ -17,7 +17,7 @@ describe 'as a registered user' do
 
       visit dashboard_path
       click_link(vacation.name)
-      
+
       expect(current_path).to eq(vacation_path(vacation))
       expect(page).to have_content(vacation.name)
       within "#activity-#{activity_1.id}" do
