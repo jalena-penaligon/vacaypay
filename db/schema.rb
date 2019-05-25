@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_221258) do
+ActiveRecord::Schema.define(version: 2019_05_25_033453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,11 +44,14 @@ ActiveRecord::Schema.define(version: 2019_05_24_221258) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
     t.string "email"
-    t.string "paypal_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "dwolla_token"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "dwolla_id"
+    t.string "dwolla_funding_source"
   end
 
   create_table "vacation_users", force: :cascade do |t|
