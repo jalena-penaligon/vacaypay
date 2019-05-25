@@ -49,7 +49,7 @@ describe 'as a visitor' do
       expect(page).to have_content("Create an Account")
 
       click_button "Register"
-      save_and_open_page
+
       expect(page).to have_content("First name can't be blank")
       expect(page).to have_content("Last name can't be blank")
       expect(page).to have_content("Email can't be blank")
