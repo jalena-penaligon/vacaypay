@@ -17,8 +17,7 @@ describe 'as a logged in user' do
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit '/'
-      # binding.pry
-      # save_and_open_page
+
       expect(page).to have_link("+ Create a Vacation")
 
       expect(page).to have_link("Log Out")
