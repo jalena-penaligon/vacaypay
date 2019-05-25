@@ -8,7 +8,7 @@ class VacationsFacade
   end
 
   def vacation_host
-    vacation.host.name
+    vacation.host.first_name
   end
 
   def attending_activities(user)
