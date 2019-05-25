@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_171534) do
+ActiveRecord::Schema.define(version: 2019_05_25_160659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_171534) do
     t.bigint "user_id"
     t.date "cutoff_date"
     t.integer "no_of_days", default: 1
+    t.string "type", null: false
     t.index ["user_id"], name: "index_activities_on_user_id"
     t.index ["vacation_id"], name: "index_activities_on_vacation_id"
   end
@@ -43,11 +44,15 @@ ActiveRecord::Schema.define(version: 2019_05_24_171534) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
     t.string "email"
-    t.string "paypal_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "dwolla_token"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "dwolla_id"
+    t.string "dwolla_funding_source"
+    t.string "password_digest"
   end
 
   create_table "vacation_users", force: :cascade do |t|
