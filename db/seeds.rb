@@ -1,16 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#users
+jalena = User.create!(first_name: "Jalena", last_name: "Taylor", email: "jalena@example.com", dwolla_token:"ENV[JALENA_DWOLLA_TOKEN]", dwolla_id: "123", dwolla_funding_source: "456")
 
-jalena = User.create!(name: "Jalena", email: "jalena@example.com", paypal_token:"ENV[JALENA_PAYPAL_TOKEN]")
-earl = User.create!(name: "Earl", email: "earl@example.com", paypal_token:"ENV[EARL_PAYPAL_TOKEN]")
-ethan = User.create!(name: "Ethan", email: "ethan@example.com", paypal_token:"ENV[ETHAN_PAYPAL_TOKEN]")
-chi = User.create!(name: "Chi", email: "chi@example.com", paypal_token:"ENV[CHI_PAYPAL_TOKEN]")
+earl = User.create!(first_name: "Earl", last_name: "Stephens", email: "earl@example.com", dwolla_token:"ENV[EARL_DWOLLA_TOKEN]", dwolla_id: "123", dwolla_funding_source: "456")
 
+ethan = User.create!(first_name: "Ethan", last_name: "Grab", email: "ethan@example.com", dwolla_token:"ENV[ETHAN_DWOLLA_TOKEN]", dwolla_id: "123", dwolla_funding_source: "456")
+
+chi = User.create!(first_name: "Chi", last_name: "Tran", email: "chi@example.com", dwolla_token:"ENV[CHI_DWOLLA_TOKEN]", dwolla_id: "123", dwolla_funding_source: "456")
+
+#vacations with their users and activities
 bachelorette = Vacation.create!(name: "bachelorette", location: "Hawaii", start_date: "2019-06-12", end_date: "2019-06-15")
 
   bachelorette_user_1 = bachelorette.vacation_users.create!(user_id: jalena.id, role: 1)

@@ -28,7 +28,5 @@
 /coverage/*
 ,.
 .DS_Store
-config/application.yml
-
-# Ignore application configuration
 /config/application.yml
+/config/newrelic.yml

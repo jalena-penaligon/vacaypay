@@ -5,5 +5,5 @@ class User < ApplicationRecord
   has_many :vacations, through: :vacation_users
 
   validates_uniqueness_of :email
-  validates_presence_of :name, :paypal_token
+  validates_presence_of :first_name, :last_name
 end
