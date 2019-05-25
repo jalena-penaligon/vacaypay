@@ -26,7 +26,12 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /coverage/*
+
+# Ignore application configuration
+/config/application.yml
+
 ,.
 .DS_Store
-/config/application.yml
+
 /config/newrelic.yml
+

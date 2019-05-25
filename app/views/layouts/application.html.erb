@@ -17,6 +17,7 @@
     <%= link_to image_tag('logo.png', :size => "400x109"), root_path %>
     </section>
   <section class="align-right">
+
     <% if current_user == nil %>
       <%= link_to "Register", new_user_path %>
       <%= link_to "Log In" %>
@@ -26,6 +27,7 @@
       <%= link_to "+ Create a Vacation" %>
       <%= link_to "Log Out" %>
     <% end %>
+
   </nav>
 
   <body>
