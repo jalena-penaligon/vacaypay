@@ -43,7 +43,6 @@ describe 'as a visitor' do
     end
 
     it 'can will not allow me to register with missing information' do
-      user = User.create(first_name: "First", last_name: "Last", email: "email@email.com", password:"password")
       visit '/'
       click_link "Register"
       expect(current_path).to eq(new_user_path)
