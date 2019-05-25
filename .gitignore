@@ -27,6 +27,11 @@
 /config/master.key
 /coverage/*
 
-
 # Ignore application configuration
 /config/application.yml
+
+,.
+.DS_Store
+
+/config/newrelic.yml
+

@@ -3,10 +3,10 @@ require 'rails_helper'
 describe 'as a registered user' do
   describe 'when i visit /dashboard' do
     it 'shows all of my upcoming vacations' do
-      user = User.create(name: "Participant Name", email: "email@email.com", paypal_token: ENV['PAYPAL_TOKEN_KEY'])
+      user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      owner = User.create(name: "Owner Name", email: "owner@email.com", paypal_token: ENV['PAYPAL_TOKEN_KEY'])
+      owner = create(:user)
       vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 10.days.from_now, end_date: 15.days.from_now)
       owner.vacation_users.create(role: 1, vacation: vacation)
       user.vacation_users.create(role: 0, vacation: vacation)
@@ -17,7 +17,7 @@ describe 'as a registered user' do
         expect(page).to have_link(vacation.name)
         expect(page).to have_content(vacation.start_date)
         expect(page).to have_content(vacation.end_date)
-        expect(page).to have_content("Hosted By: Owner Name")
+        expect(page).to have_content("Hosted By: #{owner.first_name}")
       end
     end
 
