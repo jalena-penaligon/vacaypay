@@ -4,7 +4,8 @@
     <title>VacayPay</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <%= stylesheet_link_tag    'reset', 'application', media: 'all' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
@@ -16,7 +17,8 @@
     <%= image_tag('logo.png', :size => "400x109") %>
     </section>
   <section class="align-right">
-    <%= link_to "Sign in with PayPal" %>
+    <%= link_to "Register", new_user_path %>
+    <%= link_to "Log In" %>
   </nav>
 
   <body>
