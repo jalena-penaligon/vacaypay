@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag    'reset', 'application', media: 'all' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
@@ -13,10 +14,18 @@
 
   <nav>
   <section class="logo">
-    <%= image_tag('logo.png', :size => "400x109") %>
+    <%= link_to image_tag('logo.png', :size => "400x109"), root_path %>
     </section>
   <section class="align-right">
-    <%= link_to "Sign in with PayPal" %>
+    <% if current_user == nil %>
+      <%= link_to "Register", new_user_path %>
+      <%= link_to "Log In" %>
+    <% else %>
+      <li class="logged-in">Logged in as <%= current_user.first_name %></li><br />
+      <%= link_to "My Vacations", dashboard_path %>
+      <%= link_to "+ Create a Vacation" %>
+      <%= link_to "Log Out" %>
+    <% end %>
   </nav>
 
   <body>

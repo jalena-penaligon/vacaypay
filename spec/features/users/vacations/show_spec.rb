@@ -7,7 +7,7 @@ describe 'as a registered user' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       owner = create(:user)
-      
+
       vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 10.days.from_now, end_date: 15.days.from_now)
       owner.vacation_users.create!(role: 1, vacation: vacation)
       user.vacation_users.create(role: 0, vacation: vacation)
@@ -18,7 +18,7 @@ describe 'as a registered user' do
 
       visit dashboard_path
       click_link(vacation.name)
-      
+
       expect(current_path).to eq(vacation_path(vacation))
       expect(page).to have_content(vacation.name)
       within "#activity-#{activity_1.id}" do
