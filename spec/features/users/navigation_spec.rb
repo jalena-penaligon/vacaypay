@@ -14,13 +14,15 @@ end
 describe 'as a logged in user' do
   describe 'when I visit any page' do
     it 'shows links appropriate for a logged in user' do
-      user = User.create(first_name: "Jalena", last_name: "Taylor", email: "email@email.com", password: "password")
+      user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit '/'
-
+      # binding.pry
+      # save_and_open_page
       expect(page).to have_link("+ Create a Vacation")
+
       expect(page).to have_link("Log Out")
-      expect(page).to have_content("Logged in as #{user.email}")
+      expect(page).to have_content("Logged in as #{user.first_name}")
     end
   end
 end
