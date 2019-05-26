@@ -20,12 +20,16 @@
 
     <% if current_user == nil %>
       <%= link_to "Register", new_user_path %>
-      <%= link_to "Log In" %>
+      <%= link_to "Log In", login_path%>
     <% else %>
       <li class="logged-in">Logged in as <%= current_user.first_name %></li><br />
       <%= link_to "My Vacations", dashboard_path %>
       <%= link_to "+ Create a Vacation" %>
-      <%= link_to "Log Out" %>
+      <%= link_to "Log Out", logout_path, method: :delete %>
+      <% if !current_user.dwolla_id %>
+        <%= link_to "Connect with Dwolla", new_users_dwolla_path %>
+      <% end %>
+
     <% end %>
 
   </nav>
