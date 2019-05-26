@@ -1,0 +1,170 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://accounts-sandbox.dwolla.com/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials
+    headers:
+      User-Agent:
+      - dwolla-v2-ruby 2.2.1
+      Authorization:
+      - Basic amswT2ZoVDF5ODF6NE5jZkpEZTdlQXlJdGRIRXN4cDdCWnA2Z1VhUngyV3hGUWx5cHo6TWZFVEVOOHpaQVkzTzlKN2NrMElnWEozV1NtTHZZeFZCU0VkSXd0MVhBWWlybXloOU8=
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 26 May 2019 21:50:20 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d0601f95619291f596e6832c3ca4e42a21558907420; expires=Mon, 25-May-20
+        21:50:20 GMT; path=/; domain=.dwolla.com; HttpOnly
+      - session=Fe26.2**82a9b47df9c6ad7e36e030d170e07ad106cd7083329ac48c49e0608135463e33*i3tohEooZigKxqGmG0kchQ*fK15s-uI8tyMWfmPMZG8djT-tHRBY5yQcU-YyYJJn3s93MtygzuanhqDxGY9C-fP3E832UNak4j3WeThDsVjng**8c28e3a05adf322943adff563fc5e250cfdc361f10e37d13d98c31bfaa7760bb*iufGigc8VMlJrsgc6fajabHb7SmriG183kePJbnul2g;
+        Max-Age=2592000; Expires=Tue, 25 Jun 2019 21:50:20 GMT; Secure; HttpOnly;
+        SameSite=Lax; Path=/
+      Cache-Control:
+      - no-store
+      X-Frame-Options:
+      - DENY
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Security-Policy:
+      - script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.dwolla.com go.dwolla.com
+        dtlilztwypawv.cloudfront.net *.googleapis.com *.gstatic.com *.googletagmanager.com
+        *.googleads.g.doubleclick.net *.google-analytics.com *.google.com pi.pardot.com
+        ajax.cloudflare.com data:; style-src 'self' 'unsafe-inline' cdn.dwolla.com
+        fonts.googleapis.com; default-src 'self'; font-src * data:; img-src * data:;
+        frame-src 'self' *.dwolla.com *.googletagmanager.com; media-src 'self'; connect-src
+        'self'; child-src 'self'
+      Vary:
+      - accept-encoding
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4dd2f6d17ae4c7a9-DEN
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"aXYb9pCa4GXtUIjJjUNaZqwP1ka4HzhUrVzLsRAYvojdmkJFSQ","expires_in":3342,"token_type":"Bearer"}'
+    http_version: 
+  recorded_at: Sun, 26 May 2019 21:54:38 GMT
+- request:
+    method: post
+    uri: https://api-sandbox.dwolla.com/customers
+    body:
+      encoding: UTF-8
+      string: '{"firstName":"Snickers","lastName":"Dali","email":"keikosauer@boscokeler.biz","type":"personal","address1":"7
+        Sesame Street","city":"Sesame","state":"TX","postalCode":"80202","dateOfBirth":"1970-01-01","ssn":"4444"}'
+    headers:
+      Authorization:
+      - Bearer aXYb9pCa4GXtUIjJjUNaZqwP1ka4HzhUrVzLsRAYvojdmkJFSQ
+      Accept:
+      - application/vnd.dwolla.v1.hal+json
+      User-Agent:
+      - dwolla-v2-ruby 2.2.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 26 May 2019 21:50:21 GMT
+      Content-Type:
+      - application/vnd.dwolla.v1.hal+json
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dfed2654e4ee7fc230f27683f6862f7081558907420; expires=Mon, 25-May-20
+        21:50:20 GMT; path=/; domain=.dwolla.com; HttpOnly
+      Location:
+      - https://api-sandbox.dwolla.com/customers/56957a52-089e-440a-aa90-a29fbefbc2ea
+      X-Request-Id:
+      - 1832220e-753f-49a4-8532-8ad1a545b101
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4dd2f6d3dc4ac7d1-DEN
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sun, 26 May 2019 21:54:39 GMT
+- request:
+    method: post
+    uri: https://api-sandbox.dwolla.com/customers
+    body:
+      encoding: UTF-8
+      string: '{"firstName":"Snickers","lastName":"Dali","email":"keikosauer@boscokeler.biz","type":"personal","address1":"7
+        Sesame Street","city":"Sesame","state":"TX","postalCode":"80202","dateOfBirth":"1970-01-01","ssn":"4444"}'
+    headers:
+      Authorization:
+      - Bearer aXYb9pCa4GXtUIjJjUNaZqwP1ka4HzhUrVzLsRAYvojdmkJFSQ
+      Accept:
+      - application/vnd.dwolla.v1.hal+json
+      User-Agent:
+      - dwolla-v2-ruby 2.2.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Sun, 26 May 2019 21:51:00 GMT
+      Content-Type:
+      - application/vnd.dwolla.v1.hal+json; profile="http://nocarrier.co.uk/profiles/vnd.error/"
+      Content-Length:
+      - '415'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=da50f74dc1080c9182b8b91eaa5996e261558907459; expires=Mon, 25-May-20
+        21:50:59 GMT; path=/; domain=.dwolla.com; HttpOnly
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Request-Id:
+      - a70eb1d3-b540-4674-9bd6-f00afb1e0597
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4dd2f7c7ee9e4fcd-DEN
+    body:
+      encoding: UTF-8
+      string: '{"code":"ValidationError","message":"Validation error(s) present. See
+        embedded errors list for more details.","_embedded":{"errors":[{"code":"Duplicate","message":"A
+        customer with the specified email already exists.","path":"/email","_links":{"about":{"href":"https://api-sandbox.dwolla.com/customers/56957a52-089e-440a-aa90-a29fbefbc2ea","type":"application/vnd.dwolla.v1.hal+json","resource-type":"customer"}}}]}}'
+    http_version: 
+  recorded_at: Sun, 26 May 2019 21:55:17 GMT
+recorded_with: VCR 4.0.0
