@@ -10,6 +10,9 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:session][:password])
       session[:user_id] = user.id
       redirect_to root_path
+    else
+      flash[:error] = 'Looks like your email or password is invalid'
+      render :new
     end 
   end
 
