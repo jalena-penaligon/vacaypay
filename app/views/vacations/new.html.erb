@@ -1,0 +1,25 @@
+<h1>Create a New Vacation</h1>
+
+<% if @vacation.errors.any? %>
+  <ul class="errors">
+    <% @vacation.errors.full_messages.each do |message| %>
+      <li class="error"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @vacation, action: :create do |f| %>
+  <p><%= f.label :name %><br />
+  <%= f.text_field :name %></p>
+
+  <p><%= f.label :location %><br />
+  <%= f.text_field :location %></p>
+
+  <p><%= f.label :start_date %><br />
+  <%= f.date_field :start_date %></p>
+
+  <p><%= f.label :end_date %><br />
+  <%= f.date_field :end_date %></p>
+
+  <p><%= f.submit "Create Vacation" %></p>
+<% end %>

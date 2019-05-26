@@ -12,8 +12,11 @@ Rails.application.routes.draw do
     resources :dwollas, only: [:create, :new]
   end
 
-  resources :vacations, only: [:show]
+  resources :vacations, only: [:show, :new, :create]
   resources :users, only: [:new, :create, :update]
-  # resources :dwolla, only: [:create]
+  resources :dwolla, only: [:new, :create]
 
+  namespace :owner do
+    resources :vacations, only: [:show]
+  end
 end

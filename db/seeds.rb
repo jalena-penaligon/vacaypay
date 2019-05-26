@@ -1,11 +1,11 @@
 #users
-jalena = User.create!(first_name: "Jalena", last_name: "Taylor", email: "jalena@example.com", dwolla_token:"ENV[JALENA_DWOLLA_TOKEN]", dwolla_id: "123", dwolla_funding_source: "456", password: "password")
+jalena = User.create!(first_name: "Jalena", last_name: "Taylor", email: "jalena.marie.taylor@gmail.com", dwolla_id: "123", dwolla_funding_source: "456", password: "password")
 
-earl = User.create!(first_name: "Earl", last_name: "Stephens", email: "earl@example.com", dwolla_token:"ENV[EARL_DWOLLA_TOKEN]", dwolla_id: "123", dwolla_funding_source: "456", password: "password")
+earl = User.create!(first_name: "Earl", last_name: "Stephens", email: "earl@example.com", dwolla_id: "123", dwolla_funding_source: "456", password: "password")
 
-ethan = User.create!(first_name: "Ethan", last_name: "Grab", email: "ethan@example.com", dwolla_token:"ENV[ETHAN_DWOLLA_TOKEN]", dwolla_id: "123", dwolla_funding_source: "456", password: "password")
+ethan = User.create!(first_name: "Ethan", last_name: "Grab", email: "ethan@example.com", dwolla_id: "123", dwolla_funding_source: "456", password: "password")
 
-chi = User.create!(first_name: "Chi", last_name: "Tran", email: "chi@example.com", dwolla_token:"ENV[CHI_DWOLLA_TOKEN]", dwolla_id: "123", dwolla_funding_source: "456", password: "password")
+chi = User.create!(first_name: "Chi", last_name: "Tran", email: "chi@example.com", dwolla_id: "123", dwolla_funding_source: "456", password: "password")
 
 #vacations with their users and activities
 bachelorette = Vacation.create!(name: "bachelorette", location: "Hawaii", start_date: "2019-06-12", end_date: "2019-06-15")

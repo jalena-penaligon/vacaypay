@@ -12,4 +12,8 @@ class Vacation < ApplicationRecord
     vacation_user = self.vacation_users.where(role: 1)[0]
     User.find(vacation_user.user_id)
   end
+
+  def new_vacation?
+    self.activities.count == 0
+  end
 end
