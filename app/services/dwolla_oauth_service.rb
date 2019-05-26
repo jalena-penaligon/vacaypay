@@ -5,5 +5,5 @@ class DwollaOauthService
   end
 
   private
-  
+
 end
