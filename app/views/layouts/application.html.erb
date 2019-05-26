@@ -24,13 +24,19 @@
     <% else %>
       <li class="logged-in">Logged in as <%= current_user.first_name %></li><br />
       <%= link_to "My Vacations", dashboard_path %>
-      <%= link_to "+ Create a Vacation" %>
+      <%= link_to "+ Create a Vacation", new_vacation_path %>
       <%= link_to "Log Out" %>
     <% end %>
-
   </nav>
 
   <body>
+    <% if !flash.empty? %>
+      <div class="flash">
+        <% flash.each do |name, message| %>
+          <%= message %>
+        <% end %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
