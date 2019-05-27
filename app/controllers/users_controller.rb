@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Thank you for registering, you are now logged in as #{@user.email}!"
-      redirect_to new_dwolla_path
+      redirect_to dashboard_path
     else
       render :new
     end
