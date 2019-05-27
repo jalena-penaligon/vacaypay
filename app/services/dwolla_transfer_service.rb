@@ -12,7 +12,7 @@ class DwollaTransferService
        },
        :amount => {
            :currency => "USD",
-           :value => activity.price.to_f }
+           :value => activity.price.to_f.to_s }
     }
   end
 
