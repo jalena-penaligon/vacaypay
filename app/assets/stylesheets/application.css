@@ -31,6 +31,11 @@ h2 {
   margin: 10px;
 }
 
+h3 {
+  font-size: 20px;
+  margin: 10px;
+}
+
 #home {
   background-image: url(homepage.jpg);
 }

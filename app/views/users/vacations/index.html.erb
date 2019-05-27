@@ -5,12 +5,12 @@
       <% current_user.vacations.each do |vacation| %>
         <figure class="vacay-item">
           <div id="vacation-<%= vacation.id %>">
-          <h2><%= link_to vacation.name, vacation_path(vacation) %>:
-            <%= vacation.start_date.strftime("%m/%d/%Y") %> - <%= vacation.end_date.strftime("%m/%d/%Y") %></h2>
+          <h2><%= link_to vacation.name, vacation_path(vacation) %>:</h2>
+            <h3><%= vacation.start_date.strftime("%m/%d/%Y") %> - <%= vacation.end_date.strftime("%m/%d/%Y") %></h3>
           <li>Location: <%= vacation.location %></li>
           <li>Hosted By: <%= vacation.host.first_name %></li>
-          <li>I Owe:</li>
-          <li>I'm Owed:</li>
+          <li>I Owe: <%= number_to_currency(vacation.calculate_balance(current_user)) %></li>
+          <li>I'm Owed: <%= number_to_currency(vacation.calculate_owed_balance(current_user)) %></li>
           <%= button_to "View Vacation", vacation_path(vacation), method: :get, class: :button %>
           </div>
         </figure>

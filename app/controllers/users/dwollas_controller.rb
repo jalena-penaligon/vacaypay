@@ -43,7 +43,8 @@ class Users::DwollasController < ApplicationController
     activity = Activity.find(params[:activity_id])
     source = current_user.dwolla_funding_source
     destination = User.find(activity.user_id).dwolla_funding_source
-    @_transfer_service ||= DwollaTransferService.new(source, destination, activity, token)
+    user_activity = UserActivity.find_by(activity_id: params[:activity_id], user_id: current_user.id)
+    @_transfer_service ||= DwollaTransferService.new(source, destination, user_activity, token)
   end
 
   def dwolla_transfer(token)

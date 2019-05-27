@@ -8,7 +8,7 @@
       <% if activity.vacation_id == facade.vacation_id %>
         <div id="activity-<%= activity.id %>">
           <li><%= activity.name %></li>
-          <li><%= activity.price %></li>
+          <li><%= facade.user_activity_price(activity, current_user) %></li>
           <% if facade.paid?(activity, current_user) %>
             PAID
           <% else %>
