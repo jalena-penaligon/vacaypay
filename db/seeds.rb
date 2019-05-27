@@ -8,7 +8,7 @@ ethan = User.create!(first_name: "Ethan", last_name: "Grab", email: "ethan@examp
 chi = User.create!(first_name: "Chi", last_name: "Tran", email: "chi@example.com", dwolla_id: "123", dwolla_funding_source: "456", password: "password")
 
 #vacations with their users and activities
-bachelorette = Vacation.create!(name: "bachelorette", location: "Hawaii", start_date: "2019-06-12", end_date: "2019-06-15")
+bachelorette = Vacation.create!(name: "Bachelorette", location: "Hawaii", start_date: "2019-06-12", end_date: "2019-06-15")
 
   bachelorette_user_1 = bachelorette.vacation_users.create!(user_id: jalena.id, role: 1)
   bachelorette_user_2 = bachelorette.vacation_users.create!(user_id: chi.id, role: 0)

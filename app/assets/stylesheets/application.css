@@ -3,7 +3,6 @@ body, html {
   font-size: 16px;
   line-height: 1.5em;
   font-family: Josefin Sans, sans-serif;
-  background-color: #4dbfd0;
 }
 
 .bg {
@@ -12,8 +11,6 @@ body, html {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  transform: translate3d(0,0,0);
-  -webkit-transform: translate3d(0,0,0);
 }
 
 h1 {
@@ -21,6 +18,13 @@ h1 {
   color: white;
   margin: 10px
 }
+
+h1.dark {
+  font-size: 30px;
+  color: #023143;
+  margin: 10px
+}
+
 
 h2 {
   font-size: 25px;
@@ -33,6 +37,14 @@ h2 {
 
 #index {
   background-image: url(vacations-index.jpg);
+}
+
+#form {
+  background-image: url(form.jpg);
+}
+
+#vacation {
+  background-image: url(vacation.jpg);
 }
 
 nav {
@@ -81,6 +93,22 @@ a:hover {
   float: right;
 }
 
+.form-container {
+  background-color: #cde5ee;
+  padding: 20px;
+  margin: auto;
+  width: 40%;
+  opacity: .9;
+}
+
+.vacation-container {
+  background-color: #cde5ee;
+  padding: 20px;
+  margin: auto;
+  width: 80%;
+  opacity: .9;
+}
+
 .vacay-container {
   overflow: auto;
   justify-content: center;
@@ -99,6 +127,7 @@ a:hover {
   text-align: center;
   margin: 20px;
   flex-basis: 40%;
+  opacity: .9;
 }
 
 .vacay-item li {
