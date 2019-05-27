@@ -8,7 +8,7 @@
     <div id="activity-<%= activity.id %>">
       <li><%= activity.name %></li>
       <li>Price Owed: $<%= activity.price %></li>
-      <% if facade.paid?(activity) %>
+      <% if facade.paid?(activity, current_user) %>
         You're all settled up!
       <% else %>
         <%= button_to "Settle Up" %>

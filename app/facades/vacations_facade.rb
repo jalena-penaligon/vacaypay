@@ -18,8 +18,8 @@ class VacationsFacade
     Activity.find(ids)
   end
 
-  def paid?(activity)
-    UserActivity.find_by(activity_id: activity.id).paid?
+  def paid?(activity, user)
+    UserActivity.where(activity_id: activity.id).find_by(user_id: user.id).paid?
   end
 
   def outstanding_balance(user)
