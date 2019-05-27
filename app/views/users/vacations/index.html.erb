@@ -2,13 +2,15 @@
 <body class="bg" id="index">
   <section class="upcoming-vacations">
     <h1>Upcoming Vacations</h1>
+    <br>
     <% current_user.vacations.each do |vacation| %>
       <div id="vacation-<%= vacation.id %>">
-      <h2><%= link_to vacation.name, vacation_path(vacation) %></h2>
-      <li><%= vacation.location %></li>
-      <li><%= vacation.start_date %></li>
-      <li><%= vacation.end_date %></li>
+      <h1><%= link_to vacation.name, users_vacation_path(vacation) %></h1>
+      <li>Destination: <%= vacation.location %></li>
+      <li>Start Date: <%= vacation.start_date %></li>
+      <li>End Date: <%= vacation.end_date %></li>
       <li>Hosted By: <%= vacation.host.first_name %></li>
+      <br>
       </div>
     <% end %>
   </section>

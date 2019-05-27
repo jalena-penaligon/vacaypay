@@ -1,0 +1,20 @@
+<h1><%= facade.vacation_name %></h1>
+<br>
+<li>Hosted By: <%= facade.vacation_host %></li>
+<li>Outstanding Balance: <%= number_to_currency(facade.outstanding_balance(current_user)) %></li>
+<br>
+<% facade.attending_activities(current_user).each do |activity| %>
+  <% if facade.vacation_id == activity.vacation_id %>
+    <div id="activity-<%= activity.id %>">
+      <li><%= activity.name %></li>
+      <li>Price Owed: $<%= activity.price %></li>
+      <% if facade.paid?(activity) %>
+        You're all settled up!
+      <% else %>
+        <%= button_to "Settle Up" %>
+      <% end %>
+    </div>
+    <% end %>
+    <br>
+  <% end %>
+<%= link_to 'Add Acitivty', new_vacation_owner_activity_path(facade.vacation_id) %>
