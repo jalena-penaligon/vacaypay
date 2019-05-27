@@ -1,6 +1,8 @@
 class VacationsFacade
+  attr_reader :vacation_id
+
   def initialize(vacation_id)
-    @vacation_id = vacation_id
+    @vacation_id = vacation_id.to_i
   end
 
   def vacation_name
@@ -16,8 +18,8 @@ class VacationsFacade
     Activity.find(ids)
   end
 
-  def paid?(activity)
-    UserActivity.find_by(activity_id: activity.id).paid?
+  def paid?(activity, user)
+    UserActivity.where(activity_id: activity.id).find_by(user_id: user.id).paid?
   end
 
   def outstanding_balance(user)
