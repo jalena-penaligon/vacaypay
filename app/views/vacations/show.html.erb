@@ -3,13 +3,15 @@
 <li>Total Owed: <%= number_to_currency(facade.outstanding_balance(current_user)) %></li>
 
 <% facade.attending_activities(current_user).each do |activity| %>
-  <div id="activity-<%= activity.id %>">
-    <li><%= activity.name %></li>
-    <li><%= activity.price %></li>
-    <% if facade.paid?(activity) %>
-      You're all settled up!
-    <% else %>
-      <%= button_to "Settle Up" %>
-    <% end %>
-  </div>
+  <% if facade.vacation_id == activity.vacation_id %>
+    <div id="activity-<%= activity.id %>">
+      <li><%= activity.name %></li>
+      <li><%= activity.price %></li>
+      <% if facade.paid?(activity) %>
+        You're all settled up!
+      <% else %>
+        <%= button_to "Settle Up" %>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
