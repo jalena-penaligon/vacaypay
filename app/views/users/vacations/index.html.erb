@@ -5,12 +5,13 @@
       <% current_user.vacations.each do |vacation| %>
         <figure class="vacay-item">
           <div id="vacation-<%= vacation.id %>">
-          <h2><%= link_to vacation.name, vacation_path(vacation) %>: <%= vacation.start_date %> - <%= vacation.end_date %></h2>
+          <h2><%= link_to vacation.name, vacation_path(vacation) %>:
+            <%= vacation.start_date.strftime("%m/%d/%Y") %> - <%= vacation.end_date.strftime("%m/%d/%Y") %></h2>
           <li>Location: <%= vacation.location %></li>
           <li>Hosted By: <%= vacation.host.first_name %></li>
           <li>I Owe:</li>
           <li>I'm Owed:</li>
-          <%= button_to "View Vacation" %>
+          <%= button_to "View Vacation", vacation_path(vacation), method: :get, class: :button %>
           </div>
         </figure>
       <% end %>

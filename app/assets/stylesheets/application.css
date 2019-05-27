@@ -11,11 +11,20 @@ body, html {
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+  transform: translate3d(0,0,0);
+  -webkit-transform: translate3d(0,0,0);
 }
 
 h1 {
   font-size: 30px;
   color: white;
+  margin: 10px
+}
+
+h2 {
+  font-size: 25px;
+  margin: 10px;
 }
 
 #home {
@@ -73,6 +82,8 @@ a:hover {
 }
 
 .vacay-container {
+  overflow: auto;
+  justify-content: center;
   display: flex;
   flex-wrap: wrap;
   position: relative;
@@ -86,6 +97,8 @@ a:hover {
   background-color: #cde5ee;
   flex-grow: 1;
   text-align: center;
+  margin: 20px;
+  flex-basis: 40%;
 }
 
 .vacay-item li {
@@ -96,7 +109,7 @@ a:hover {
   margin-bottom:10px;
 }
 
-button {
+.button {
   background-color: #023143;
   border: none;
   color: white;
@@ -110,6 +123,10 @@ button {
   font-weight: bold;
 }
 
-button:hover {
+.button:hover {
   background-color: #005170;
+}
+
+.upcoming-vacations {
+  margin: 20px;
 }
