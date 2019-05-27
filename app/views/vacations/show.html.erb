@@ -6,10 +6,10 @@
   <div id="activity-<%= activity.id %>">
     <li><%= activity.name %></li>
     <li><%= activity.price %></li>
-    <% if facade.paid?(activity) %>
-      You're all settled up!
+    <% if facade.paid?(activity, current_user) %>
+      PAID
     <% else %>
-      <%= button_to "Settle Up" %>
+      <%= button_to "Settle Up", users_dwollas_transfer_path(activity_id: activity.id) %>
     <% end %>
   </div>
 <% end %>
