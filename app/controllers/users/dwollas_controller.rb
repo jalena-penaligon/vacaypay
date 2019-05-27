@@ -13,7 +13,12 @@ class Users::DwollasController < ApplicationController
   def transfer
     token = dwolla_token
     response = dwolla_transfer(token)
-    redirect_to dashboard_path
+    #possible model push
+    activity = UserActivity.find_by(activity_id: params[:activity_id], user_id: current_user.id)
+    activity.update(paid: true)
+    activity = Activity.find(params[:activity_id])
+    flash[:success] = "You successfully paid for #{activity.name}."
+    redirect_to vacation_path(activity.vacation)
   end
 
   private
@@ -34,20 +39,7 @@ class Users::DwollasController < ApplicationController
     @_customer_service ||= DwollaCustomerService.new(current_user, user_params, token)
   end
 
-  # def dwolla_transfer_service(token)
-  #   activity = Activity.find(params[:activity_id])
-  #   source = current_user.dwolla_funding_source
-  #   destination = User.find(activity.user_id).dwolla_funding_source
-  #   @_transfer_service ||= DwollaTransferService.new(source, destination, activity, token)
-  # end
-  #
-  # def dwolla_transfer(token)
-  #   service = dwolla_transfer_service(token)
-  #   service.create_transfer
-  # end
-
   def dwolla_transfer_service(token)
-    binding.pry
     activity = Activity.find(params[:activity_id])
     source = current_user.dwolla_funding_source
     destination = User.find(activity.user_id).dwolla_funding_source
@@ -55,8 +47,14 @@ class Users::DwollasController < ApplicationController
   end
 
   def dwolla_transfer(token)
-    @_dwolla_transfer = dwolla_transfer_service(token).create_transfer
+    service = dwolla_transfer_service(token)
+    service.create_transfer
   end
+
+
+  # def dwolla_transfer(token)
+  #   @_dwolla_transfer = dwolla_transfer_service(token).create_transfer
+  # end
 
   def user_params
     params.permit(:address, :city, :state, :postal_code, :dob, :ssn)
