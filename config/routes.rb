@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   namespace :users do
     resources :dwollas, only: [:create, :new]
+    post '/transfer', to: 'dwollas#transfer', as: :dwollas_transfer
   end
 
   resources :vacations, only: [:show, :new, :create]

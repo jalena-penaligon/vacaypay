@@ -9,7 +9,7 @@
     <% if facade.paid?(activity) %>
       You're all settled up!
     <% else %>
-      <%= button_to "Settle Up" %>
+      <%= button_to "Settle Up", users_dwollas_transfer_path(activity_id: activity.id) %>
     <% end %>
   </div>
 <% end %>
