@@ -10,9 +10,15 @@ Rails.application.routes.draw do
 
   namespace :users do
     resources :dwollas, only: [:create, :new]
+    resources :vacations, only: [:create, :new, :show, :index, :delete, :update]
   end
 
-  resources :vacations, only: [:show, :new, :create]
+  resources :vacations, only: [:show, :new, :create] do
+    namespace :owner do
+      resources :activities
+    end
+  end
+
   resources :users, only: [:new, :create, :update]
   resources :dwolla, only: [:new, :create]
 
