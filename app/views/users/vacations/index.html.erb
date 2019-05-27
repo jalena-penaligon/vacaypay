@@ -1,15 +1,19 @@
-
 <body class="bg" id="index">
   <section class="upcoming-vacations">
     <h1>Upcoming Vacations</h1>
-    <% current_user.vacations.each do |vacation| %>
-      <div id="vacation-<%= vacation.id %>">
-      <h2><%= link_to vacation.name, vacation_path(vacation) %></h2>
-      <li><%= vacation.location %></li>
-      <li><%= vacation.start_date %></li>
-      <li><%= vacation.end_date %></li>
-      <li>Hosted By: <%= vacation.host.first_name %></li>
-      </div>
-    <% end %>
+    <section class="vacay-container">
+      <% current_user.vacations.each do |vacation| %>
+        <figure class="vacay-item">
+          <div id="vacation-<%= vacation.id %>">
+          <h2><%= link_to vacation.name, vacation_path(vacation) %>: <%= vacation.start_date %> - <%= vacation.end_date %></h2>
+          <li>Location: <%= vacation.location %></li>
+          <li>Hosted By: <%= vacation.host.first_name %></li>
+          <li>I Owe:</li>
+          <li>I'm Owed:</li>
+          <%= button_to "View Vacation" %>
+          </div>
+        </figure>
+      <% end %>
+    </section>
   </section>
 </body>
