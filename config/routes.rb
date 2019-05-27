@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  get '/dashboard', to: 'users/vacations#index', as: :dashboard
+  get '/dashboard/:id', to: 'users#show', as: :dashboard
 
   get '/oauth', to: 'users/dwollas#create', as: :users_auth
 
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :vacations, only: [:show, :new, :create]
   resources :users, only: [:new, :create, :update]
   resources :dwolla, only: [:new, :create]
+  resources :funding_sources, only: [:show]
 
   namespace :owner do
     resources :vacations, only: [:show]
