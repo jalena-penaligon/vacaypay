@@ -16,24 +16,38 @@ body, html {
 h1 {
   font-size: 30px;
   color: white;
-  margin: 10px
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 h1.dark {
   font-size: 30px;
   color: #023143;
-  margin: 10px
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
+h2.light {
+  font-size: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: white;
+}
 
 h2 {
   font-size: 25px;
-  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 h3 {
   font-size: 20px;
-  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 18px;
 }
 
 #home {
@@ -106,12 +120,35 @@ a:hover {
   opacity: .9;
 }
 
+.vacation-header {
+  background-color: #005170;
+  padding: 20px;
+  margin: auto;
+  width: 80%;
+  opacity: .9;
+  height: 25px;
+}
+
+.header-grid {
+  width: 20%;
+  display: inline-block;
+  float: left;
+}
+
+.header-grid-right {
+  width: 20%;
+  display: inline-block;
+  float: right;
+  text-align: right;
+}
+
 .vacation-container {
   background-color: #cde5ee;
   padding: 20px;
   margin: auto;
   width: 80%;
   opacity: .9;
+  text-align: center;
 }
 
 .vacay-container {
@@ -128,6 +165,27 @@ a:hover {
   padding: 20px;
   min-width: 40%;
   background-color: #cde5ee;
+  flex-grow: 1;
+  text-align: center;
+  margin: 20px;
+  flex-basis: 40%;
+  opacity: .9;
+}
+
+.vacay-container {
+  overflow: auto;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  width: 100%;
+}
+
+.vacay-item {
+  flex-shrink: 1;
+  padding: 20px;
+  min-width: 40%;
+  background-color: white;
   flex-grow: 1;
   text-align: center;
   margin: 20px;

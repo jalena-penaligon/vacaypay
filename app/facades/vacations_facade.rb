@@ -18,6 +18,11 @@ class VacationsFacade
     Activity.find(ids)
   end
 
+  def non_attending_activities(user)
+    ids = activities(user).pluck(:activity_id)
+    Activity.where.not(id: ids)
+  end
+
   def paid?(activity, user)
     find_user_activity(activity, user).paid?
   end
@@ -34,6 +39,10 @@ class VacationsFacade
     vacation.calculate_owed_balance(user)
   end
 
+  def vacation
+    @vacation ||= Vacation.find(@vacation_id)
+  end
+
   private
 
   def find_user_activity(activity, user)
@@ -43,9 +52,4 @@ class VacationsFacade
   def activities(user)
     UserActivity.where(user_id: user.id)
   end
-
-  def vacation
-    @vacation ||= Vacation.find(@vacation_id)
-  end
-
 end

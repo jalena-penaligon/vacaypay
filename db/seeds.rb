@@ -31,6 +31,11 @@ bachelorette = Vacation.create!(name: "Bachelorette", location: "Hawaii", start_
 
   chi_boat = UserActivity.create!(user_id: chi.id, quantity: 1, price: 200.00, paid: true, activity_id: boat_ride.id)
 
+  atv_tour = bachelorette.activities.create!(price: 100.00, num_attendees: 1, description: "Let's go ATV'ing in the jungle.", name: "ATV Tour", no_of_days: 1, cutoff_date: "2019-06-12", type: 2, user_id: chi.id)
+
+  chi_atv = UserActivity.create!(user_id: chi.id, quantity: 1, price: 100.00, paid: true, activity_id: atv_tour.id)
+
+
 party = Vacation.create!(name: "Party", location: "Brazil", start_date: "2019-07-12", end_date: "2019-07-17")
 
   party_user_1 = party.vacation_users.create!(user_id: earl.id, role: 1)
@@ -71,7 +76,7 @@ skiing = Vacation.create!(name: "Skiing", location: "Aspen", start_date: "2019-1
 
     aspen_hotel = skiing.activities.create!(price: 1_500.00, num_attendees: 3, description: "Moutain Lodge", name: "Aspen Hotel", no_of_days: 3, cutoff_date: "2019-12-16", type: 1, user_id: jalena.id)
 
-      jalena_aspen_hotel = UserActivity.create!(user_id: jalena.id, quantity: 1, price: 500.00, paid: false, activity_id: aspen_hotel.id)
+      jalena_aspen_hotel = UserActivity.create!(user_id: jalena.id, quantity: 1, price: 500.00, paid: true, activity_id: aspen_hotel.id)
 
       earl_aspen_hotel = UserActivity.create!(user_id: earl.id, quantity: 1, price: 500.00, paid: false, activity_id: aspen_hotel.id)
 
