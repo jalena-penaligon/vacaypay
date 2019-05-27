@@ -1,5 +1,4 @@
 class Users::DwollasController < ApplicationController
-
   def new
   end
 
@@ -7,7 +6,7 @@ class Users::DwollasController < ApplicationController
     token = dwolla_token
     response = dwolla_customer_location(token)
     current_user.update(dwolla_id: response.response_headers[:location])
-    redirect_to dashboard_path
+    redirect_to funding_source_path(current_user)
   end
 
   private
@@ -31,5 +30,4 @@ class Users::DwollasController < ApplicationController
   def user_params
     params.permit(:address, :city, :state, :postal_code, :dob, :ssn)
   end
-
 end
