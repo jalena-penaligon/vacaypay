@@ -16,7 +16,7 @@ describe DwollaTransferService do
 
         service = DwollaTransferService.new(source, destination, user_1_snorkeling, token)
         response = service.create_transfer
-        binding.pry
+
         expect(response.response_status).to eq(201)
 
       end

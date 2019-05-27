@@ -21,7 +21,7 @@ describe 'as a registered user who has added a dwolla funding source' do
           expect(page).to have_content("PAID")
         end
 
-        expect(page).to have_content("You successfully paid #{user_2.first_name} for #{snorkeling.name}.")
+        expect(page).to have_content("You successfully paid for #{snorkeling.name}.")
         expect(page).to have_content("Total Owed: $0.00")
       end
     end
