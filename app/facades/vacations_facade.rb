@@ -17,15 +17,7 @@ class VacationsFacade
   end
 
   def paid?(activity, user)
-    #this is incorrect
-
-    #there are multiple users on an activity so doing find_by
-    #finds the first activity not necessarily whether the current_user
-    #has 'settled up'
-
-    #try
     UserActivity.where(activity_id: activity.id).find_by(user_id: user.id).paid?
-    # UserActivity.find_by(activity_id: activity.id).paid?
   end
 
   def outstanding_balance(user)
