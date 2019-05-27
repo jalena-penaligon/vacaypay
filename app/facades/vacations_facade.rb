@@ -1,6 +1,8 @@
 class VacationsFacade
+  attr_reader :vacation_id
+
   def initialize(vacation_id)
-    @vacation_id = vacation_id
+    @vacation_id = vacation_id.to_i
   end
 
   def vacation_name
