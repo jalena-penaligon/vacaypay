@@ -1,0 +1,7 @@
+
+
+<% if @user.dwolla_funding_source.nil? %>
+  <%=link_to 'Add Your Bank Account', new_users_dwolla_path %>
+<% else %>
+  <%= @user.dwolla_funding_source %>
+<% end %>
