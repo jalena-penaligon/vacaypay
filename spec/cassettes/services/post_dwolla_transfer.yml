@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - dwolla-v2-ruby 2.2.1
       Authorization:
-      - Basic 4oCYNm83UVB2RlcxbUhGdHdqN3IwUGt3d0xPY05PTllONVNvWTh5clpkajhBOTlXVklhMjTigJk64oCYZm5iMXIySXhJNEpzUW9FMEg3Q0hsaTlWTmhWbW9ibjhTWmw0TGVScldMcEVqNE9vaVXigJk=
+      - Basic amswT2ZoVDF5ODF6NE5jZkpEZTdlQXlJdGRIRXN4cDdCWnA2Z1VhUngyV3hGUWx5cHo6TWZFVEVOOHpaQVkzTzlKN2NrMElnWEozV1NtTHZZeFZCU0VkSXd0MVhBWWlybXloOU8=
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -19,11 +19,11 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       Date:
-      - Mon, 27 May 2019 03:55:38 GMT
+      - Mon, 27 May 2019 06:16:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,15 +31,13 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d0651d983d26e72a2e221035d34f1c6e51558929338; expires=Tue, 26-May-20
-        03:55:38 GMT; path=/; domain=.dwolla.com; HttpOnly
-      - session=Fe26.2**9f21a0b0375751968d8367cdb7f7746e217eba4a0ac4cd008326918bcee85507*3Pp6F2NIFilvXHrieHMBkQ*rSsZYgOPDZ5wWm9wAYJz4fuxxr-iKnpDr6ngIUTWRLi4INScU1Zm8vEwW82QirHbrtyitAvg4Vfv_qVU0GN_HA**53e46057e25b143bbe293683fdfd03eebf1450b3030f4c325a9bce9c0dbd8be1*P5yluR0SqgOfjhYngWaDwxbRdGDxuO_PupMbVlZZlng;
-        Max-Age=2592000; Expires=Wed, 26 Jun 2019 03:55:38 GMT; Secure; HttpOnly;
+      - __cfduid=d41847c0062dd8a3f4f22d672ca534cd11558937793; expires=Tue, 26-May-20
+        06:16:33 GMT; path=/; domain=.dwolla.com; HttpOnly
+      - session=Fe26.2**38856c33c22d54542bbc118aa4ea2f9d343ee584a1dc440fbf700b43e1be78e9*uHYWcvj5HXZ1JWe4B3lMsg*Sy_ldmhgt851DS2n5cl2G4ur9fd1VN-GFNwYAHRFSQWRf51UnYhaSfpw2xBCJwHOFbShXpaST40hMg6x03Xi1w**9f76a98fff5b6dccbf044a51cf3d33c177842726659bf0b6c6b51b414a0288b9*V3I0T8roxPEyy_9z6vu5euVuoZQDtEDzF_XDtiPk0AM;
+        Max-Age=2592000; Expires=Wed, 26 Jun 2019 06:16:33 GMT; Secure; HttpOnly;
         SameSite=Lax; Path=/
       Cache-Control:
       - no-store
-      Www-Authenticate:
-      - Basic realm="Dwolla API",charset=UTF-8
       X-Frame-Options:
       - DENY
       Strict-Transport-Security:
@@ -63,10 +61,58 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4dd50deb1c934fdf-DEN
+      - 4dd5dc57bf84d26a-DFW
     body:
       encoding: ASCII-8BIT
-      string: '{"error":"invalid_client"}'
+      string: '{"access_token":"2TZVmurH9OWqgdVO1MgYAt4Ovrw32Ijz7d1OnyzvBz7ICtnAcz","expires_in":3327,"token_type":"Bearer"}'
     http_version: 
-  recorded_at: Mon, 27 May 2019 03:55:38 GMT
+  recorded_at: Mon, 27 May 2019 06:20:51 GMT
+- request:
+    method: post
+    uri: https://api-sandbox.dwolla.com/transfers
+    body:
+      encoding: UTF-8
+      string: '{"_links":{"source":{"href":"https://api-sandbox.dwolla.com/funding-sources/e0a56ffc-26db-4639-955c-68b351b52e9d"},"destination":{"href":"https://api-sandbox.dwolla.com/funding-sources/59cb098a-872e-4987-868b-4302e1afaaed"}},"amount":{"currency":"USD","value":"40.0"}}'
+    headers:
+      Authorization:
+      - Bearer 2TZVmurH9OWqgdVO1MgYAt4Ovrw32Ijz7d1OnyzvBz7ICtnAcz
+      Accept:
+      - application/vnd.dwolla.v1.hal+json
+      User-Agent:
+      - dwolla-v2-ruby 2.2.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Mon, 27 May 2019 06:16:34 GMT
+      Content-Type:
+      - application/vnd.dwolla.v1.hal+json
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d4abedb32f976735d818cb38d79740fb41558937793; expires=Tue, 26-May-20
+        06:16:33 GMT; path=/; domain=.dwolla.com; HttpOnly
+      Location:
+      - https://api-sandbox.dwolla.com/transfers/4b8f1bf7-4680-e911-8119-d7bc0de34d9c
+      X-Request-Id:
+      - 49805f5d-7849-4011-8c3e-f9d750be10a6
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4dd5dc5c6fbb5847-DFW
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 27 May 2019 06:20:52 GMT
 recorded_with: VCR 4.0.0
