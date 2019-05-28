@@ -26,7 +26,7 @@ describe 'as a registered user' do
         expect(page).to have_content(activity_1.price)
         expect(page).to have_button("Settle Up")
       end
-      expect(page).to have_content("Total Owed: $35.00")
+      expect(page).to have_content("I Owe: $35.00")
     end
   end
 end

@@ -27,8 +27,8 @@ describe 'as a registered user that has connected with a dwolla funding source' 
     visit dashboard_path
     expect(page).to have_content(vacation.name)
     expect(page).to have_content(vacation.location)
-    expect(page).to have_content(vacation.start_date)
-    expect(page).to have_content(vacation.end_date)
+    expect(page).to have_content(vacation.start_date.strftime("%m/%d/%Y"))
+    expect(page).to have_content(vacation.end_date.strftime("%m/%d/%Y"))
 
     vacation_users = VacationUser.last
     expect(vacation_users.role).to eq(1)

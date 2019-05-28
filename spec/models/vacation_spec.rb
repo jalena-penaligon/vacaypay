@@ -24,4 +24,38 @@ RSpec.describe Vacation, type: :model do
       expect(vacation.new_vacation?).to be false
     end
   end
+
+  describe 'instance methods' do
+    it '.calculate_balance returns cost of unpaid user activities that i do not own' do
+      user_1 = create(:user)
+      user_2 = create(:user)
+
+      vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 100.days.from_now, end_date: 107.days.from_now)
+      activity_1 = vacation.activities.create(price: 100.00, num_attendees: 2, name: "Activity 1", description: "It's an activity", vacation: vacation, user: user_1, type: 1)
+      activity_2 = vacation.activities.create(price: 50.00, num_attendees: 2, name: "Activity 2", description: "It's an activity", vacation: vacation, user: user_2, type: 1)
+      user_activity_1 = user_1.user_activities.create!(quantity: 1, price:100.0, activity: activity_1)
+      user_activity_2 = user_2.user_activities.create!(quantity: 1, price:100.0, activity: activity_1)
+      user_activity_3 = user_1.user_activities.create!(quantity: 1, price:50.0, activity: activity_2)
+      user_activity_4 = user_2.user_activities.create!(quantity: 1, price:50.0, activity: activity_2)
+
+      expect(vacation.calculate_balance(user_1)).to eq(50.00)
+      expect(vacation.calculate_balance(user_2)).to eq(100.00)
+    end
+
+    it '.calculate_owed_balance returns cost of unpaid user activities that i own' do
+      user_1 = create(:user)
+      user_2 = create(:user)
+
+      vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 100.days.from_now, end_date: 107.days.from_now)
+      activity_1 = vacation.activities.create(price: 100.00, num_attendees: 2, name: "Activity 1", description: "It's an activity", vacation: vacation, user: user_1, type: 1)
+      activity_2 = vacation.activities.create(price: 50.00, num_attendees: 2, name: "Activity 2", description: "It's an activity", vacation: vacation, user: user_2, type: 1)
+      user_activity_1 = user_1.user_activities.create!(quantity: 1, price:100.0, activity: activity_1)
+      user_activity_2 = user_2.user_activities.create!(quantity: 1, price:100.0, activity: activity_1)
+      user_activity_3 = user_1.user_activities.create!(quantity: 1, price:50.0, activity: activity_2)
+      user_activity_4 = user_2.user_activities.create!(quantity: 1, price:50.0, activity: activity_2)
+
+      expect(vacation.calculate_owed_balance(user_1)).to eq(100.00)
+      expect(vacation.calculate_owed_balance(user_2)).to eq(50.00)
+    end
+  end
 end

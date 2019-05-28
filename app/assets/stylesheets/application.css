@@ -3,7 +3,6 @@ body, html {
   font-size: 16px;
   line-height: 1.5em;
   font-family: Josefin Sans, sans-serif;
-  background-color: #4dbfd0;
 }
 
 .bg {
@@ -11,11 +10,44 @@ body, html {
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 h1 {
   font-size: 30px;
   color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h1.dark {
+  font-size: 30px;
+  color: #023143;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h2.light {
+  font-size: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+h2 {
+  font-size: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 18px;
 }
 
 #home {
@@ -24,6 +56,14 @@ h1 {
 
 #index {
   background-image: url(vacations-index.jpg);
+}
+
+#form {
+  background-image: url(form.jpg);
+}
+
+#vacation {
+  background-image: url(vacation.jpg);
 }
 
 nav {
@@ -40,7 +80,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #f2f2f2;
+  color: #f5da44;
 }
 
 a {
@@ -72,18 +112,85 @@ a:hover {
   float: right;
 }
 
+.form-container {
+  background-color: #cde5ee;
+  padding: 20px;
+  margin: auto;
+  width: 40%;
+  opacity: .9;
+}
+
+.vacation-header {
+  background-color: #005170;
+  padding: 20px;
+  margin: auto;
+  width: 80%;
+  opacity: .9;
+  height: 25px;
+}
+
+.header-grid {
+  width: 20%;
+  display: inline-block;
+  float: left;
+}
+
+.header-grid-right {
+  width: 20%;
+  display: inline-block;
+  float: right;
+  text-align: right;
+}
+
+.vacation-container {
+  background-color: #cde5ee;
+  padding: 20px;
+  margin: auto;
+  width: 80%;
+  opacity: .9;
+  text-align: center;
+}
+
 .vacay-container {
+  overflow: auto;
+  justify-content: center;
   display: flex;
   flex-wrap: wrap;
   position: relative;
+  width: 100%;
 }
 
 .vacay-item {
   flex-shrink: 1;
   padding: 20px;
-  max-width: 400px;
-  min-width: 300px;
+  min-width: 40%;
   background-color: #cde5ee;
+  flex-grow: 1;
+  text-align: center;
+  margin: 20px;
+  flex-basis: 40%;
+  opacity: .9;
+}
+
+.vacay-container {
+  overflow: auto;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  width: 100%;
+}
+
+.vacay-item {
+  flex-shrink: 1;
+  padding: 20px;
+  min-width: 40%;
+  background-color: white;
+  flex-grow: 1;
+  text-align: center;
+  margin: 20px;
+  flex-basis: 40%;
+  opacity: .9;
 }
 
 .vacay-item li {
@@ -92,4 +199,26 @@ a:hover {
 
 .vacay-item h2 {
   margin-bottom:10px;
+}
+
+.button {
+  background-color: #023143;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-decoration: none;
+  margin: 15px 0px;
+  cursor: pointer;
+  height: 40px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: #005170;
+}
+
+.upcoming-vacations {
+  margin: 20px;
 }

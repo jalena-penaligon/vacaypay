@@ -16,4 +16,23 @@ class Vacation < ApplicationRecord
   def new_vacation?
     self.activities.count == 0
   end
+
+  def calculate_balance(user)
+    find_activities(user)
+    .where.not('activities.user_id' => user.id)
+    .sum(:price)
+  end
+
+  def find_activities(user)
+    UserActivity
+    .joins(:activity)
+    .where(user_id: user.id, paid: false)
+    .where('activities.vacation_id' => self.id)
+  end
+
+  def calculate_owed_balance(user)
+    find_activities(user)
+    .where('activities.user_id' => user.id)
+    .sum(:price)
+  end
 end
