@@ -1,6 +1,6 @@
 body, html {
   height: 100%;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.5em;
   font-family: Josefin Sans, sans-serif;
 }
@@ -21,33 +21,33 @@ h1 {
 }
 
 h1.dark {
-  font-size: 30px;
+  font-size: 32px;
   color: #023143;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 h2.light {
-  font-size: 25px;
+  font-size: 27px;
   margin-top: 10px;
   margin-bottom: 10px;
   color: white;
 }
 
 h2 {
-  font-size: 25px;
+  font-size: 27px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 22px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 h4 {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 #home {
@@ -126,7 +126,7 @@ a:hover {
   margin: auto;
   width: 80%;
   opacity: .9;
-  height: 25px;
+  height: 30px;
 }
 
 .header-grid {
@@ -136,7 +136,7 @@ a:hover {
 }
 
 .header-grid-right {
-  width: 20%;
+  width: 25%;
   display: inline-block;
   float: right;
   text-align: right;
@@ -221,4 +221,32 @@ a:hover {
 
 .upcoming-vacations {
   margin: 20px;
+}
+
+.subnav {
+  text-align: left;
+  display: block;
+  height: 25px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.subnav a {
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.attendee {
+  background-color: #023143;
+  width: inherit;
+  border: none;
+  color: white;
+  text-decoration: none;
+  margin: 5px 5px;
+  padding: 10px;
+  height: 22px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: inline-block
 }

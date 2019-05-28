@@ -24,7 +24,7 @@ describe 'as a registered user that has connected with a dwolla funding source' 
     expect(page).to have_button("Add An Activity")
     expect(page).to have_button("Invite Participants")
 
-    visit dashboard_path
+    visit vacations_path
     expect(page).to have_content(vacation.name)
     expect(page).to have_content(vacation.location)
     expect(page).to have_content(vacation.start_date.strftime("%m/%d/%Y"))

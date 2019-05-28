@@ -1,6 +1,7 @@
 class Activity < ApplicationRecord
   belongs_to :vacation
   belongs_to :user
+  has_many :user_activities
 
   validates_presence_of :name
   validates :price, presence: true, numericality: { greater_than: 0 }

@@ -11,7 +11,7 @@ describe 'as a registered user' do
       owner.vacation_users.create(role: 1, vacation: vacation)
       user.vacation_users.create(role: 0, vacation: vacation)
 
-      visit dashboard_path
+      visit vacations_path
 
       within "#vacation-#{vacation.id}" do
         expect(page).to have_link(vacation.name)

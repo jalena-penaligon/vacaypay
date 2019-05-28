@@ -16,7 +16,7 @@ describe 'as a registered user' do
       activity_2 = Activity.create(name: "Dinner", price: 15.0, num_attendees: 1, description: "Nom nom", no_of_days: 1, vacation: vacation, user: owner, type: "per_person_cost")
       user_activity_2 = user.user_activities.create!(quantity: 1, price:15.0, activity: activity_2)
 
-      visit dashboard_path
+      visit vacations_path
       click_link(vacation.name)
 
       expect(current_path).to eq(vacation_path(vacation))

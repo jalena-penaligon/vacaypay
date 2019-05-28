@@ -19,6 +19,7 @@ class Vacation < ApplicationRecord
 
   def calculate_balance(user)
     find_activities(user)
+    .where(user_id: user.id)
     .where.not('activities.user_id' => user.id)
     .sum(:price)
   end
@@ -26,7 +27,7 @@ class Vacation < ApplicationRecord
   def find_activities(user)
     UserActivity
     .joins(:activity)
-    .where(user_id: user.id, paid: false)
+    .where(paid: false)
     .where('activities.vacation_id' => self.id)
   end
 
@@ -34,5 +35,9 @@ class Vacation < ApplicationRecord
     find_activities(user)
     .where('activities.user_id' => user.id)
     .sum(:price)
+  end
+
+  def owner?(user)
+    self.vacation_users.any? { |vu| vu.user_id == user.id }
   end
 end
