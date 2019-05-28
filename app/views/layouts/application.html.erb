@@ -26,7 +26,7 @@
       <li class="logged-in">Logged in as <%= current_user.first_name %></li><br />
       <%= link_to "My Vacations", vacations_path %>
 
-      <%= link_to "+ Create a Vacation", new_vacation_path %>
+      <%= link_to "+ Create a Vacation", new_users_vacation_path %>
       <% if current_user.dwolla_funding_source.nil? && current_user.dwolla_id.nil? %>
       <%=link_to 'Connect To Dwolla', new_users_dwolla_path %>
       <% elsif current_user.dwolla_funding_source.nil? && current_user.dwolla_id != nil %>

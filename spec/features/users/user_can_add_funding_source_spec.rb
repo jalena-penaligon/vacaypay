@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'User' do
-  describe 'can add funding source via IAV' do 
+  describe 'can add funding source via IAV' do
     it 'after successfully making a new dwolla account from the dashboard' do
       VCR.use_cassette('iav/make_dwolla_acct') do
         user = create(:user)
@@ -12,7 +12,7 @@ describe 'User' do
 
         expect(current_path).to eq(dashboard_path)
         expect(user.dwolla_id).to eq(nil)
-        
+
         expect(page).to have_content('Connect To Dwolla')
 
         click_link 'Connect To Dwolla'
@@ -33,8 +33,6 @@ describe 'User' do
         click_link "Add Your Bank Account"
 
         expect(current_path).to eq(new_funding_source_path)
-
-        save_and_open_page
       end
     end
   end

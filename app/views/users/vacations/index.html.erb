@@ -9,7 +9,7 @@
           <% if vacation.owner?(current_user) %>
             <h2><%= link_to vacation.name, owner_vacation_path(vacation) %>:</h2>
           <% else %>
-            <h2><%= link_to vacation.name, vacation_path(vacation) %>:</h2>
+            <h2><%= link_to vacation.name, users_vacation_path(vacation) %>:</h2>
           <% end %>
 
           <h3><%= vacation.start_date.strftime("%m/%d/%Y") %> - <%= vacation.end_date.strftime("%m/%d/%Y") %></h3>
@@ -21,7 +21,7 @@
           <% if vacation.owner?(current_user) %>
             <%= button_to "View Vacation", owner_vacation_path(vacation), method: :get, class: :button %>
           <% else %>
-            <%= button_to "View Vacation", vacation_path(vacation), method: :get, class: :button %>
+            <%= button_to "View Vacation", users_vacation_path(vacation), method: :get, class: :button %>
           <% end %>
           </div>
         </figure>
