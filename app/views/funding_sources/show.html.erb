@@ -2,7 +2,7 @@
 <script src="https://cdn.dwolla.com/1/dwolla.min.js"></script>
 <div id="dwolla"></div>
 <script>
-var token = "<%= @iav_token %>";
+var token = "<%= iav_token %>";
     dwolla.configure('sandbox');
     dwolla.iav.start( token, {
         container: 'dwolla',
@@ -16,8 +16,4 @@ var token = "<%= @iav_token %>";
         alert(JSON.stringify(err));
         console.log('Error: ' + JSON.stringify(err) + ' -- Response: ' + JSON.stringify(res));
     });
-</script>
-<script>
-var new_path = <%= dashboard_path(@user) %>
-window.location.href = new_path;
 </script>
