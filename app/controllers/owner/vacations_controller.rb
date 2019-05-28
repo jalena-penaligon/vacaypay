@@ -2,7 +2,7 @@ class Owner::VacationsController < ApplicationController
 
   def show
     render locals: {
-      vacation: Vacation.find(params[:id])
+      facade: VacationsFacade.new(params[:id])
     }
   end
 

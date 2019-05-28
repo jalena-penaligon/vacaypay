@@ -1,4 +1,46 @@
-<% if vacation.new_vacation? %>
-  <%= button_to "Add An Activity" %>
+<body class="bg" id="vacation">
+<% if facade.vacation.new_vacation? %>
+  <%= button_to "Add an Activity" %>
   <%= button_to "Invite Participants" %>
+<% else %>
+  <div class="vacation-header">
+  <figure class="header-grid">
+    <h1><%= facade.vacation_name %></h1>
+  </figure>
+  <figure class="header-grid-right">
+    <h2 class="light">I'm Owed: <%= number_to_currency(facade.owed_balance(current_user)) %></h2>
+  </figure>
+  <figure class="header-grid-right">
+    <h2 class="light">I Owe: <%= number_to_currency(facade.outstanding_balance(current_user)) %></h2>
+    </figure>
+  </div>
+  <div class="vacation-container">
+    <section class="subnav">
+      <%= link_to "+ Add an Activity" %>
+      <%= link_to "+ Invite Participants" %>
+    </section>
+    <h2><%= facade.vacation.start_date.strftime("%m/%d/%Y") %> - <%= facade.vacation.end_date.strftime("%m/%d/%Y") %></h2>
+    <h4>Hosted By: <%= facade.vacation_host %></h4>
+    <h4>Location: <%= facade.vacation.location %></h4>
+    <h2>Activities:</h2>
+    <section class="vacay-container">
+      <% facade.all_activities.each do |activity| %>
+        <% if activity.vacation_id == facade.vacation_id %>
+          <div id="activity-<%= activity.id %>" class="vacay-item">
+            <h2><%= link_to activity.name %></h2>
+            <li>Description: <%= activity.description %></li>
+            <h3>Attending:</h3>
+              <% activity.user_activities.each do |ua| %>
+              <figure class="attendee">
+                <%= ua.user_name %> x
+              </figure>
+              <% end %>
+              <br />
+              <%= link_to "+ Invite Participants" %>
+          </div>
+        <% end %>
+      <% end %>
+    </section>
+  </div>
 <% end %>
+</body>

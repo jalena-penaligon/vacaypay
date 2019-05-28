@@ -23,6 +23,10 @@ class VacationsFacade
     Activity.where.not(id: ids)
   end
 
+  def all_activities
+    vacation.activities
+  end
+
   def paid?(activity, user)
     find_user_activity(activity, user).paid?
   end
