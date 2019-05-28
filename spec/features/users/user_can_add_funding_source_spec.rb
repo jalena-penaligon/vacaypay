@@ -8,9 +8,9 @@ describe 'User' do
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-        visit dashboard_path(user)
+        visit dashboard_path
     
-        expect(current_path).to eq(dashboard_path(user))
+        expect(current_path).to eq(dashboard_path)
         expect(page).to have_link('Add Your Bank Account')
         expect(user.dwolla_funding_source).to eq(nil)
 

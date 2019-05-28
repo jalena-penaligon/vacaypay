@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  get '/dashboard/:id', to: 'users#show', as: :dashboard
+  get '/dashboard', to: 'users#show', as: :dashboard
 
   get '/oauth', to: 'users/dwollas#create', as: :users_auth
 
