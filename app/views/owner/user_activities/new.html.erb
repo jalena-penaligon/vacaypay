@@ -1,0 +1,17 @@
+Add Participants!
+<% if vacationers.empty? %>
+  <p>No participants to add, invite more people to the vacation!<p>
+  <%= button_to 'Back to Activity', users_vacation_activity_path(Vacation.find(activity.vacation_id), activity), method: :get %>
+<% else %>
+  <%= form_tag(owner_activity_user_activities_path(activity), method: "post") do %>
+  <ul>
+    <% vacationers.each do |user| %>
+        <li>
+          <%= check_box_tag('user_ids[]', user.id) =%>
+          <%= user.first_name =%>
+        </li>
+    <% end %>
+  </ul>
+    <h3><%= submit_tag 'Confirm' %></h3>
+  <% end %>
+<% end %>
