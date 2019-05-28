@@ -17,7 +17,7 @@ describe 'vacation owner' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit owner_vacation_path(miami)
-
+# save_and_open_page
     click_button "Invite Participants"
 
     expect(current_path).to eq(owner_vacation_invite_path(miami))
@@ -25,5 +25,8 @@ describe 'vacation owner' do
     invites = "vacaypay1234@gmail.com, vacaypay.turing@gmail.com"
     fill_in :email_invitations, with: invites
     click_on "Save"
+
+    expect(current_path).to eq(owner_vacation_path(miami))
+    expect(page).to have_content('Successfully sent invitations!')
   end
 end

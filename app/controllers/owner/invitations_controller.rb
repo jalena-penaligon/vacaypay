@@ -5,8 +5,12 @@ class Owner::InvitationsController < ApplicationController
   end
 
   def create
-    vacay_id = params[:vacation_id]
-    User.check_for_existing_users(email_to_array, vacay_id)
+    user = current_user
+    vacation = Vacation.find(params[:vacation_id])
+    email_list = User.check_for_existing_users(email_to_array, vacation.id)
+    VacayInviterMailer.invite(user, email_list, vacation).deliver_now
+    flash[:notice] = 'Successfully sent invitations!'
+    redirect_to owner_vacation_path(vacation.id)
   end
 private
 
