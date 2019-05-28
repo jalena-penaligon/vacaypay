@@ -6,7 +6,8 @@ class Users::DwollasController < ApplicationController
     token = dwolla_token
     response = dwolla_customer_location(token)
     current_user.update(dwolla_id: response.response_headers[:location])
-    redirect_to funding_source_path(current_user)
+    flash[:success] = "You've connected Dwolla to VacayPay."
+    redirect_to dashboard_path
   end
 
   def transfer
