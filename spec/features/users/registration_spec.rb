@@ -20,7 +20,7 @@ describe 'as a visitor' do
       expect(user.last_name).to eq("Last")
       expect(user.email).to eq("email@email.com")
 
-      expect(current_path).to eq(root_path)
+      expect(current_path).to eq(dashboard_path)
     end
 
     it 'can will not allow me to register with an email address that exists' do
