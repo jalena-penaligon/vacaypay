@@ -38,6 +38,8 @@ class Vacation < ApplicationRecord
   end
 
   def owner?(user)
-    self.vacation_users.any? { |vu| vu.user_id == user.id }
+    self.vacation_users.any? do |vu|
+      vu.user_id == user.id && vu.vacation_id == self.id && vu.role == 1
+    end
   end
 end

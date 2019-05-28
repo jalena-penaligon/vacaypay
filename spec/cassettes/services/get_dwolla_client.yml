@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 26 May 2019 22:02:14 GMT
+      - Tue, 28 May 2019 17:35:17 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,10 +31,10 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d57248e4b57b2996dc1b71f3b8cda31b31558908134; expires=Mon, 25-May-20
-        22:02:14 GMT; path=/; domain=.dwolla.com; HttpOnly
-      - session=Fe26.2**a8654e5dfc2e13f47499221654a59010e552259a9ceb305f1da7fac17a8c7a36*W0Rl0Z7lbbEOd2bCOSeMvg*0yUe5OyAf6IqkLcY30y2O8Ir2QSjnLp7V_OP1LTbXys8ZaOh1lAOO4DRo3TxZeoLLG7wFdrkjHQYR3PznQBleg**df826cb49f299f1b904f04462a3b326da1e07332dd2760576925a63608be4397*QDeVX1v9zaSYWv5xr2pyH-GHhZwG_8y_kRQ-bbRm840;
-        Max-Age=2592000; Expires=Tue, 25 Jun 2019 22:02:14 GMT; Secure; HttpOnly;
+      - __cfduid=d526077c13dba63411dc48dc37e7fd97e1559064917; expires=Wed, 27-May-20
+        17:35:17 GMT; path=/; domain=.dwolla.com; HttpOnly
+      - session=Fe26.2**1ffe3eba2d043665f78d70b7f059711a190ec6d444a58b179f46e4eef348c88c*2QXVy_7IckW5TVb5vt19KA*Dz8znugPnKzcWEDZsHaaxR-Q1P6Pe_eqk098qK5v6HSlcQOlTByovxpPXS9VOcWbaZBfvuHihkAqPZSr6BEjNA**60781b67c71330d5096cf166eb839813947ba9a9e201f31a3e34fa116073c582*PCuW159q547aXDNkqM8MoOzGcRX4ga3ICIg9awS5qQc;
+        Max-Age=2592000; Expires=Thu, 27 Jun 2019 17:35:17 GMT; Secure; HttpOnly;
         SameSite=Lax; Path=/
       Cache-Control:
       - no-store
@@ -61,10 +61,59 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4dd3083d9c45c7c9-DEN
+      - 4de1fbf37acf5009-DEN
     body:
       encoding: ASCII-8BIT
-      string: '{"access_token":"hiUa3SFJSfIqyqDOztE9Uu3UQ1UcKDV8JYrNLScfiL0NHEQlfE","expires_in":3600,"token_type":"Bearer"}'
+      string: '{"access_token":"ZQrRy2KigdsfkNerb1czQeNL8vIF398hd1hDzzgRpwp9rolira","expires_in":3598,"token_type":"Bearer"}'
     http_version: 
-  recorded_at: Sun, 26 May 2019 22:06:32 GMT
+  recorded_at: Tue, 28 May 2019 17:35:16 GMT
+- request:
+    method: post
+    uri: https://api-sandbox.dwolla.com/customers
+    body:
+      encoding: UTF-8
+      string: '{"firstName":"Sasha","lastName":"Botticelli","email":"leopoldosporer@lehnerpfannerstill.co","type":"personal","address1":"123
+        Address St.","city":"Denver","state":"CO","postalCode":"80206","dateOfBirth":"1980-07-11","ssn":"1234"}'
+    headers:
+      Authorization:
+      - Bearer ZQrRy2KigdsfkNerb1czQeNL8vIF398hd1hDzzgRpwp9rolira
+      Accept:
+      - application/vnd.dwolla.v1.hal+json
+      User-Agent:
+      - dwolla-v2-ruby 2.2.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Tue, 28 May 2019 17:35:18 GMT
+      Content-Type:
+      - application/vnd.dwolla.v1.hal+json
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d288f0c9be9152b7f9725700baa5058441559064917; expires=Wed, 27-May-20
+        17:35:17 GMT; path=/; domain=.dwolla.com; HttpOnly
+      Location:
+      - https://api-sandbox.dwolla.com/customers/4bd159a2-779c-4852-98b3-f6319279a188
+      X-Request-Id:
+      - 301b30e8-7f19-4fce-8d55-567376165f15
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4de1fbf57a04c7d1-DEN
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 28 May 2019 17:35:17 GMT
 recorded_with: VCR 4.0.0

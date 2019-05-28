@@ -7,7 +7,7 @@ class Users::DwollasController < ApplicationController
     token = dwolla_token
     response = dwolla_customer_location(token)
     current_user.update(dwolla_id: response.response_headers[:location])
-    redirect_to dashboard_path
+    redirect_to root_path
   end
 
   def transfer

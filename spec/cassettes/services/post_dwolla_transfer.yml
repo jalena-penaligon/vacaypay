@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 27 May 2019 06:16:33 GMT
+      - Tue, 28 May 2019 17:35:15 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,10 +31,10 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d41847c0062dd8a3f4f22d672ca534cd11558937793; expires=Tue, 26-May-20
-        06:16:33 GMT; path=/; domain=.dwolla.com; HttpOnly
-      - session=Fe26.2**38856c33c22d54542bbc118aa4ea2f9d343ee584a1dc440fbf700b43e1be78e9*uHYWcvj5HXZ1JWe4B3lMsg*Sy_ldmhgt851DS2n5cl2G4ur9fd1VN-GFNwYAHRFSQWRf51UnYhaSfpw2xBCJwHOFbShXpaST40hMg6x03Xi1w**9f76a98fff5b6dccbf044a51cf3d33c177842726659bf0b6c6b51b414a0288b9*V3I0T8roxPEyy_9z6vu5euVuoZQDtEDzF_XDtiPk0AM;
-        Max-Age=2592000; Expires=Wed, 26 Jun 2019 06:16:33 GMT; Secure; HttpOnly;
+      - __cfduid=d24cf1fb562b8a8a54fca39be3883ea321559064915; expires=Wed, 27-May-20
+        17:35:15 GMT; path=/; domain=.dwolla.com; HttpOnly
+      - session=Fe26.2**d3959fafb0dd83d3967b08c9ba2e3539a0b1020e7561f054ec3a33d5fbb4b8d3*PE9Mt8DuRu1blga0kylvjA*laEA0o5YTK50HP46NRzOxLLPqVHIn15ylAJWLrO49pil05y33izhkvTKbyGKpCOlK3MmKUEOntsBLIUfVwzR0g**ee70000b05ab929e6e771dc25ca7b5d9bf452654bf19333e5e4cb6de5ac78c3f*thrraUnKyzoipt-Iog8v4pMInEVo14jIuizXTxDm9Rk;
+        Max-Age=2592000; Expires=Thu, 27 Jun 2019 17:35:15 GMT; Secure; HttpOnly;
         SameSite=Lax; Path=/
       Cache-Control:
       - no-store
@@ -61,21 +61,21 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4dd5dc57bf84d26a-DFW
+      - 4de1fbe85976c7c1-DEN
     body:
       encoding: ASCII-8BIT
-      string: '{"access_token":"2TZVmurH9OWqgdVO1MgYAt4Ovrw32Ijz7d1OnyzvBz7ICtnAcz","expires_in":3327,"token_type":"Bearer"}'
+      string: '{"access_token":"ZQrRy2KigdsfkNerb1czQeNL8vIF398hd1hDzzgRpwp9rolira","expires_in":3600,"token_type":"Bearer"}'
     http_version: 
-  recorded_at: Mon, 27 May 2019 06:20:51 GMT
+  recorded_at: Tue, 28 May 2019 17:35:14 GMT
 - request:
     method: post
     uri: https://api-sandbox.dwolla.com/transfers
     body:
       encoding: UTF-8
-      string: '{"_links":{"source":{"href":"https://api-sandbox.dwolla.com/funding-sources/e0a56ffc-26db-4639-955c-68b351b52e9d"},"destination":{"href":"https://api-sandbox.dwolla.com/funding-sources/59cb098a-872e-4987-868b-4302e1afaaed"}},"amount":{"currency":"USD","value":"40.0"}}'
+      string: '{"_links":{"source":{"href":"https://api-sandbox.dwolla.com/funding-sources/3916d0d5-5368-45e6-ac63-b2aee3b3f327"},"destination":{"href":"https://api-sandbox.dwolla.com/funding-sources/ccd95555-fe25-4ba9-93a5-ac61c0d83e7a"}},"amount":{"currency":"USD","value":"40.0"}}'
     headers:
       Authorization:
-      - Bearer 2TZVmurH9OWqgdVO1MgYAt4Ovrw32Ijz7d1OnyzvBz7ICtnAcz
+      - Bearer ZQrRy2KigdsfkNerb1czQeNL8vIF398hd1hDzzgRpwp9rolira
       Accept:
       - application/vnd.dwolla.v1.hal+json
       User-Agent:
@@ -90,7 +90,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Mon, 27 May 2019 06:16:34 GMT
+      - Tue, 28 May 2019 17:35:16 GMT
       Content-Type:
       - application/vnd.dwolla.v1.hal+json
       Content-Length:
@@ -98,21 +98,21 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d4abedb32f976735d818cb38d79740fb41558937793; expires=Tue, 26-May-20
-        06:16:33 GMT; path=/; domain=.dwolla.com; HttpOnly
+      - __cfduid=daae7f2d0e748b9bc695057c941ab4a771559064915; expires=Wed, 27-May-20
+        17:35:15 GMT; path=/; domain=.dwolla.com; HttpOnly
       Location:
-      - https://api-sandbox.dwolla.com/transfers/4b8f1bf7-4680-e911-8119-d7bc0de34d9c
+      - https://api-sandbox.dwolla.com/transfers/4e765cf2-6e81-e911-8119-d7bc0de34d9c
       X-Request-Id:
-      - 49805f5d-7849-4011-8c3e-f9d750be10a6
+      - 891bb407-bfb8-4ef5-ad2b-4c84a5aee797
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Server:
       - cloudflare
       Cf-Ray:
-      - 4dd5dc5c6fbb5847-DFW
+      - 4de1fbeaef1dc7d9-DEN
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 27 May 2019 06:20:52 GMT
+  recorded_at: Tue, 28 May 2019 17:35:15 GMT
 recorded_with: VCR 4.0.0
