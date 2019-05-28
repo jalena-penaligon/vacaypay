@@ -16,7 +16,7 @@ describe 'as a registered user' do
       activity_2 = Activity.create(name: "Dinner", price: 15.0, num_attendees: 1, description: "Nom nom", no_of_days: 1, vacation: vacation, user: owner, type: PerPersonCost)
       user_activity_2 = user.user_activities.create!(quantity: 1, price:15.0, activity: activity_2)
 
-      visit dashboard_path
+      visit vacations_path
       click_link(vacation.name)
 
       expect(current_path).to eq(users_vacation_path(vacation))
@@ -26,7 +26,7 @@ describe 'as a registered user' do
         expect(page).to have_content(activity_1.price)
         expect(page).to have_button("Settle Up")
       end
-      expect(page).to have_content("Outstanding Balance: $35.00")
+      expect(page).to have_content("I Owe: $35.00")
     end
   end
 end

@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  get '/dashboard', to: 'users/vacations#index', as: :dashboard
+  get '/vacations', to: 'users/vacations#index', as: :vacations
+  get '/dashboard', to: 'users#show', as: :dashboard
 
   get '/oauth', to: 'users/dwollas#create', as: :users_auth
 
@@ -22,10 +23,14 @@ Rails.application.routes.draw do
     namespace :owner do
       resources :activities
     end
+
+  post '/transfer', to: 'dwollas#transfer', as: :dwollas_transfer
+  resources :funding_sources, only: [:update]
   end
 
   resources :users, only: [:new, :create, :update]
   resources :dwolla, only: [:new, :create]
+  resources :funding_sources, only: [:new]
 
   namespace :owner do
     resources :vacations, only: [:show]

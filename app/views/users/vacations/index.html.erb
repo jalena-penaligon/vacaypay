@@ -1,17 +1,31 @@
-
 <body class="bg" id="index">
   <section class="upcoming-vacations">
     <h1>Upcoming Vacations</h1>
-    <br>
-    <% current_user.vacations.each do |vacation| %>
-      <div id="vacation-<%= vacation.id %>">
-      <h1><%= link_to vacation.name, users_vacation_path(vacation) %></h1>
-      <li>Destination: <%= vacation.location %></li>
-      <li>Start Date: <%= vacation.start_date %></li>
-      <li>End Date: <%= vacation.end_date %></li>
-      <li>Hosted By: <%= vacation.host.first_name %></li>
-      <br>
-      </div>
-    <% end %>
+    <section class="vacay-container">
+      <% current_user.vacations.each do |vacation| %>
+        <figure class="vacay-item">
+          <div id="vacation-<%= vacation.id %>">
+
+          <% if vacation.owner?(current_user) %>
+            <h2><%= link_to vacation.name, owner_vacation_path(vacation) %>:</h2>
+          <% else %>
+            <h2><%= link_to vacation.name, vacation_path(vacation) %>:</h2>
+          <% end %>
+
+          <h3><%= vacation.start_date.strftime("%m/%d/%Y") %> - <%= vacation.end_date.strftime("%m/%d/%Y") %></h3>
+          <li>Location: <%= vacation.location %></li>
+          <li>Hosted By: <%= vacation.host.first_name %></li>
+          <li>I Owe: <%= number_to_currency(vacation.calculate_balance(current_user)) %></li>
+          <li>I'm Owed: <%= number_to_currency(vacation.calculate_owed_balance(current_user)) %></li>
+
+          <% if vacation.owner?(current_user) %>
+            <%= button_to "View Vacation", owner_vacation_path(vacation), method: :get, class: :button %>
+          <% else %>
+            <%= button_to "View Vacation", vacation_path(vacation), method: :get, class: :button %>
+          <% end %>
+          </div>
+        </figure>
+      <% end %>
+    </section>
   </section>
 </body>

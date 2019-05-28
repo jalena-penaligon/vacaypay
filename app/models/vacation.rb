@@ -16,4 +16,30 @@ class Vacation < ApplicationRecord
   def new_vacation?
     self.activities.count == 0
   end
+
+  def calculate_balance(user)
+    find_activities(user)
+    .where(user_id: user.id)
+    .where.not('activities.user_id' => user.id)
+    .sum(:price)
+  end
+
+  def find_activities(user)
+    UserActivity
+    .joins(:activity)
+    .where(paid: false)
+    .where('activities.vacation_id' => self.id)
+  end
+
+  def calculate_owed_balance(user)
+    find_activities(user)
+    .where('activities.user_id' => user.id)
+    .sum(:price)
+  end
+
+  def owner?(user)
+    self.vacation_users.any? do |vu|
+      vu.user_id == user.id && vu.vacation_id == self.id && vu.role == 1
+    end
+  end
 end

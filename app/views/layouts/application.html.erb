@@ -10,11 +10,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
 
+    <script src="https://cdn.dwolla.com/1/dwolla.min.js"></script>
   </head>
 
   <nav>
   <section class="logo">
-    <%= link_to image_tag('logo.png', :size => "400x109"), root_path %>
+    <%= link_to image_tag('logo-v2.png', :size => "300x121"), root_path %>
     </section>
   <section class="align-right">
 
@@ -23,13 +24,15 @@
       <%= link_to "Log In", login_path%>
     <% else %>
       <li class="logged-in">Logged in as <%= current_user.first_name %></li><br />
-      <%= link_to "My Vacations", dashboard_path %>
+      <%= link_to "My Vacations", vacations_path %>
 
       <%= link_to "+ Create a Vacation", new_vacation_path %>
-      <%= link_to "Log Out", logout_path, method: :delete %>
-      <% if !current_user.dwolla_id %>
-        <%= link_to "Connect with Dwolla", new_users_dwolla_path %>
+      <% if current_user.dwolla_funding_source.nil? && current_user.dwolla_id.nil? %>
+      <%=link_to 'Connect To Dwolla', new_users_dwolla_path %>
+      <% elsif current_user.dwolla_funding_source.nil? && current_user.dwolla_id != nil %>
+      <%=link_to 'Add Your Bank Account', new_funding_source_path %>
       <% end %>
+      <%= link_to "Log Out", logout_path, method: :delete %>
     <% end %>
   </nav>
 
@@ -43,5 +46,6 @@
       </div>
     <% end %>
     <%= yield %>
+    <%= yield :javascript%>
   </body>
 </html>

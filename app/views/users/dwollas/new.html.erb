@@ -1,23 +1,26 @@
-<h1>Connect to Dwolla</h1>
+<body class="bg" id="form">
+  <div class="form-container">
+    <h1 class="dark">Connect to Dwolla</h1>
+    <%= form_tag users_dwollas_path do %>
+      <p><%= label_tag "Address" %><br />
+      <%= text_field_tag :address %></p>
 
-<%= form_tag users_dwollas_path do %>
-  <p><%= label_tag "Address" %><br />
-  <%= text_field_tag :address %></p>
+      <p><%= label_tag "City" %><br />
+      <%= text_field_tag :city %></p>
 
-  <p><%= label_tag "City" %><br />
-  <%= text_field_tag :city %></p>
+      <p><%= label_tag "State" %><br />
+      <%= text_field_tag :state %></p>
 
-  <p><%= label_tag "State" %><br />
-  <%= text_field_tag :state %></p>
+      <p><%= label_tag "Postal Code" %><br />
+      <%= text_field_tag :postal_code %></p>
 
-  <p><%= label_tag "Postal Code" %><br />
-  <%= text_field_tag :postal_code %></p>
+      <p><%= label_tag "Date of Birth (YYYY-MM-DD)" %><br />
+      <%= date_field_tag :dob %></p>
 
-  <p><%= label_tag "Date of Birth (YYYY-MM-DD)" %><br />
-  <%= date_field_tag :dob %></p>
+      <p><%= label_tag "Social Security Number (last four digits)" %><br />
+      <%= text_field_tag :ssn %></p>
 
-  <p><%= label_tag "Social Security Number (last four digits)" %><br />
-  <%= text_field_tag :ssn %></p>
-
-  <p><%= submit_tag "Connect" %></p>
-<% end %>
+      <p><%= submit_tag "Connect" %></p>
+    <% end %>
+  </div>
+</body>
