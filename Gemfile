@@ -54,6 +54,8 @@ group :development, :test do
   gem 'faker'
   gem 'webmock'
   gem 'rspec_junit_formatter'
+  gem 'selenium-webdriver'
+  gem 'webdrivers', '~> 3.0'
 end
 
 group :development do

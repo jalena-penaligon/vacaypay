@@ -15,8 +15,8 @@ describe 'as a registered user' do
 
       within "#vacation-#{vacation.id}" do
         expect(page).to have_link(vacation.name)
-        expect(page).to have_content(vacation.start_date)
-        expect(page).to have_content(vacation.end_date)
+        expect(page).to have_content(vacation.start_date.strftime("%m/%d/%Y"))
+        expect(page).to have_content(vacation.end_date.strftime("%m/%d/%Y"))
         expect(page).to have_content("Hosted By: #{owner.first_name}")
       end
     end
