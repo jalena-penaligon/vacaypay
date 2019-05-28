@@ -1,5 +1,4 @@
 class Users::DwollasController < ApplicationController
-
   def new
   end
 
@@ -7,6 +6,7 @@ class Users::DwollasController < ApplicationController
     token = dwolla_token
     response = dwolla_customer_location(token)
     current_user.update(dwolla_id: response.response_headers[:location])
+    flash[:success] = "You've connected Dwolla to VacayPay."
     redirect_to dashboard_path
   end
 
@@ -60,5 +60,4 @@ class Users::DwollasController < ApplicationController
   def user_params
     params.permit(:address, :city, :state, :postal_code, :dob, :ssn)
   end
-
 end

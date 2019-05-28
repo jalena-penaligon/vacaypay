@@ -10,6 +10,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
 
+    <script src="https://cdn.dwolla.com/1/dwolla.min.js"></script>
   </head>
 
   <nav>
@@ -26,10 +27,12 @@
       <%= link_to "My Vacations", dashboard_path %>
     
       <%= link_to "+ Create a Vacation", new_vacation_path %>
-      <%= link_to "Log Out", logout_path, method: :delete %>
-      <% if !current_user.dwolla_id %>
-        <%= link_to "Connect with Dwolla", new_users_dwolla_path %>
+      <% if current_user.dwolla_funding_source.nil? && current_user.dwolla_id.nil? %>
+      <%=link_to 'Connect To Dwolla', new_users_dwolla_path %>
+      <% elsif current_user.dwolla_funding_source.nil? && current_user.dwolla_id != nil %>
+      <%=link_to 'Add Your Bank Account', new_funding_source_path %>
       <% end %>
+      <%= link_to "Log Out", logout_path, method: :delete %>
     <% end %>
   </nav>
 
@@ -43,5 +46,6 @@
       </div>
     <% end %>
     <%= yield %>
+    <%= yield :javascript%>
   </body>
 </html>
