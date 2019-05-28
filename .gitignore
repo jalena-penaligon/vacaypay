@@ -33,4 +33,5 @@
 .DS_Store
 
 /config/newrelic.yml
-/spec/cassettes/
+/spec/cassettes/*
+/public/assets/*
