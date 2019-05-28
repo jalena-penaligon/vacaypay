@@ -6,7 +6,7 @@ class Owner::ActivitiesController < ApplicationController
 
   def show
     render locals: {
-      facade: ActivityFacade.new(params[:id])
+      facade: OwnerActivityFacade.new(params[:id])
     }
   end
 
@@ -26,9 +26,30 @@ class Owner::ActivitiesController < ApplicationController
     end
   end
 
+  def update
+    updated_activity = associated_activity.update(update_params)
+    if updated_activity.price_changed?
+      UserActivity.where(activity_id: associated_activity.id).each do |user_activity|
+        user_activity.update_attributes(price: associated_activity.price_calculation)
+      end
+    end
+    redirect_to users_vacation_activity_path(associated_activity.vacation, associated_activity)
+  end
+
+  def delete
+    UserActivity.where(activity_id: associated_activity.id).destroy_all
+    associated_activity.destroy
+    redirect_to users_vacation_path(associated_activity.vacation)
+  end
+
   private
 
   def activity_params
     params.require(:activity).permit([:name, :description, :price, :cutoff_date, :no_of_days, :type]).merge(user_id: current_user.id, vacation_id: @vacation.id)
   end
+
+  def associated_activity
+    Activity.find(params[:activity_id])
+  end
+
 end
