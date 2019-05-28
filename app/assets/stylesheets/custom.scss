@@ -51,19 +51,19 @@ h4 {
 }
 
 #home {
-  background-image: url(homepage.jpg);
+  background-image: image-url("homepage.jpg");
 }
 
 #index {
-  background-image: url(vacations-index.jpg);
+  background-image: image-url("vacations-index.jpg");
 }
 
 #form {
-  background-image: url(form.jpg);
+  background-image: image-url("form.jpg");
 }
 
 #vacation {
-  background-image: url(vacation.jpg);
+  background-image: image-url("vacation.jpg");
 }
 
 nav {
