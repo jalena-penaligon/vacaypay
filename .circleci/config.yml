@@ -1,0 +1,54 @@
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/ruby:2.4.1-jessie-node
+      environment:
+        BUNDLE_JOBS: 3
+        BUNDLE_RETRY: 3
+        BUNDLE_PATH:  vendor/bundle
+        PGHOST: 127.0.0.1
+        PGUSER: postgres
+        RAILS_ENV: test
+    - image: circleci/postgres:9.4-alpine
+      environment:
+        POSTGRES_USER: postgres
+        POSTGRES_DB: Terrificus_test
+        POSTGRES_PASSWORD: ""
+
+version: 2
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Configure Bundler
+          command: |
+            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+            source $BASH_ENV
+            gem install bundler
+            bundle install
+      - run:
+          name: db setup
+          command: |
+            bundle exec rake db:create
+            bundle exec rake db:migrate
+            bundle exec rake db:seed
+      - run:
+          name: rpsec testing
+          command: |
+            mkdir -p /tmp/test-results
+            bundle exec rspec --profile 10 \
+                            --format RspecJunitFormatter \
+                            --out /tmp/test-results/rspec.xml \
+                            --format progress \
+                            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+      - store_test_results:
+          path: /tmp/test-results
+#      - run:
+#          name: precompile assets
+#          command: bundle exec rake assets:precompile
+#      - run:
+#          name: deploying to heroku
+#          command: |
+#            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/polar-lowlands-27020.git master

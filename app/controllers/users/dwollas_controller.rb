@@ -1,5 +1,4 @@
 class Users::DwollasController < ApplicationController
-
   def new
   end
 
@@ -7,6 +6,7 @@ class Users::DwollasController < ApplicationController
     token = dwolla_token
     response = dwolla_customer_location(token)
     current_user.update(dwolla_id: response.response_headers[:location])
+    flash[:success] = "You've connected Dwolla to VacayPay."
     redirect_to dashboard_path
   end
 
@@ -43,7 +43,8 @@ class Users::DwollasController < ApplicationController
     activity = Activity.find(params[:activity_id])
     source = current_user.dwolla_funding_source
     destination = User.find(activity.user_id).dwolla_funding_source
-    @_transfer_service ||= DwollaTransferService.new(source, destination, activity, token)
+    user_activity = UserActivity.find_by(activity_id: params[:activity_id], user_id: current_user.id)
+    @_transfer_service ||= DwollaTransferService.new(source, destination, user_activity, token)
   end
 
   def dwolla_transfer(token)
@@ -59,5 +60,4 @@ class Users::DwollasController < ApplicationController
   def user_params
     params.permit(:address, :city, :state, :postal_code, :dob, :ssn)
   end
-
 end

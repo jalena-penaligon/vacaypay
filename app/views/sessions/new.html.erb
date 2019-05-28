@@ -1,17 +1,20 @@
-<div class="user-login">
-  <section>
-    <%= form_for :session, url: login_path do |f| %>
-      <div>
-        <%= f.label :email %>
-        <%= f.email_field :email, class: "block col-12 field" %>
-      </div>
-      <div>
-        <%= f.label :password %>
-        <%= f.password_field :password, class: "block col-12 field" %>
-      </div>
-      <%= f.submit 'Log In', class: "mt2 btn btn-primary mb1 bg-teal" %>
-    <% end %>
-  </section>
+<body class="bg" id="form">
+  <div class="form-container user-login">
+    <h1 class="dark">Log In:</h1>
+    <section>
+      <%= form_for :session, url: login_path do |f| %>
+        <div>
+          <%= f.label :email %>
+          <%= f.email_field :email, class: "block col-12 field" %>
+        </div>
+        <div>
+          <%= f.label :password %>
+          <%= f.password_field :password, class: "block col-12 field" %>
+        </div>
+        <%= f.submit 'Log In', class: "mt2 btn btn-primary mb1 bg-teal" %>
+      <% end %>
+    </section>
 
-  <p>Don't have an account? <%= link_to 'Sign up now.', new_user_path %></p>
-</div>
+    <p>Don't have an account? <%= link_to 'Sign up now.', new_user_path %></p>
+  </div>
+</body>

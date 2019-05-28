@@ -20,9 +20,7 @@ describe 'as a visitor' do
       expect(user.last_name).to eq("Last")
       expect(user.email).to eq("email@email.com")
 
-      expect(current_path).to eq(new_dwolla_path)
-      click_link("Do This Later")
-      expect(current_path).to eq(dashboard_path)
+      expect(current_path).to eq(root_path)
     end
 
     it 'can will not allow me to register with an email address that exists' do
@@ -54,6 +52,26 @@ describe 'as a visitor' do
       expect(page).to have_content("Last name can't be blank")
       expect(page).to have_content("Email can't be blank")
       expect(page).to have_content("Password can't be blank")
+    end
+
+    it 'allows me to connect with dwolla after registration' do
+      VCR.use_cassette('services/get_dwolla_client') do
+        user = create(:user)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+        visit root_path
+        click_link "Connect with Dwolla"
+
+        fill_in "address", with: "123 Address St."
+        fill_in "city", with: "Denver"
+        fill_in "state", with: "CO"
+        fill_in "postal_code", with: "80206"
+        fill_in "dob", with: "1980-07-11"
+        fill_in "ssn", with: "1234"
+        click_button "Connect"
+
+        expect(user.dwolla_id).to_not be(nil)
+      end
     end
   end
 end
