@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resources :dwolla, only: [:new, :create]
 
   namespace :owner do
-    resources :vacations, only: [:show]
+    resources :vacations, only: [:show] do
+      get '/invite', to: 'invitations#new'
+      post '/invite', to: 'invitations#create'
+    end
   end
 end
