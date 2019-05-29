@@ -41,7 +41,7 @@
           <h2><%= activity.name %></h2>
           <li>Description: <%= activity.description %></li>
           <li>Price Per Person: <%= number_to_currency(activity.price) %></li>
-          <%= button_to "Join Activity", root_path, class: :button %>
+          <%= button_to "Join Activity", users_activity_user_activities_path(activity), class: :button %>
         </div>
       <% end %>
     <% end %>
