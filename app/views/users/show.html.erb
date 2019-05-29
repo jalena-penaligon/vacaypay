@@ -14,10 +14,9 @@
     <% elsif current_user.dwolla_funding_source == nil %>
     You must add a bank account in order to create vacations
     or pay other users for an activity. Complete your account setup now!
-      <%= button_to "Add Your Bank Account", new_funding_source_path, method: :get, class: :button %>
+      <%= button_to "Add Your Bank Account", new_users_funding_source_path, method: :get, class: :button %>
 
     <% elsif current_user.dwolla_funding_source != nil %>
       Connected Bank Account: <h3><%= current_user.dwolla_funding_source %></h3>
     <% end %>
 </body>
-
