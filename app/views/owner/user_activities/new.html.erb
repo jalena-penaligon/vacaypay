@@ -1,0 +1,28 @@
+<body class="bg" id="invite">
+  <div class="checkbox-container">
+<section class="center">
+  <h1 class="dark">Add Participants!</h1>
+  <br />
+</section>
+<% if vacationers.empty? %>
+  <p>No participants to add, invite more people to the vacation!<p>
+    <section class="center">
+      <%= button_to 'Back to Activity', users_vacation_activity_path(Vacation.find(activity.vacation_id), activity), method: :get, class: :btn %>
+    </section>
+<% else %>
+  <%= form_tag(owner_activity_user_activities_path(activity), method: "post") do %>
+    <ul>
+      <% vacationers.each do |user| %>
+        <li class="push-right">
+          <%= check_box_tag('user_ids[]', user.id) =%>
+          <%= user.first_name =%> <%= user.last_name =%>
+        </li>
+      <% end %>
+    </ul>
+    <figure class="center">
+      <h3><%= submit_tag 'Confirm', class: :btn %></h3>
+    </figure>
+  <% end %>
+<% end %>
+</div>
+</body>

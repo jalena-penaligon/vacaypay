@@ -1,2 +1,0 @@
-class FixedCost < Activity
-end

@@ -4,23 +4,40 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  get '/dashboard', to: 'users/vacations#index', as: :dashboard
+  get '/vacations', to: 'users/vacations#index', as: :vacations
+  get '/dashboard', to: 'users#show', as: :dashboard
 
   get '/oauth', to: 'users/dwollas#create', as: :users_auth
 
   namespace :users do
     resources :dwollas, only: [:create, :new]
-    post '/transfer', to: 'dwollas#transfer', as: :dwollas_transfer
+    resources :vacations, only: [:create, :new, :show, :index] do
+      resources :activities, only: [:show, :new, :create]
+    end
+    resources :activities, only: [] do
+      resources :user_activities, only: [:create, :destroy]
+    end
   end
 
-  resources :vacations, only: [:show, :new, :create]
+  resources :vacations, only: [:show, :new, :create] do
+    namespace :owner do
+      resources :activities
+    end
+
+  post '/transfer', to: 'users/dwollas#transfer', as: :dwollas_transfer
+  resources :funding_sources, only: [:update]
+  end
+
   resources :users, only: [:new, :create, :update]
-  resources :dwolla, only: [:new, :create]
+  resources :funding_sources, only: [:new]
 
   namespace :owner do
     resources :vacations, only: [:show] do
       get '/invite', to: 'invitations#new'
       post '/invite', to: 'invitations#create'
+    end
+    resources :activities, only: [] do
+      resources :user_activities, only: [:create, :new]
     end
   end
 end

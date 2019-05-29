@@ -1,28 +1,32 @@
-<h1>Create an Account</h1>
+<body class="bg" id="form">
+  <div class="form-container">
+  <h1 class="dark">Create an Account</h1>
 
-<% if @user.errors.any? %>
-  <ul class="errors">
-    <% @user.errors.full_messages.each do |message| %>
-      <li class="error"><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+  <% if @user.errors.any? %>
+    <ul class="errors">
+      <% @user.errors.full_messages.each do |message| %>
+        <li class="error"><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
-<%= form_for @user, action: :create do |f| %>
-  <p><%= f.label :first_name %><br />
-  <%= f.text_field :first_name %></p>
+  <%= form_for @user, action: :create do |f| %>
+    <p><%= f.label :first_name %><br />
+    <%= f.text_field :first_name %></p>
 
-  <p><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></p>
+    <p><%= f.label :last_name %><br />
+    <%= f.text_field :last_name %></p>
 
-  <p><%= f.label :email %><br />
-  <%= f.text_field :email %></p>
+    <p><%= f.label :email %><br />
+    <%= f.text_field :email %></p>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+    <p><%= f.label :password %><br />
+    <%= f.password_field :password %></p>
 
-  <p><%= f.label :confirm_password %><br />
-  <%= f.password_field :confirm_password %></p>
+    <p><%= f.label :confirm_password %><br />
+    <%= f.password_field :confirm_password %></p>
 
-  <p><%= f.submit "Register" %></p>
-<% end %>
+    <p><%= f.submit "Register", class: :btn %></p>
+  <% end %>
+  </div>
+</body>

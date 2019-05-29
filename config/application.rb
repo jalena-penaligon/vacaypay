@@ -39,5 +39,6 @@ module Terrificus
       authentication: 'plain',
       enable_starttls_auto: true
     }
+    config.assets.initialize_on_precompile = false
   end
 end
