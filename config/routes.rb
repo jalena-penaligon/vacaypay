@@ -41,4 +41,7 @@ Rails.application.routes.draw do
       resources :user_activities, only: [:create, :new]
     end
   end
+  resources :messages, only: [:index, :create]
+
+  mount ActionCable.server, at: '/cable'
 end
