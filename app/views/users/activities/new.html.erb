@@ -1,6 +1,6 @@
 <h1>Create a New Activity</h1>
 
-<%= form_for [@vacation, @activity], url: vacation_owner_activities_path, method: :create do |f| %>
+<%= form_for [@vacation, @activity], url: users_vacation_activities_path, method: :create do |f| %>
   <p><%= f.label :name %><br />
   <%= f.text_field :name %></p>
 

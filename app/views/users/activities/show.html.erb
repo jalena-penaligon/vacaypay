@@ -3,13 +3,14 @@
 <br>
 <h1>Activity: <%= facade.activity_name %></h1>
 <br>
-<% if activity_owner? %>
-  <h2><%= link_to '+Add Participants', new_owner_activity_user_activity_path(facade.send(:activity)) %></h2>
-<% elsif current_user.user_activities.find_by(activity_id: facade.send(:activity).id) %>
-  <h2><%= button_to 'Opt out of this Activity', users_activity_user_activity_path(facade.send(:activity)), method: :delete%></h2>
-<% else %>
-  <h2><%= button_to 'Sign Up for this Activity!', users_activity_user_activities_path(facade.send(:activity))%></h2>
-
+<% if Date.today < facade.send(:activity).cutoff_date %>
+  <% if (activity_owner? || vacation_owner?) %>
+    <h2><%= link_to '+Add Participants', new_owner_activity_user_activity_path(facade.send(:activity)) %></h2>
+  <% elsif current_user.user_activities.find_by(activity_id: facade.send(:activity).id) %>
+    <h2><%= button_to 'Opt out of this Activity', users_activity_user_activity_path(facade.send(:activity)), method: :delete%></h2>
+  <% else %>
+    <h2><%= button_to 'Sign Up for this Activity!', users_activity_user_activities_path(facade.send(:activity))%></h2>
+  <% end %>
 <% end %>
 
 <br>
