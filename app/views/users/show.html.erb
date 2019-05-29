@@ -1,3 +1,22 @@
-<% if current_user.dwolla_funding_source != nil %>
-  Your connected Bank Accounts: <%= current_user.dwolla_funding_source %>
-<% end %>
+<body class="bg" id="dashboard">
+  <div class="profile-container">
+    <h1 class="dark">My Account:</h1>
+    <br />
+    Name: <h3><%= current_user.first_name %> <%= current_user.last_name %></h3>
+    <br />
+    Email: <h3><%= current_user.email %> </h3>
+    <br />
+    <% if current_user.dwolla_id == nil %>
+    You must connect to Dwolla and add a bank account in order to create vacations
+    or pay other users for an activity. Complete your account setup now!
+      <%= button_to "Connect to Dwolla", new_users_dwolla_path, method: :get, class: :button %>
+
+    <% elsif current_user.dwolla_funding_source == nil %>
+    You must add a bank account in order to create vacations
+    or pay other users for an activity. Complete your account setup now!
+      <%= button_to "Add a Bank Account", new_funding_source_path, method: :get, class: :button %>
+
+    <% elsif current_user.dwolla_funding_source != nil %>
+      Connected Bank Account: <h3><%= current_user.dwolla_funding_source %></h3>
+    <% end %>
+</body>

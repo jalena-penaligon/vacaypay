@@ -1,19 +1,22 @@
-
-<script src="https://cdn.dwolla.com/1/dwolla.min.js"></script>
-<div id="dwolla"></div>
-<script>
-var token = "<%= iav_token %>";
-    dwolla.configure('sandbox');
-    dwolla.iav.start( token, {
-        container: 'dwolla',
-        microDeposits: false,
-        fallbackToMicroDeposits: false,
-        backButton: true,
-        subscriber: ({ currentPage, error }) => {
-            console.log('currentPage:', currentPage, 'error:', JSON.stringify(error))
-        }
-    }, function(err, res) {
-        alert(JSON.stringify(err));
-        console.log('Error: ' + JSON.stringify(err) + ' -- Response: ' + JSON.stringify(res));
-    });
-</script>
+<body class="bg" id="form">
+  <div class="dwolla-container">
+    <script src="https://cdn.dwolla.com/1/dwolla.min.js"></script>
+    <div id="dwolla"></div>
+    <script>
+    var token = "<%= iav_token %>";
+        dwolla.configure('sandbox');
+        dwolla.iav.start( token, {
+            container: 'dwolla',
+            microDeposits: false,
+            fallbackToMicroDeposits: false,
+            backButton: true,
+            subscriber: ({ currentPage, error }) => {
+                console.log('currentPage:', currentPage, 'error:', JSON.stringify(error))
+            }
+        }, function(err, res) {
+            alert(JSON.stringify(err));
+            console.log('Error: ' + JSON.stringify(err) + ' -- Response: ' + JSON.stringify(res));
+        });
+    </script>
+  </div>
+</body>
