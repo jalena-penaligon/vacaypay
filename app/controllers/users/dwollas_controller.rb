@@ -18,7 +18,7 @@ class Users::DwollasController < ApplicationController
     activity.update(paid: true)
     activity = Activity.find(params[:activity_id])
     flash[:success] = "You successfully paid for #{activity.name}."
-    redirect_to vacation_path(activity.vacation)
+    redirect_to users_vacation_path(activity.vacation)
   end
 
   private

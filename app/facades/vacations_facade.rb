@@ -18,17 +18,18 @@ class VacationsFacade
     Activity.find(ids)
   end
 
+  def paid?(activity, user)
+    UserActivity.where(activity_id: activity.id).find_by(user_id: user.id).paid?
+  end
+
   def non_attending_activities(user)
     ids = activities(user).pluck(:activity_id)
     Activity.where.not(id: ids)
   end
 
+
   def all_activities
     vacation.activities
-  end
-
-  def paid?(activity, user)
-    find_user_activity(activity, user).paid?
   end
 
   def user_activity_price(activity, user)

@@ -8,7 +8,7 @@ describe 'as a registered user that has connected with a dwolla funding source' 
     visit root_path
     click_link "+ Create a Vacation"
 
-    expect(current_path).to eq(new_vacation_path)
+    expect(current_path).to eq(new_users_vacation_path)
     expect(page).to have_content("Create a New Vacation")
 
     fill_in :Name, with: "Family Reunion"
@@ -43,7 +43,7 @@ describe 'as a registered user that has connected with a dwolla funding source' 
     visit root_path
     click_link "+ Create a Vacation"
 
-    expect(current_path).to eq(new_vacation_path)
+    expect(current_path).to eq(new_users_vacation_path)
     expect(page).to have_content("Create a New Vacation")
 
 

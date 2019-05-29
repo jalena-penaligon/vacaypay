@@ -20,7 +20,7 @@ RSpec.describe Vacation, type: :model do
       expect(vacation.new_vacation?).to be true
 
       user = create(:user)
-      vacation.activities.create(price: 104.24, num_attendees: 0, name: "Activity", description: "It's an activity", vacation: vacation, user: user, type: 1)
+      vacation.activities.create(price: 104.24, num_attendees: 0, name: "Activity", description: "It's an activity", vacation: vacation, user: user, type: FixedCost)
       expect(vacation.new_vacation?).to be false
     end
   end
@@ -31,8 +31,8 @@ RSpec.describe Vacation, type: :model do
       user_2 = create(:user)
 
       vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 100.days.from_now, end_date: 107.days.from_now)
-      activity_1 = vacation.activities.create(price: 100.00, num_attendees: 2, name: "Activity 1", description: "It's an activity", vacation: vacation, user: user_1, type: 1)
-      activity_2 = vacation.activities.create(price: 50.00, num_attendees: 2, name: "Activity 2", description: "It's an activity", vacation: vacation, user: user_2, type: 1)
+      activity_1 = vacation.activities.create(price: 100.00, num_attendees: 2, name: "Activity 1", description: "It's an activity", vacation: vacation, user: user_1, type: FixedCost)
+      activity_2 = vacation.activities.create(price: 50.00, num_attendees: 2, name: "Activity 2", description: "It's an activity", vacation: vacation, user: user_2, type: FixedCost)
       user_activity_1 = user_1.user_activities.create!(quantity: 1, price:100.0, activity: activity_1)
       user_activity_2 = user_2.user_activities.create!(quantity: 1, price:100.0, activity: activity_1)
       user_activity_3 = user_1.user_activities.create!(quantity: 1, price:50.0, activity: activity_2)
@@ -47,8 +47,8 @@ RSpec.describe Vacation, type: :model do
       user_2 = create(:user)
 
       vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 100.days.from_now, end_date: 107.days.from_now)
-      activity_1 = vacation.activities.create(price: 100.00, num_attendees: 2, name: "Activity 1", description: "It's an activity", vacation: vacation, user: user_1, type: 1)
-      activity_2 = vacation.activities.create(price: 50.00, num_attendees: 2, name: "Activity 2", description: "It's an activity", vacation: vacation, user: user_2, type: 1)
+      activity_1 = vacation.activities.create(price: 100.00, num_attendees: 2, name: "Activity 1", description: "It's an activity", vacation: vacation, user: user_1, type: FixedCost)
+      activity_2 = vacation.activities.create(price: 50.00, num_attendees: 2, name: "Activity 2", description: "It's an activity", vacation: vacation, user: user_2, type: FixedCost)
       user_activity_1 = user_1.user_activities.create!(quantity: 1, price:100.0, activity: activity_1, paid: true)
       user_activity_2 = user_2.user_activities.create!(quantity: 1, price:100.0, activity: activity_1, paid: false)
       user_activity_3 = user_1.user_activities.create!(quantity: 1, price:50.0, activity: activity_2, paid: true)

@@ -20,7 +20,7 @@ describe 'as a visitor' do
       expect(user.last_name).to eq("Last")
       expect(user.email).to eq("email@email.com")
 
-      expect(current_path).to eq(root_path)
+      expect(current_path).to eq(dashboard_path)
     end
 
     it 'can will not allow me to register with an email address that exists' do
@@ -60,7 +60,8 @@ describe 'as a visitor' do
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
         visit root_path
-        click_link "Connect To Dwolla"
+
+        click_link "Connect to Dwolla"
 
         fill_in "address", with: "123 Address St."
         fill_in "city", with: "Denver"

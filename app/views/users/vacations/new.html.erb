@@ -9,7 +9,7 @@
       </ul>
     <% end %>
 
-    <%= form_for @vacation, action: :create do |f| %>
+    <%= form_for [:users, @vacation], action: :create do |f| %>
       <p><%= f.label :name %><br />
       <%= f.text_field :name %></p>
 
@@ -22,7 +22,7 @@
       <p><%= f.label :end_date %><br />
       <%= f.date_field :end_date %></p>
 
-      <p><%= f.submit "Create Vacation" %></p>
+      <p><%= f.submit "Create Vacation", class: :btn %></p>
     <% end %>
   </div>
 </body>
