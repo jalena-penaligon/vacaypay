@@ -8,7 +8,8 @@ class DwollaFundingService
   def get_funding_source(user)
     token = dwolla_token
     customer_url = user.dwolla_id
-    funding_source = token.get "#{customer_url}/funding-sources"
+    funding_sources = token.get "#{customer_url}/funding-sources"
+    funding_sources._embedded['funding-sources'][0].name
   end
 
   private

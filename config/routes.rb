@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     post '/transfer', to: 'dwollas#transfer', as: :dwollas_transfer
     resources :funding_sources, only: [:new, :update]
   end
+  
+  get '/update_funding_source', to: 'users#update'
 
   resources :vacations, only: [:show, :new, :create]
   resources :users, only: [:new, :create, :update]

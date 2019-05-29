@@ -9,10 +9,12 @@ var token = "<%= @iav_token %>";
         fallbackToMicroDeposits: false,
         backButton: true,
         subscriber: ({ currentPage, error }) => {
-          console.log('currentPage:', currentPage, 'error:', JSON.stringify(error))
+            console.log('currentPage:', currentPage, 'error:', JSON.stringify(error))
         }
     }, function(err, res) {
         alert(JSON.stringify(err));
         console.log('Error: ' + JSON.stringify(err) + ' -- Response: ' + JSON.stringify(res));
+        window.location.href = "<%= update_funding_source_path %>";
     });
 </script>
+
