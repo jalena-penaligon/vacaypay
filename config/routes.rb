@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   namespace :users do
     resources :dwollas, only: [:create, :new]
     post '/transfer', to: 'dwollas#transfer', as: :dwollas_transfer
-    resources :funding_sources, only: [:new, :update]
+    resources :funding_sources, only: [:new]
   end
-  
+
   get '/update_funding_source', to: 'users#update'
 
   resources :vacations, only: [:show, :new, :create]
