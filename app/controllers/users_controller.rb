@@ -20,6 +20,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @iav = DwollaFundingService.new
+    current_user.update!(dwolla_funding_source: @iav.get_funding_source(current_user))
+    flash[:success] = "You've connected your bank account."
+    redirect_to dashboard_path
+  end
+
   private
 
   def user_params

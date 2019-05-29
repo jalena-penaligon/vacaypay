@@ -19,17 +19,19 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/update_funding_source', to: 'users#update'
+  
   resources :vacations, only: [:show, :new, :create] do
     namespace :owner do
       resources :activities
     end
 
   post '/transfer', to: 'users/dwollas#transfer', as: :dwollas_transfer
-  resources :funding_sources, only: [:update]
   end
 
   resources :users, only: [:new, :create, :update]
   resources :funding_sources, only: [:new]
+
 
   namespace :owner do
     resources :vacations, only: [:show] do

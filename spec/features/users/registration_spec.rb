@@ -60,6 +60,7 @@ describe 'as a visitor' do
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
         visit root_path
+
         click_link "Connect to Dwolla"
 
         fill_in "address", with: "123 Address St."
