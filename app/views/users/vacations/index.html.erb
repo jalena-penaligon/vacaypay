@@ -1,4 +1,7 @@
 <body class="bg" id="index">
+  <% if current_user.vacations == nil %>
+    <h1>You do not have any upcoming vacations.</h1>
+  <% else %>
   <section class="upcoming-vacations">
     <h1>Upcoming Vacations</h1>
     <section class="vacay-container">
@@ -28,4 +31,5 @@
       <% end %>
     </section>
   </section>
+  <% end %>
 </body>
