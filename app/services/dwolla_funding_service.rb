@@ -4,7 +4,13 @@ class DwollaFundingService
     id = user.dwolla_id
     iav_token = token.post "#{id}/iav-token"
   end
-  
+
+  def get_funding_source(user)
+    token = dwolla_token
+    customer_url = user.dwolla_id
+    funding_source = token.get "#{customer_url}/funding-sources"
+  end
+
   private
 
   def dwolla_token

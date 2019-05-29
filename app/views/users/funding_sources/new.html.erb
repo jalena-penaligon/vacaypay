@@ -1,16 +1,15 @@
-
 <script src="https://cdn.dwolla.com/1/dwolla.min.js"></script>
-<div id="dwolla"></div>
+<div id="iav_funding_source"></div>
 <script>
-var token = "<%= iav_token %>";
+var token = "<%= @iav_token %>";
     dwolla.configure('sandbox');
     dwolla.iav.start( token, {
-        container: 'dwolla',
+        container: 'iav_funding_source',
         microDeposits: false,
         fallbackToMicroDeposits: false,
         backButton: true,
         subscriber: ({ currentPage, error }) => {
-            console.log('currentPage:', currentPage, 'error:', JSON.stringify(error))
+          console.log('currentPage:', currentPage, 'error:', JSON.stringify(error))
         }
     }, function(err, res) {
         alert(JSON.stringify(err));

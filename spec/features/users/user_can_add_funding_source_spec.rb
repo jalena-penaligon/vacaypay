@@ -32,9 +32,7 @@ describe 'User' do
 
         click_link "Add Your Bank Account"
 
-        expect(current_path).to eq(new_funding_source_path)
-
-        save_and_open_page
+        expect(current_path).to eq(new_users_funding_source_path)
       end
     end
   end

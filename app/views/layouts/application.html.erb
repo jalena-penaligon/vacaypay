@@ -6,8 +6,8 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'reset', 'application', media: 'all' %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
 
     <script src="https://cdn.dwolla.com/1/dwolla.min.js"></script>
@@ -30,7 +30,7 @@
       <% if current_user.dwolla_funding_source.nil? && current_user.dwolla_id.nil? %>
       <%=link_to 'Connect To Dwolla', new_users_dwolla_path %>
       <% elsif current_user.dwolla_funding_source.nil? && current_user.dwolla_id != nil %>
-      <%=link_to 'Add Your Bank Account', new_funding_source_path %>
+      <%=link_to 'Add Your Bank Account', new_users_funding_source_path %>
       <% end %>
       <%= link_to "Log Out", logout_path, method: :delete %>
     <% end %>
