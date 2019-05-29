@@ -27,7 +27,7 @@
       <% facade.all_activities.each do |activity| %>
         <% if activity.vacation_id == facade.vacation_id %>
           <div id="activity-<%= activity.id %>" class="vacay-item">
-            <h2><%= link_to activity.name %></h2>
+            <h2><%= link_to activity.name, vacation_owner_activity_path(facade.vacation_id, activity.id) %></h2>
             <li>Description: <%= activity.description %></li>
             <h3>Attending:</h3>
               <% activity.user_activities.each do |ua| %>
@@ -36,7 +36,7 @@
               </figure>
               <% end %>
               <br />
-              <%= link_to "+ Invite Participants" %>
+              <%= link_to "+ Invite Participants", new_owner_activity_user_activity_path(activity.id) %>
           </div>
         <% end %>
       <% end %>
