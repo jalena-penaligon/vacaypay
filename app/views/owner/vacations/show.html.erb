@@ -1,6 +1,6 @@
 <body class="bg" id="vacation">
 <% if facade.vacation.new_vacation? %>
-  <%= button_to "Add an Activity" %>
+  <%= button_to "Add an Activity", new_vacation_owner_activity_path(facade.vacation) %>
   <%= button_to "Invite Participants" %>
 <% else %>
   <div class="vacation-header">
@@ -16,7 +16,7 @@
   </div>
   <div class="vacation-container">
     <section class="subnav">
-      <%= link_to "+ Add an Activity" %>
+      <%= link_to "+ Add an Activity", new_vacation_owner_activity_path(facade.vacation)  %>
       <%= link_to "+ Invite Participants" %>
     </section>
     <h2><%= facade.vacation.start_date.strftime("%m/%d/%Y") %> - <%= facade.vacation.end_date.strftime("%m/%d/%Y") %></h2>

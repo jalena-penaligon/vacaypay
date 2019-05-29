@@ -13,9 +13,9 @@ describe 'User' do
         expect(current_path).to eq(dashboard_path)
         expect(user.dwolla_id).to eq(nil)
 
-        expect(page).to have_content('Connect To Dwolla')
+        expect(page).to have_content('Connect to Dwolla')
 
-        click_link 'Connect To Dwolla'
+        click_link 'Connect to Dwolla'
 
         fill_in :address, with: "Address"
         fill_in :city, with: "City"

@@ -11,11 +11,10 @@ describe 'as a logged in user who is apart of a vacation' do
 
     visit dashboard_path
     click_link "My Vacations"
-    expect(current_path).to eq(dashboard_path)
+    expect(current_path).to eq(vacations_path)
     expect(page).to have_content("Upcoming Vacations")
     click_link('Family Reunion')
-
-    click_link "Add Activity"
+    click_link "+ Add an Activity"
 
     fill_in "activity_name", with: "Activity Test"
     fill_in "activity_description", with: "Sample Description"

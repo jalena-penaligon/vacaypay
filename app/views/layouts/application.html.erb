@@ -28,7 +28,7 @@
 
       <%= link_to "+ Create a Vacation", new_users_vacation_path %>
       <% if current_user.dwolla_funding_source.nil? && current_user.dwolla_id.nil? %>
-      <%=link_to 'Connect To Dwolla', new_users_dwolla_path %>
+      <%=link_to 'Connect to Dwolla', new_users_dwolla_path %>
       <% elsif current_user.dwolla_funding_source.nil? && current_user.dwolla_id != nil %>
       <%=link_to 'Add Your Bank Account', new_funding_source_path %>
       <% end %>

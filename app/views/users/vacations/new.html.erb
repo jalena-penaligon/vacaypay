@@ -9,7 +9,7 @@
       </ul>
     <% end %>
 
-    <%= form_for @vacation, action: :create do |f| %>
+    <%= form_for [:users, @vacation], action: :create do |f| %>
       <p><%= f.label :name %><br />
       <%= f.text_field :name %></p>
 
