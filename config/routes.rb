@@ -32,10 +32,12 @@ Rails.application.routes.draw do
   resources :funding_sources, only: [:new]
 
   namespace :owner do
-    resources :vacations, only: [:show]
+    resources :vacations, only: [:show] do
+      get '/invite', to: 'invitations#new'
+      post '/invite', to: 'invitations#create'
+    end
     resources :activities, only: [] do
       resources :user_activities, only: [:create, :new]
     end
   end
-
 end
