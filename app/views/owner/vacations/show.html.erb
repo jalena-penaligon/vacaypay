@@ -1,7 +1,9 @@
 <body class="bg" id="vacation">
 <% if facade.vacation.new_vacation? %>
-  <%= button_to "Add an Activity", new_vacation_owner_activity_path(facade.vacation) %>
-  <%= button_to "Invite Participants" %>
+<section class="subnav">
+  <%= link_to "+ Add an Activity", new_vacation_owner_activity_path(facade.vacation)  %>
+  <%= link_to "+ Invite Participants" %>
+</section>
 <% else %>
   <div class="vacation-header">
   <figure class="header-grid">
@@ -35,8 +37,12 @@
                 <%= ua.user_name %> x
               </figure>
               <% end %>
-              <br />
+              <br/>
               <%= link_to "+ Invite Participants", new_owner_activity_user_activity_path(activity.id) %>
+              <br>
+              <% if facade.vacation.users.count > activity.user_activities.count %>
+                <%= link_to "+ Invite All Vacationers", mass_invite_owner_activity_path(activity_id: activity), method: :patch %>
+              <% end %>
           </div>
         <% end %>
       <% end %>
