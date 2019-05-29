@@ -1,13 +1,5 @@
 require "rails_helper"
 
-# As a registered user
-# Who has created a vacation
-# When I visit the vacation I created, 'owner/vacation/1'
-# I see a link to Add Participants
-# When I click this link, I am taken to '/owner/vacation/1/invite'
-# There, I can enter the email address of multiple users that I would
-# like to invite to my vacation
-
 describe 'vacation owner' do
   it 'can add participants' do
     user = create(:user, dwolla_id: "1234567", dwolla_funding_source: "ASD-123-ASDK-134")
@@ -17,11 +9,11 @@ describe 'vacation owner' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit owner_vacation_path(miami)
-# save_and_open_page
+
     click_button "Invite Participants"
 
     expect(current_path).to eq(owner_vacation_invite_path(miami))
-# save_and_open_page
+
     invites = "vacaypay1234@gmail.com, vacaypay.turing@gmail.com"
     fill_in :email_invitations, with: invites
     click_on "Save"

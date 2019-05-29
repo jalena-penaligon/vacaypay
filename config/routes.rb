@@ -31,8 +31,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:new, :create, :update]
-  resources :funding_sources, only: [:new]
-
 
   namespace :owner do
     resources :vacations, only: [:show] do
