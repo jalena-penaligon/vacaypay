@@ -1,20 +1,49 @@
-<h1><%= facade.vacation_name %></h1>
-<br>
-<li>Hosted By: <%= facade.vacation_host %></li>
-<li>Outstanding Balance: <%= number_to_currency(facade.outstanding_balance(current_user)) %></li>
-<br>
-<% facade.attending_activities(current_user).each do |activity| %>
-  <% if facade.vacation_id == activity.vacation_id %>
-    <div id="activity-<%= activity.id %>">
-      <li><%= link_to activity.name, users_vacation_activity_path(facade.send(:vacation), activity) %></li>
-      <li>Price Owed: $<%= activity.price_calculation %></li>
-      <% if facade.paid?(activity, current_user) %>
-        You're all settled up!
-      <% else %>
-        <%= button_to "Settle Up" %>
+<body class="bg" id="vacation">
+  <div class="vacation-header">
+  <figure class="header-grid">
+    <h1><%= facade.vacation_name %></h1>
+  </figure>
+  <figure class="header-grid-right">
+    <h2 class="light">I'm Owed: <%= number_to_currency(facade.owed_balance(current_user)) %></h2>
+  </figure>
+  <figure class="header-grid-right">
+    <h2 class="light">I Owe: <%= number_to_currency(facade.outstanding_balance(current_user)) %></h2>
+    </figure>
+  </div>
+  <div class="vacation-container"><section class="subnav">
+    <%= link_to "+ Add an Activity", new_users_vacation_activity_path(facade.vacation) %>
+  </section>
+    <h2><%= facade.vacation.start_date.strftime("%m/%d/%Y") %> - <%= facade.vacation.end_date.strftime("%m/%d/%Y") %></h2>
+    <h4>Hosted By: <%= facade.vacation_host %></h4>
+    <h4>Location: <%= facade.vacation.location %></h4>
+    <h2>My Activities:</h2>
+    <section class="vacay-container">
+      <% facade.attending_activities(current_user).each do |activity| %>
+        <% if activity.vacation_id == facade.vacation_id %>
+          <div id="activity-<%= activity.id %>" class="vacay-item">
+            <h2><%= activity.name %></h2>
+            <li>Description: <%= activity.description %></li>
+            <li>Price Per Person: <%= number_to_currency(facade.user_activity_price(activity, current_user)) %></li>
+            <% if facade.paid?(activity, current_user) %>
+              PAID
+            <% else %>
+              <%= button_to "Settle Up", vacation_dwollas_transfer_path(activity_id: activity.id, vacation_id: facade.vacation_id), class: :button %>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
-      <br>
-    </div>
+    </section>
+
+    <h2>Join Activities:</h2>
+    <% facade.non_attending_activities(current_user).each do |activity| %>
+      <% if activity.vacation_id == facade.vacation_id %>
+        <div id="activity-<%= activity.id %>" class="vacay-item">
+          <h2><%= activity.name %></h2>
+          <li>Description: <%= activity.description %></li>
+          <li>Price Per Person: <%= number_to_currency(activity.price) %></li>
+          <%= button_to "Join Activity", root_path, class: :button %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-<%= link_to 'Add Activity', new_vacation_owner_activity_path(facade.vacation_id) %>
+  </div>
+</body>

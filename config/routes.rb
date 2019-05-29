@@ -11,8 +11,8 @@ Rails.application.routes.draw do
 
   namespace :users do
     resources :dwollas, only: [:create, :new]
-    resources :vacations, only: [:create, :new, :show, :index, :destroy, :update] do
-      resources :activities, only: [:show]
+    resources :vacations, only: [:create, :new, :show, :index] do
+      resources :activities, only: [:show, :new, :create]
     end
     resources :activities, only: [] do
       resources :user_activities, only: [:create, :destroy]
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       resources :activities
     end
 
-  post '/transfer', to: 'dwollas#transfer', as: :dwollas_transfer
+  post '/transfer', to: 'users/dwollas#transfer', as: :dwollas_transfer
   resources :funding_sources, only: [:update]
   end
 
