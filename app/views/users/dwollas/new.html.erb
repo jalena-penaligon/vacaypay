@@ -14,13 +14,13 @@
       <p><%= label_tag "Postal Code" %><br />
       <%= text_field_tag :postal_code %></p>
 
-      <p><%= label_tag "Date of Birth (YYYY-MM-DD)" %><br />
+      <p><%= label_tag "Date of Birth (MM-DD-YYYY)" %><br />
       <%= date_field_tag :dob %></p>
 
       <p><%= label_tag "Social Security Number (last four digits)" %><br />
       <%= text_field_tag :ssn %></p>
 
-      <p><%= submit_tag "Connect" %></p>
+      <p><%= submit_tag "Connect", class: :btn %></p>
     <% end %>
   </div>
 </body>

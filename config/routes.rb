@@ -29,7 +29,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:new, :create, :update]
-  resources :dwolla, only: [:new, :create]
   resources :funding_sources, only: [:new]
 
   namespace :owner do
