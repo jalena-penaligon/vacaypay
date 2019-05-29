@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   namespace :owner do
     resources :vacations, only: [:show]
     resources :activities, only: [] do
+      member {patch :mass_invite}
       resources :user_activities, only: [:create, :new]
     end
   end
