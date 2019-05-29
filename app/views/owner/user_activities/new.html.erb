@@ -6,7 +6,9 @@
 </section>
 <% if vacationers.empty? %>
   <p>No participants to add, invite more people to the vacation!<p>
-  <%= button_to 'Back to Activity', users_vacation_activity_path(Vacation.find(activity.vacation_id), activity), method: :get %>
+    <section class="center">
+      <%= button_to 'Back to Activity', users_vacation_activity_path(Vacation.find(activity.vacation_id), activity), method: :get, class: :btn %>
+    </section>
 <% else %>
   <%= form_tag(owner_activity_user_activities_path(activity), method: "post") do %>
     <ul>
