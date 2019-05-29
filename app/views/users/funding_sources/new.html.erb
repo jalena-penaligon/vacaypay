@@ -3,7 +3,7 @@
     <script src="https://cdn.dwolla.com/1/dwolla.min.js"></script>
     <div id="dwolla"></div>
     <script>
-    var token = "<%= iav_token %>";
+    var token = "<%= @iav_token %>";
         dwolla.configure('sandbox');
         dwolla.iav.start( token, {
             container: 'dwolla',
