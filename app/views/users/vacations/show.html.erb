@@ -14,8 +14,8 @@
     <%= link_to "+ Add an Activity", new_users_vacation_activity_path(facade.vacation) %>
   </section>
     <h2><%= facade.vacation.start_date.strftime("%m/%d/%Y") %> - <%= facade.vacation.end_date.strftime("%m/%d/%Y") %></h2>
-    <h4>Hosted By: <%= facade.vacation_host %></h4>
-    <h4>Location: <%= facade.vacation.location %></h4>
+    <h4>Hosted By: <%= facade.vacation_host %></h4><br />
+    <h4>Location: <%= facade.vacation.location %></h4><br /><Br />
     <h2>My Activities:</h2>
     <section class="vacay-container">
       <% facade.attending_activities(current_user).each do |activity| %>

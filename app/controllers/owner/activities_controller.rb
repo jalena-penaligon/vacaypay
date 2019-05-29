@@ -15,11 +15,11 @@ class Owner::ActivitiesController < ApplicationController
     @activity = Activity.new
   end
 
-  def create
+  def create  
     @vacation = Vacation.find(params[:vacation_id])
     @activity = @vacation.activities.new(activity_params)
     if @activity.save
-      UserActivity.create(user_id: current_user.id, quantity: 1, price: @activity.price_calculation, paid: false, activity_id: @activity.id)
+      UserActivity.create(user_id: current_user.id, quantity: 1, price: @activity.price_calculation, paid: true, activity_id: @activity.id)
       redirect_to users_vacation_path(@vacation)
     else
       render :new
