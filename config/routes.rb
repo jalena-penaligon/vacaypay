@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   namespace :users do
     resources :dwollas, only: [:create, :new]
+    resources :funding_sources, only: [:new]
     resources :vacations, only: [:create, :new, :show, :index] do
       resources :activities, only: [:show, :new, :create]
     end
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
   end
 
   get '/update_funding_source', to: 'users#update'
-  
+
   resources :vacations, only: [:show, :new, :create] do
     namespace :owner do
       resources :activities
