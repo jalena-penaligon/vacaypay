@@ -66,7 +66,7 @@ wine_tasting = Vacation.create!(name: "Wine Tasting", location: "France", start_
 
   france_hotel = wine_tasting.activities.create!(price: 1_200.00, num_attendees: 3, description: "3 Rooms", name: "France Hotel", no_of_days: 4, cutoff_date: "2019-08-19", type: FixedCost, user_id: ethan.id)
 
-      ethan_france_hotel = UserActivity.create!(user_id: ethan.id, quantity: 1, price: 400.00, paid: false, activity_id: france_hotel.id)
+      ethan_france_hotel = UserActivity.create!(user_id: ethan.id, quantity: 1, price: 400.00, paid: true, activity_id: france_hotel.id)
 
       earl_france_hotel = UserActivity.create!(user_id: earl.id, quantity: 1, price: 400.00, paid: false, activity_id: france_hotel.id)
 
