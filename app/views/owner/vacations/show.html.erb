@@ -21,6 +21,7 @@
     <section class="subnav">
       <%= link_to "+ Add an Activity", new_vacation_owner_activity_path(facade.vacation)  %>
       <%= link_to "+ Invite Participants", owner_vacation_invite_path(facade.vacation) %>
+      <%= link_to "Join the Chat!", vacation_messages_path(facade.vacation) %>
     </section>
     <h2><%= facade.vacation.start_date.strftime("%m/%d/%Y") %> - <%= facade.vacation.end_date.strftime("%m/%d/%Y") %></h2>
     <h4>Hosted By: <%= facade.vacation_host %></h4>
