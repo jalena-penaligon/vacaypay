@@ -1,54 +1,54 @@
-<body class="bg" id="vacation">
-<% if facade.vacation.new_vacation? %>
 
-  <section class="form-container">
-    <h1 class="dark">Get Started!</h1>
-    <%= button_to "Add an Activity", new_vacation_owner_activity_path(facade.vacation), method: :get, class: :btn %>
-    <%= button_to "Invite Participants", owner_vacation_invite_path(facade.vacation), method: :get, class: :btn %>
-  </section>
-<% else %>
-  <div class="vacation-header">
-  <figure class="header-grid">
-    <h1><%= facade.vacation_name %></h1>
-  </figure>
-  <figure class="header-grid-right">
-    <h2 class="light">I'm Owed: <%= number_to_currency(facade.owed_balance(current_user)) %></h2>
-  </figure>
-  <figure class="header-grid-right">
-    <h2 class="light">I Owe: <%= number_to_currency(facade.outstanding_balance(current_user)) %></h2>
+  <body class="bg" id="vacation">
+  <% if facade.vacation.new_vacation? %>
+    <section class="form-container">
+      <h1 class="dark">Get Started!</h1>
+      <%= button_to "Add an Activity", new_vacation_owner_activity_path(facade.vacation), method: :get, class: :btn %>
+      <%= button_to "Invite Participants", owner_vacation_invite_path(facade.vacation), method: :get, class: :btn %>
+    </section>
+  <% else %>
+    <div class="vacation-header">
+    <figure class="header-grid">
+      <h1><%= facade.vacation_name %></h1>
     </figure>
-  </div>
-  <div class="vacation-container">
-    <section class="subnav">
-      <%= link_to "+ Add an Activity", new_vacation_owner_activity_path(facade.vacation)  %>
-      <%= link_to "+ Invite Participants" %>
-    </section>
-    <h2><%= facade.vacation.start_date.strftime("%m/%d/%Y") %> - <%= facade.vacation.end_date.strftime("%m/%d/%Y") %></h2>
-    <h4>Hosted By: <%= facade.vacation_host %></h4>
-    <h4>Location: <%= facade.vacation.location %></h4>
-    <h2>Activities:</h2>
-    <section class="vacay-container">
-      <% facade.all_activities.each do |activity| %>
-        <% if activity.vacation_id == facade.vacation_id %>
-          <div id="activity-<%= activity.id %>" class="vacay-item">
-            <h2><%= link_to activity.name, vacation_owner_activity_path(facade.vacation_id, activity.id) %></h2>
-            <li>Description: <%= activity.description %></li>
-            <h3>Attending:</h3>
-              <% activity.user_activities.each do |ua| %>
-              <figure class="attendee">
-                <%= ua.user_name %> x
-              </figure>
-              <% end %>
-              <br/>
-              <%= link_to "+ Invite Participants", new_owner_activity_user_activity_path(activity.id) %>
-              <br>
-              <% if facade.vacation.users.count > activity.user_activities.count %>
-                <%= link_to "+ Invite All Vacationers", mass_invite_owner_activity_path(activity_id: activity), method: :patch %>
-              <% end %>
-          </div>
+    <figure class="header-grid-right">
+      <h2 class="light">I'm Owed: <%= number_to_currency(facade.owed_balance(current_user)) %></h2>
+    </figure>
+    <figure class="header-grid-right">
+      <h2 class="light">I Owe: <%= number_to_currency(facade.outstanding_balance(current_user)) %></h2>
+      </figure>
+    </div>
+    <div class="vacation-container">
+      <section class="subnav">
+        <%= link_to "+ Add an Activity", new_vacation_owner_activity_path(facade.vacation)  %>
+        <%= link_to "+ Invite Participants" %>
+      </section>
+      <h2><%= facade.vacation.start_date.strftime("%m/%d/%Y") %> - <%= facade.vacation.end_date.strftime("%m/%d/%Y") %></h2>
+      <h4>Hosted By: <%= facade.vacation_host %></h4>
+      <h4>Location: <%= facade.vacation.location %></h4>
+      <h2>Activities:</h2>
+      <section class="vacay-container">
+        <% facade.all_activities.each do |activity| %>
+          <% if activity.vacation_id == facade.vacation_id %>
+            <div id="activity-<%= activity.id %>" class="vacay-item">
+              <h2><%= link_to activity.name, vacation_owner_activity_path(facade.vacation_id, activity.id) %></h2>
+              <li>Description: <%= activity.description %></li>
+              <h3>Attending:</h3>
+                <% activity.user_activities.each do |ua| %>
+                <figure class="attendee">
+                  <%= ua.user_name %> x
+                </figure>
+                <% end %>
+                <br/>
+                <%= link_to "+ Invite Participants", new_owner_activity_user_activity_path(activity.id) %>
+                <br>
+                <% if facade.vacation.users.count > activity.user_activities.count %>
+                  <%= link_to "+ Invite All Vacationers", mass_invite_owner_activity_path(activity_id: activity), method: :patch %>
+                <% end %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </section>
-  </div>
-<% end %>
-</body>
+      </section>
+    </div>
+  <% end %>
+  </body>
