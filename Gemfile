@@ -13,11 +13,12 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 4.0'
 gem 'dwolla_v2', '~> 2.0'
-gem 'skylight' 
+gem 'jquery-rails', '~> 4.1.1'
 gem 'figaro'
 gem 'newrelic_rpm'
 gem 'bcrypt'
 gem 'bootsnap', '>= 1.1.0', require: false
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
