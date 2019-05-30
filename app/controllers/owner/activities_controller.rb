@@ -65,6 +65,17 @@ class Owner::ActivitiesController < ApplicationController
     redirect_to users_vacation_path(associated_activity.vacation)
   end
 
+  def remove
+    associated_activity.decrement!(:num_attendees)
+    user_activity = UserActivity.where(activity_id: associated_activity.id).find_by(user_id: params[:user_id])
+    user_activity.delete
+    if vacation_owner?
+      redirect_to owner_vacation_path(associated_activity.vacation)
+    else
+      redirect_to vacation_owner_activity_path(associated_activity.vacation, associated_activity)
+    end
+  end
+
   private
 
   def activity_params

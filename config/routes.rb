@@ -24,7 +24,9 @@ Rails.application.routes.draw do
 
   resources :vacations, only: [:show, :new, :create] do
     namespace :owner do
-      resources :activities
+      resources :activities do
+        member {patch :remove}
+      end 
     end
 
   post '/transfer', to: 'users/dwollas#transfer', as: :dwollas_transfer

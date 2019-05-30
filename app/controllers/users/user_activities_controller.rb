@@ -10,9 +10,7 @@ class Users::UserActivitiesController < ApplicationController
     associated_activity.decrement!(:num_attendees)
     user_activity = UserActivity.where(activity_id: associated_activity.id).find_by(user_id: current_user.id)
     user_activity.delete
-    if params[:source] == "index"
-      redirect_to owner_vacation_path(associated_activity.vacation)
-    elsif associated_activity.vacation.vacation_users.where(role: 1)[0].user_id == current_user.id
+    if associated_activity.vacation.vacation_users.where(role: 1)[0].user_id == current_user.id
       redirect_to vacation_owner_activity_path(associated_activity.vacation, associated_activity)
     else
       redirect_to users_vacation_activity_path(associated_activity.vacation, associated_activity)

@@ -28,7 +28,7 @@
     <figure class="attendee">
       <%= participant.first_name %> <%= participant.last_name %>
       <% if participant.id != facade.activity_host.id %>
-        <%= link_to "x", users_activity_user_activity_path(facade.send(:activity)), method: :delete %>
+        <%= link_to "x", remove_vacation_owner_activity_path(facade.send(:vacation), facade.send(:activity), user_id: participant.id), method: :patch %>
       <% end %>
     </figure>
     <% end %>
