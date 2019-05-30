@@ -11,7 +11,11 @@ class Owner::UserActivitiesController < ApplicationController
       associated_activity.increment!(:num_attendees)
       UserActivity.create(user_id: user_id, quantity: 1, price: associated_activity.price_calculation, paid: false, activity_id: associated_activity.id)
     end
-    redirect_to users_vacation_activity_path(associated_activity.vacation, associated_activity)
+    if associated_activity.vacation.vacation_users.where(role: 1)[0].user_id == current_user.id
+      redirect_to vacation_owner_activity_path(associated_activity.vacation, associated_activity)
+    else
+      redirect_to users_vacation_activity_path(associated_activity.vacation, associated_activity)
+    end
   end
 
   def new

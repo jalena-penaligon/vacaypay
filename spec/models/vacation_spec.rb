@@ -4,6 +4,7 @@ RSpec.describe Vacation, type: :model do
   describe 'relationships' do
     it { should have_many :activities }
     it { should have_many :vacation_users }
+    it { should have_many :messages }
     it { should have_many(:users).through(:vacation_users) }
   end
 

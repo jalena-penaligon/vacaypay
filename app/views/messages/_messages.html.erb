@@ -1,6 +1,9 @@
 <div id="messages" class="messages">
   <div id="messages-table" class="messages-table">
     <% if @messages.any? %>
+      <% @messages = @messages.select do |message| %>
+        <% message.vacation_id == @vacation.id %>
+      <% end %>
       <%= render @messages %>
     <% end %>
   </div>

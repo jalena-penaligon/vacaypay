@@ -24,7 +24,7 @@
       <%= participant.first_name %> <%= participant.last_name %> X
     </figure>
     <% end %>
-    
+
     <% if Date.today < facade.send(:activity).cutoff_date %>
       <% if activity_owner? %>
       <% elsif current_user.user_activities.find_by(activity_id: facade.send(:activity).id) %>
@@ -36,7 +36,5 @@
       <%= button_to 'Sign Up for this Activity!', users_activity_user_activities_path(facade.send(:activity)), class: :button%></h2>
       <% end %>
     <% end %>
-
-
     </div>
 </body>
