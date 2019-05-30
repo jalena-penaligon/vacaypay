@@ -1,9 +1,13 @@
 <body class="bg" id="form">
-  <div class="vacation-container">
-    <h1 class="dark"><%= @vacation.name %> Chat</h1>
-<div class="message-wr">
-  <%= render 'messages' %>
-  <%= render 'message_form' %>
-</div>
-</div>
+  <div class="activity-container">
+    <% if @vacation.host == current_user %>
+      <h1 class="dark"><%= link_to @vacation.name, owner_vacation_path(@vacation) %> Chat</h1>
+    <% else %>
+    <h1 class="dark"><%= link_to @vacation.name, users_vacation_path(@vacation) %> Chat</h1>
+    <% end %>
+    <div class="message-wr">
+      <%= render 'messages' %>
+      <%= render 'message_form' %>
+    </div>
+  </div>
 </body>
