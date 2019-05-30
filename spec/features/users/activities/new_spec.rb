@@ -8,8 +8,8 @@ describe 'as a logged in user who is apart of a vacation' do
     owner.vacation_users.create!(role: 1, vacation: vacation)
     user.vacation_users.create(role: 0, vacation: vacation)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
     visit dashboard_path
+
     click_link "My Vacations"
     expect(current_path).to eq(vacations_path)
     expect(page).to have_content("Upcoming Vacations")

@@ -7,6 +7,7 @@ describe 'as an activity owner' do
       user_1 = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
       vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 10.days.from_now, end_date: 15.days.from_now)
+      vacation_user = VacationUser.create(user: user_1, vacation: vacation, role: 1)
 
       #create activity owned by vacation owner
       activity = vacation.activities.create!(price: 40.00, num_attendees: 1, description: "Swim with the fishes", name: "Snorkeling", no_of_days: 1, cutoff_date: "2019-06-12", type: PerPersonCost, user: user_1)
