@@ -343,6 +343,14 @@ a:hover {
   float: right;
 }
 
+.subnav-right{
+  text-align: right;
+  display: block;
+  height: 25px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
 .subnav a {
   text-decoration: none;
   margin-right: 20px;
@@ -442,4 +450,8 @@ select {
   margin: auto;
   text-align: center;
   opacity: .8;
+}
+
+.attendee a {
+  color: white;
 }

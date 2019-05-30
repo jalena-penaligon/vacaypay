@@ -1,6 +1,13 @@
 <body class="bg" id="form">
   <div class="form-container">
     <h1 class="dark">Create a New Activity</h1>
+    <% if @activity.errors.any? %>
+      <ul class="errors">
+        <% @activity.errors.full_messages.each do |message| %>
+          <li class="error"><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
     <%= form_for [@vacation, @activity], url: vacation_owner_activities_path, method: :create do |f| %>
       <p><%= f.label :name %><br />

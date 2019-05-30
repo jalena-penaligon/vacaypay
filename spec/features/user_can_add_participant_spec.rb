@@ -16,7 +16,7 @@ describe 'vacation owner' do
 
     invites = "vacaypay1234@gmail.com, vacaypay.turing@gmail.com"
     fill_in :email_invitations, with: invites
-    click_on "Save"
+    click_on "Submit"
 
     expect(current_path).to eq(owner_vacation_path(miami))
     expect(page).to have_content('Successfully sent invitations!')
