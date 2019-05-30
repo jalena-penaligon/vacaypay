@@ -2,6 +2,7 @@ class Vacation < ApplicationRecord
   has_many :activities
   has_many :vacation_users
   has_many :users, through: :vacation_users
+  has_many :messages
 
   validates_presence_of :name,
                         :location,

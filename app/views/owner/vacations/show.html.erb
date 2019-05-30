@@ -1,10 +1,28 @@
 
   <body class="bg" id="vacation">
   <% if facade.vacation.new_vacation? %>
-    <section class="form-container">
-      <h1 class="dark">Get Started!</h1>
-      <%= button_to "Add an Activity", new_vacation_owner_activity_path(facade.vacation), method: :get, class: :btn %>
-      <%= button_to "Invite Participants", owner_vacation_invite_path(facade.vacation), method: :get, class: :btn %>
+  <section class="form-container">
+    <h1 class="dark">Get Started!</h1>
+    <%= button_to "Add an Activity", new_vacation_owner_activity_path(facade.vacation), method: :get, class: :btn %>
+    <%= button_to "Invite Participants", owner_vacation_invite_path(facade.vacation), method: :get, class: :btn %>
+  </section>
+<% else %>
+  <div class="vacation-header">
+  <figure class="header-grid">
+    <h1><%= facade.vacation_name %></h1>
+  </figure>
+  <figure class="header-grid-right">
+    <h2 class="light">I'm Owed: <%= number_to_currency(facade.owed_balance(current_user)) %></h2>
+  </figure>
+  <figure class="header-grid-right">
+    <h2 class="light">I Owe: <%= number_to_currency(facade.outstanding_balance(current_user)) %></h2>
+    </figure>
+  </div>
+  <div class="vacation-container">
+    <section class="subnav">
+      <%= link_to "+ Add an Activity", new_vacation_owner_activity_path(facade.vacation)  %>
+      <%= link_to "+ Invite Participants", owner_vacation_invite_path(facade.vacation) %>
+      <%= link_to "Join the Chat!", vacation_messages_path(facade.vacation) %>
     </section>
   <% else %>
     <div class="vacation-header">
