@@ -36,7 +36,7 @@
             <h3>Attending:</h3>
               <% activity.user_activities.each do |ua| %>
               <figure class="attendee">
-                <%= ua.user_name %> x
+                <%= ua.user_name %> <%= link_to "x", users_activity_user_activity_path(activity, source: :index), method: :delete %>
               </figure>
               <% end %>
               <br/>

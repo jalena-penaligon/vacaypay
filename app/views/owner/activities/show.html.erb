@@ -3,7 +3,7 @@
 
   <section class="activity-header">
     <section class="header-grid wide">
-      <h1><%= link_to facade.send(:vacation).name, users_vacation_path(facade.send(:vacation)) %>
+      <h1><%= link_to facade.send(:vacation).name, owner_vacation_path(facade.send(:vacation)) %>
     </section>
     <section class="header-grid-right wide">
       <h3><%= link_to '+ Add Participants', new_owner_activity_user_activity_path(facade.send(:activity)) %></h3>
