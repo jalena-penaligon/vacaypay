@@ -7,7 +7,6 @@
 - [Introduction](#introduction)
 - [Initial Setup](#initial_setup)
 - [How to Use](#how_to_use)
-- [Known Issues](#known_issues)
 - [Testing](#testing)
 - [How to Contribute](#how_to_contribute)
 - [Core Contributors](#core_contributors)
@@ -38,8 +37,6 @@ A logged-in registered user has access to their profile page via a `Profile` lin
 A non-registered user will be directed to a registration page.  This page takes in the basic information of first name, last name, email address and password.  Once the user completes this page, they are registered with the site.  They will still need to connect their payment information, however.  They will see a button to `Connect to Dwolla`.  
 
 Clicking on `Connect to Dwolla` will bring up a form that gathers the necessary information required by the Dwolla service.  When that information is entered, the user will be connected with Dwolla.  The last step will be for the user to click on the `Add My Bank Account` button.  This button will lead to a pop-up window that allows the user to enter in their banking information via a secure service from Dwolla.  Once this step is completed, the user is fully registered with the application.
-
-## Known Issues
 
 ## Testing
 
