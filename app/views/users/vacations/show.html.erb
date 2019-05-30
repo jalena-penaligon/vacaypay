@@ -21,7 +21,11 @@
       <% facade.attending_activities(current_user).each do |activity| %>
         <% if activity.vacation_id == facade.vacation_id %>
           <div id="activity-<%= activity.id %>" class="vacay-item">
-            <h2><%= link_to activity.name, users_vacation_activity_path(facade.vacation_id, activity.id) %></h2>
+            <% if activity.user_id == current_user.id %>
+              <h2><%= link_to activity.name, vacation_owner_activity_path(facade.vacation_id, activity.id) %></h2>
+            <% else %>
+              <h2><%= link_to activity.name, users_vacation_activity_path(facade.vacation_id, activity.id) %></h2>
+            <% end %>
             <li>Description: <%= activity.description %></li>
             <li>Price Per Person: <%= number_to_currency(facade.user_activity_price(activity, current_user)) %></li>
             <% if current_user.id == activity.user_id %>

@@ -3,7 +3,11 @@
 
   <section class="activity-header">
     <section class="header-grid wide">
-      <h1><%= link_to facade.send(:vacation).name, owner_vacation_path(facade.send(:vacation)) %>
+      <% if facade.send(:vacation).host.id == current_user.id %>
+        <h1><%= link_to facade.send(:vacation).name, owner_vacation_path(facade.send(:vacation)) %>
+      <% else %>
+        <h1><%= link_to facade.send(:vacation).name, users_vacation_path(facade.send(:vacation)) %>
+      <% end %>
     </section>
     <section class="header-grid-right wide">
       <h3><%= link_to '+ Add Participants', new_owner_activity_user_activity_path(facade.send(:activity)) %></h3>
@@ -22,7 +26,10 @@
   <h2>Attending:</h2>
     <% facade.attendees.each do |participant| %>
     <figure class="attendee">
-      <%= participant.first_name %> <%= participant.last_name %> X
+      <%= participant.first_name %> <%= participant.last_name %>
+      <% if participant.id != facade.activity_host.id %>
+        <%= link_to "x", users_activity_user_activity_path(facade.send(:activity)), method: :delete %>
+      <% end %>
     </figure>
     <% end %>
 

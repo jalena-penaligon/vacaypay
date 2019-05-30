@@ -1,4 +1,6 @@
-<h1>Edit an Activity</h1>
+<body class="bg" id="form">
+  <div class="form-container">
+<h1 class="dark">Edit an Activity</h1>
 
 <%= form_for [@vacation, @activity], url: vacation_owner_activity_path(@vacation, @activity), method: :put do |f| %>
   <p><%= f.label :name %><br />
@@ -23,3 +25,5 @@
 
   <p><%= f.submit "Update Activity" %></p>
 <% end %>
+</div>
+</body>
