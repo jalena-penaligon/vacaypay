@@ -21,7 +21,7 @@ RSpec.describe Vacation, type: :model do
       expect(vacation.new_vacation?).to be true
 
       user = create(:user)
-      vacation.activities.create(price: 104.24, num_attendees: 0, name: "Activity", description: "It's an activity", vacation: vacation, user: user, type: FixedCost)
+      vacation.activities.create(price: 104.24, num_attendees: 0, name: "Activity", description: "It's an activity", vacation: vacation, user: user, type: FixedCost, cutoff_date: 1.day.from_now)
       expect(vacation.new_vacation?).to be false
     end
   end

@@ -11,9 +11,9 @@ describe 'as a registered user' do
       vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 10.days.from_now, end_date: 15.days.from_now)
       owner.vacation_users.create!(role: 1, vacation: vacation)
       user.vacation_users.create(role: 0, vacation: vacation)
-      activity_1 = Activity.create(name: "Kayaking", price: 20.0, num_attendees: 1, description: "It'll be fun.", no_of_days: 1, vacation: vacation, user: owner, type: FixedCost)
+      activity_1 = Activity.create(name: "Kayaking", price: 20.0, num_attendees: 1, description: "It'll be fun.", no_of_days: 1, vacation: vacation, user: owner, type: FixedCost, cutoff_date: 1.day.from_now)
       user_activity_1 = user.user_activities.create!(quantity: 1, price:20.0, activity: activity_1)
-      activity_2 = Activity.create(name: "Dinner", price: 15.0, num_attendees: 1, description: "Nom nom", no_of_days: 1, vacation: vacation, user: owner, type: PerPersonCost)
+      activity_2 = Activity.create(name: "Dinner", price: 15.0, num_attendees: 1, description: "Nom nom", no_of_days: 1, vacation: vacation, user: owner, type: PerPersonCost, cutoff_date: 1.day.from_now)
       user_activity_2 = user.user_activities.create!(quantity: 1, price:15.0, activity: activity_2)
 
       visit vacations_path
