@@ -15,7 +15,7 @@ class Owner::ActivitiesController < ApplicationController
     @activity = Activity.new
   end
 
-  def create  
+  def create
     @vacation = Vacation.find(params[:vacation_id])
     @activity = @vacation.activities.new(activity_params)
     if @activity.save
@@ -24,7 +24,7 @@ class Owner::ActivitiesController < ApplicationController
         redirect_to owner_vacation_path(@vacation)
       else
         redirect_to users_vacation_path(@vacation)
-      end 
+      end
     else
       render :new
     end
@@ -32,7 +32,7 @@ class Owner::ActivitiesController < ApplicationController
 
   def mass_invite
     ids = mass_invite_activity.user_activities.pluck(:user_id)
-    Vacation.find(params[:id]).users.where.not(id: ids).each do |user|
+    Vacation.find(params[:id]).users.where.not(id: ids).distinct.each do |user|
       mass_invite_activity.increment!(:num_attendees)
       UserActivity.create(user_id: user.id, quantity: 1, price: mass_invite_activity.price_calculation, paid: false, activity_id: mass_invite_activity.id)
     end
@@ -74,7 +74,7 @@ class Owner::ActivitiesController < ApplicationController
   def update_params
     if params.has_key?(:fixed_cost)
       params[:client] = params.delete(:fixed_cost)
-    elsif params.has_key?(:company)
+    elsif params.has_key?(:per_person_cost)
       params[:client] = params.delete(:per_person_cost)
     end
     params.require(:client).permit([:name, :description, :price, :cutoff_date, :no_of_days, :type])

@@ -21,8 +21,8 @@ describe 'as a registered user that has connected with a dwolla funding source' 
 
     expect(current_path).to eq(owner_vacation_path(vacation))
     expect(page).to have_content("#{vacation.name} has been created!")
-    expect(page).to have_link("+ Add an Activity")
-    expect(page).to have_link("Invite Participants")
+    expect(page).to have_button("Add an Activity")
+    expect(page).to have_button("Invite Participants")
 
     visit vacations_path
     expect(page).to have_content(vacation.name)
