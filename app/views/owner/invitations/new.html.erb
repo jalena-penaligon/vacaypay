@@ -7,10 +7,9 @@
     <br>
     <p>For multiple addresses, please separate each email with a comma
      and a space.</p>
-
-     <%= form_with url: owner_vacation_invite_path(@vacation) do |form| %>
-      <%= form.text_field :email_invitations %><Br />
-      <%= form.submit "Submit", class: :btn %>
-     <% end %>
+     <%= form_tag owner_vacation_invite_path(@vacation) do %>
+    <%= text_field_tag :email_invitations %>
+   <%= submit_tag 'Save' %>
+ <% end %>
   </div>
 </body>

@@ -42,4 +42,10 @@ Rails.application.routes.draw do
       resources :user_activities, only: [:create, :new]
     end
   end
+
+  get '/vacation/:id/messages', to: 'messages#index', as: :vacation_messages
+  post '/vacation/:id/messages', to: 'messages#create'
+  # resources :messages, only: [:index, :create]
+
+  mount ActionCable.server, at: '/cable'
 end

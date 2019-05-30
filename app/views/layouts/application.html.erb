@@ -6,8 +6,6 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'reset', 'application', media: 'all' %>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
 
     <script src="https://cdn.dwolla.com/1/dwolla.min.js"></script>
@@ -46,6 +44,7 @@
       </div>
     <% end %>
     <%= yield %>
+    <%= javascript_include_tag 'application' %>
     <%= yield :javascript%>
   </body>
 </html>
