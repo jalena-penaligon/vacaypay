@@ -19,9 +19,7 @@ describe 'as a vacation owner' do
     vacation_user_3 = vacation.vacation_users.create!(user: user_3, role: 0)
 
     visit owner_vacation_path(vacation)
-    within "#activity-#{activity.id}" do
-      click_link "+ Invite All Vacationers"
-    end
+    click_link "+ Invite All Vacationers"
 
     activity.reload
 
@@ -49,10 +47,9 @@ describe 'as an activity owner' do
     user_3 = create(:user)
     vacation_user_3 = vacation.vacation_users.create!(user: user_3, role: 0)
 
-    visit owner_vacation_path(vacation)
-    within "#activity-#{activity.id}" do
-      click_link "+ Invite All Vacationers"
-    end
+    visit users_vacation_path(vacation)
+    
+    click_link "+ Invite All Vacationers"
 
     activity.reload
 
