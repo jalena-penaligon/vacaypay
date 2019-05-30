@@ -21,10 +21,10 @@
   <h2>Attending:</h2>
     <% facade.attendees.each do |participant| %>
     <figure class="attendee">
-      <%= participant.first_name %> <%= participant.last_name %> X
+      <%= participant.first_name %> <%= participant.last_name %>
     </figure>
     <% end %>
-    
+
     <% if Date.today < facade.send(:activity).cutoff_date %>
       <% if activity_owner? %>
       <% elsif current_user.user_activities.find_by(activity_id: facade.send(:activity).id) %>
