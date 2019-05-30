@@ -1,12 +1,16 @@
-<h1>Invite Participants</h1>
-<br>
-<p>You can invite participants to your <%= @vacation.name %>
- vacation by entering their email address in the box below.</p>
-<br>
-<p>For multiple addresses, please separate each email with a comma
- and a space.</p>
+<body class="bg" id="form">
+  <div class="form-container user-login">
+    <h1 class="dark">Invite Participants</h1>
+    <br>
+    <p>You can invite participants to your <%= @vacation.name %>
+     vacation by entering their email address in the box below.</p>
+    <br>
+    <p>For multiple addresses, please separate each email with a comma
+     and a space.</p>
 
- <%= form_with url: owner_vacation_invite_path(@vacation) do |form| %>
-  <%= form.text_field :email_invitations %>
-  <%= form.submit %>
- <% end %>
+     <%= form_with url: owner_vacation_invite_path(@vacation) do |form| %>
+      <%= form.text_field :email_invitations %><Br />
+      <%= form.submit "Submit", class: :btn %>
+     <% end %>
+  </div>
+</body>
