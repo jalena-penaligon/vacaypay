@@ -3,6 +3,7 @@ body, html {
   font-size: 18px;
   line-height: 1.5em;
   font-family: Josefin Sans, sans-serif;
+  color: #282828;
 }
 
 .bg {
@@ -197,6 +198,7 @@ a:hover {
   width: 60%;
   opacity: .9;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .wide {
@@ -211,6 +213,7 @@ a:hover {
   width: 80%;
   opacity: .9;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .dwolla-container {
@@ -219,6 +222,7 @@ a:hover {
   margin: auto;
   width: 65%;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .profile-container {
@@ -228,6 +232,7 @@ a:hover {
   width: 50%;
   opacity: .9;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .vacay-container {
@@ -326,6 +331,16 @@ a:hover {
   height: 25px;
   margin-bottom: 20px;
   width: 100%;
+  float: left;
+}
+
+.subnav-right {
+  text-align: right;
+  display: block;
+  height: 25px;
+  margin-bottom: 20px;
+  width: 100%;
+  float: right;
 }
 
 .subnav a {
