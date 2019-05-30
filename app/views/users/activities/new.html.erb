@@ -2,9 +2,10 @@
   <div class="form-container">
     <h1 class="dark">Create a New Activity</h1>
 
-    <%= form_for [@vacation, @activity], url: vacation_owner_activities_path, method: :create do |f| %>
-      <p><%= f.label :name %><br />
-      <%= f.text_field :name %></p>
+<%= form_for [@vacation, @activity], url: users_vacation_activities_path, method: :create do |f| %>
+  <p><%= f.label :name %><br />
+  <%= f.text_field :name %></p>
+
 
       <p><%= f.label :description %><br />
       <%= f.text_area :description %></p>

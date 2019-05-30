@@ -1,11 +1,14 @@
 <body class="bg" id="activity">
-
   <section class="activity-header">
     <section class="header-grid wide">
       <h1><%= link_to facade.send(:vacation).name, users_vacation_path(facade.send(:vacation)) %>
     </section>
     <section class="header-grid-right wide">
-      <h3><%= link_to '+ Add Participants', new_owner_activity_user_activity_path(facade.send(:activity)) %></h3>
+      <% if Date.today < facade.send(:activity).cutoff_date %>
+        <% if (activity_owner? || vacation_owner?) %>
+          <h3><%= link_to '+ Add Participants', new_owner_activity_user_activity_path(facade.send(:activity)) %></h3>
+        <% end %>
+      <% end %>
     </section>
   </section>
   <div class="activity-container">
@@ -21,16 +24,19 @@
       <%= participant.first_name %> <%= participant.last_name %> X
     </figure>
     <% end %>
-
-    <% if activity_owner? %>
-    <% elsif current_user.user_activities.find_by(activity_id: facade.send(:activity).id) %>
-    <br /><br />
-    <h2>Changed Your Mind?</h2>
-      <%= button_to 'Opt out of this Activity', users_activity_user_activity_path(facade.send(:activity)), method: :delete, class: :button %></h2>
-    <% else %>
-    <h2>Want In?</h2>
-    <%= button_to 'Sign Up for this Activity!', users_activity_user_activities_path(facade.send(:activity)), class: :button%></h2>
+    
+    <% if Date.today < facade.send(:activity).cutoff_date %>
+      <% if activity_owner? %>
+      <% elsif current_user.user_activities.find_by(activity_id: facade.send(:activity).id) %>
+      <br /><br />
+      <h2>Changed Your Mind?</h2>
+        <%= button_to 'Opt out of this Activity', users_activity_user_activity_path(facade.send(:activity)), method: :delete, class: :button %></h2>
+      <% else %>
+      <h2>Want In?</h2>
+      <%= button_to 'Sign Up for this Activity!', users_activity_user_activities_path(facade.send(:activity)), class: :button%></h2>
+      <% end %>
     <% end %>
+
 
     </div>
 </body>

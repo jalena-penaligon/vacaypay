@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       post '/invite', to: 'invitations#create'
     end
     resources :activities, only: [] do
+      member {patch :mass_invite}
       resources :user_activities, only: [:create, :new]
     end
   end
