@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   namespace :users do
     resources :dwollas, only: [:create, :new]
+    resources :funding_sources, only: [:new]
     resources :vacations, only: [:create, :new, :show, :index] do
       resources :activities, only: [:show, :new, :create]
     end
@@ -19,25 +20,26 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/update_funding_source', to: 'users#update'
+
   resources :vacations, only: [:show, :new, :create] do
     namespace :owner do
       resources :activities
     end
 
   post '/transfer', to: 'users/dwollas#transfer', as: :dwollas_transfer
-  resources :funding_sources, only: [:update]
   end
 
   resources :users, only: [:new, :create, :update]
-  resources :dwolla, only: [:new, :create]
-  resources :funding_sources, only: [:new]
 
   namespace :owner do
-    resources :vacations, only: [:show]
+    resources :vacations, only: [:show] do
+      get '/invite', to: 'invitations#new'
+      post '/invite', to: 'invitations#create'
+    end
     resources :activities, only: [] do
       member {patch :mass_invite}
       resources :user_activities, only: [:create, :new]
     end
   end
-
 end

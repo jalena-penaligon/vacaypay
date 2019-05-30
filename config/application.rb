@@ -29,6 +29,16 @@ module Terrificus
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: 'smtp.sendgrid.net',
+      port: '587',
+      domain: 'cryptic-brook-29556.herokuapp.com',
+      user_name: ENV["SENDGRID_USERNAME"],
+      password: ENV["SENDGRID_PASSWORD"],
+      authentication: 'plain',
+      enable_starttls_auto: true
+    }
     config.assets.initialize_on_precompile = false
   end
 end

@@ -1,29 +1,42 @@
-<h1><%= link_to facade.send(:vacation).name, users_vacation_path(facade.send(:vacation)) %></h1>
+<body class="bg" id="activity">
+  <section class="activity-header">
+    <section class="header-grid wide">
+      <h1><%= link_to facade.send(:vacation).name, users_vacation_path(facade.send(:vacation)) %>
+    </section>
+    <section class="header-grid-right wide">
+      <% if Date.today < facade.send(:activity).cutoff_date %>
+        <% if (activity_owner? || vacation_owner?) %>
+          <h3><%= link_to '+ Add Participants', new_owner_activity_user_activity_path(facade.send(:activity)) %></h3>
+        <% end %>
+      <% end %>
+    </section>
+  </section>
+  <div class="activity-container">
+    <h2><%= facade.activity_name %></h2>
+  <h3><%= facade.send(:activity).description %></h3>
+  <h4 class="spacers">Hosted by: <%= facade.activity_host.first_name %></h4>
+   | <h4 class="spacers">Price: <%= number_to_currency(facade.send(:activity).price_calculation) %></h4>
+   | <h4 class="spacers">Sign Up By: <%= facade.send(:activity).cutoff_date.strftime("%m/%d/%Y") %></h4>
+  <br /><br />
+  <h2>Attending:</h2>
+    <% facade.attendees.each do |participant| %>
+    <figure class="attendee">
+      <%= participant.first_name %> <%= participant.last_name %> X
+    </figure>
+    <% end %>
+    
+    <% if Date.today < facade.send(:activity).cutoff_date %>
+      <% if activity_owner? %>
+      <% elsif current_user.user_activities.find_by(activity_id: facade.send(:activity).id) %>
+      <br /><br />
+      <h2>Changed Your Mind?</h2>
+        <%= button_to 'Opt out of this Activity', users_activity_user_activity_path(facade.send(:activity)), method: :delete, class: :button %></h2>
+      <% else %>
+      <h2>Want In?</h2>
+      <%= button_to 'Sign Up for this Activity!', users_activity_user_activities_path(facade.send(:activity)), class: :button%></h2>
+      <% end %>
+    <% end %>
 
-<br>
-<h1>Activity: <%= facade.activity_name %></h1>
-<br>
-<% if Date.today < facade.send(:activity).cutoff_date %>
-  <% if (activity_owner? || vacation_owner?) %>
-    <h2><%= link_to '+Add Participants', new_owner_activity_user_activity_path(facade.send(:activity)) %></h2>
-  <% elsif current_user.user_activities.find_by(activity_id: facade.send(:activity).id) %>
-    <h2><%= button_to 'Opt out of this Activity', users_activity_user_activity_path(facade.send(:activity)), method: :delete%></h2>
-  <% else %>
-    <h2><%= button_to 'Sign Up for this Activity!', users_activity_user_activities_path(facade.send(:activity))%></h2>
-  <% end %>
-<% end %>
 
-<br>
-<li>Host: <%= facade.activity_host.first_name %></li>
-<li>Price: <%= facade.send(:activity).price_calculation %></li>
-<li>Number of Attendees: <%= facade.send(:activity).num_attendees %></li>
-<li>Description: <%= facade.send(:activity).description %></li>
-<li>Cutoff Date: <%= facade.send(:activity).cutoff_date %></li>
-<li>Activity Duration (days): <%= facade.send(:activity).no_of_days %></li>
-<li>Current Participants:</li>
-<br>
-  <% facade.attendees.each do |participant| %>
-      <li><%= participant.first_name %></li>
-      <li><%= participant.email%></li>
-      <br>
-  <% end %>
+    </div>
+</body>

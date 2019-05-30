@@ -14,8 +14,8 @@
     <%= link_to "+ Add an Activity", new_vacation_owner_activity_path(facade.vacation) %>
   </section>
     <h2><%= facade.vacation.start_date.strftime("%m/%d/%Y") %> - <%= facade.vacation.end_date.strftime("%m/%d/%Y") %></h2>
-    <h4>Hosted By: <%= facade.vacation_host %></h4>
-    <h4>Location: <%= facade.vacation.location %></h4>
+    <h4>Hosted By: <%= facade.vacation_host %></h4><br />
+    <h4>Location: <%= facade.vacation.location %></h4><br /><Br />
     <h2>My Activities:</h2>
     <section class="vacay-container">
       <% facade.attending_activities(current_user).each do |activity| %>
@@ -49,7 +49,7 @@
           <h2><%= activity.name %></h2>
           <li>Description: <%= activity.description %></li>
           <li>Price Per Person: <%= number_to_currency(activity.price) %></li>
-          <%= button_to "Join Activity", root_path, class: :button %>
+          <%= button_to "Join Activity", users_activity_user_activities_path(activity), class: :button %>
         </div>
       <% end %>
     <% end %>
