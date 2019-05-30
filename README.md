@@ -63,6 +63,6 @@ Jalena: [https://github.com/jalena-penaligon]
 
 This application was built using Ruby version 2.4.1 and Ruby on Rails version 5.2.3.  PostgreSQL version 11.1 was used for the database.  
 
-The database consists of 5 tables.  The schema is shown below:
+The database consists of 6 tables.  The schema is shown below:
 
-![schema](schema.png)
+![schema](schema2.png)
