@@ -32,6 +32,6 @@
 ,.
 .DS_Store
 
-/config/newrelic.yml
 /spec/cassettes/*
 /public/assets/*
+/config/skylight.yml
