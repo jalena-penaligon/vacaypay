@@ -39,7 +39,7 @@
               <figure class="attendee">
                 <%= ua.user_name %>
                 <% if ua.activity.user_id != ua.user_id %>
-                  <%= link_to "x", users_activity_user_activity_path(activity, source: :index), method: :delete %>
+                  <%= link_to "x", remove_vacation_owner_activity_path(facade.vacation, activity, user_id: ua.user_id), method: :patch %>
                 <% end %>
               </figure>
               <% end %>

@@ -22,9 +22,11 @@ Rails.application.routes.draw do
 
   get '/update_funding_source', to: 'users#update'
 
-  resources :vacations, only: [:show, :new, :create] do
+  resources :vacations do
     namespace :owner do
-      resources :activities
+      resources :activities do
+        member {patch :remove}
+      end
     end
 
   post '/transfer', to: 'users/dwollas#transfer', as: :dwollas_transfer
