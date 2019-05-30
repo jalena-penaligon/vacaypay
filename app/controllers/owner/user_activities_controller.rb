@@ -8,7 +8,8 @@ class Owner::UserActivitiesController < ApplicationController
 
   def create
     params[:user_ids].each do |user_id|
-      activity = UserActivity.create(user_id: user_id, quantity: 1, price: associated_activity.price_calculation, paid: false, activity_id: associated_activity.id)
+      associated_activity.increment!(:num_attendees)
+      UserActivity.create(user_id: user_id, quantity: 1, price: associated_activity.price_calculation, paid: false, activity_id: associated_activity.id)
     end
     redirect_to users_vacation_activity_path(associated_activity.vacation, associated_activity)
   end

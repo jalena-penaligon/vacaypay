@@ -11,7 +11,7 @@
     </figure>
   </div>
   <div class="vacation-container"><section class="subnav">
-    <%= link_to "+ Add an Activity", new_users_vacation_activity_path(facade.vacation) %>
+    <%= link_to "+ Add an Activity", new_vacation_owner_activity_path(facade.vacation) %>
   </section>
     <h2><%= facade.vacation.start_date.strftime("%m/%d/%Y") %> - <%= facade.vacation.end_date.strftime("%m/%d/%Y") %></h2>
     <h4>Hosted By: <%= facade.vacation_host %></h4><br />
@@ -24,10 +24,18 @@
             <h2><%= link_to activity.name, users_vacation_activity_path(facade.vacation_id, activity.id) %></h2>
             <li>Description: <%= activity.description %></li>
             <li>Price Per Person: <%= number_to_currency(facade.user_activity_price(activity, current_user)) %></li>
-            <% if facade.paid?(activity, current_user) %>
-              PAID
+            <% if current_user.id == activity.user_id %>
+              <%= link_to "+ Invite Participants", new_owner_activity_user_activity_path(activity.id) %>
+              <br>
+              <% if facade.vacation.users.count > activity.user_activities.count %>
+                <%= link_to "+ Invite All Vacationers", mass_invite_owner_activity_path(activity_id: activity), method: :patch %>
+              <% end %>
             <% else %>
-              <%= button_to "Settle Up", vacation_dwollas_transfer_path(activity_id: activity.id, vacation_id: facade.vacation_id), class: :button %>
+              <% if facade.paid?(activity, current_user) %>
+                PAID
+              <% else %>
+                <%= button_to "Settle Up", vacation_dwollas_transfer_path(activity_id: activity.id, vacation_id: facade.vacation_id), class: :button %>
+              <% end %>
             <% end %>
           </div>
         <% end %>
