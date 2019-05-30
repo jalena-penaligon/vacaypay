@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   before_action :get_messages
 
   def index
+    @vacation = Vacation.find(params[:id])
   end
 
   def create
@@ -21,6 +22,6 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content).merge(vacation_id: params[:id])
   end
 end

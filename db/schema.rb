@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_29_215447) do
+ActiveRecord::Schema.define(version: 2019_05_30_001840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,9 @@ ActiveRecord::Schema.define(version: 2019_05_29_215447) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "vacation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+    t.index ["vacation_id"], name: "index_messages_on_vacation_id"
   end
 
   create_table "user_activities", force: :cascade do |t|
