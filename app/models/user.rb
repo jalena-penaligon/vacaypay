@@ -31,4 +31,10 @@ class User < ApplicationRecord
     user = User.find_by(email: email)
     VacationUser.create(user_id: user.id, vacation_id: vacay_id)
   end
+
+  def attending?(activity)
+    activity.user_activities.any? do |ua|
+      ua.user_id == self.id
+    end
+  end
 end
