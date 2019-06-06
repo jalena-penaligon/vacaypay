@@ -13,12 +13,15 @@ class Users::DwollasController < ApplicationController
   def transfer
     token = dwolla_token
     response = dwolla_transfer(token)
-    #possible model push
     activity = UserActivity.find_by(activity_id: params[:activity_id], user_id: current_user.id)
     activity.update(paid: true)
     activity = Activity.find(params[:activity_id])
     flash[:success] = "You successfully paid for #{activity.name}."
-    redirect_to users_vacation_path(activity.vacation)
+    if vacation_owner?
+      redirect_to owner_vacation_path(activity.vacation)
+    else
+      redirect_to users_vacation_path(activity.vacation)
+    end
   end
 
   private

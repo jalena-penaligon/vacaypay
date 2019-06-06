@@ -49,6 +49,11 @@
               <% if facade.vacation.users.count > activity.user_activities.count %>
                 <%= link_to "+ Invite All Vacationers", mass_invite_owner_activity_path(activity_id: activity), method: :patch %>
               <% end %>
+              <% if activity.user_id != current_user.id && current_user.attending?(activity) && !facade.paid?(activity, current_user) %>
+                <br /><br />
+                <li>Price Per Person: <%= number_to_currency(facade.user_activity_price(activity, current_user)) %></li>
+                <%= button_to "Settle Up", vacation_dwollas_transfer_path(activity_id: activity.id, vacation_id: facade.vacation_id), class: :button %>
+              <% end %>
           </div>
           <% end %>
         <% end %>
