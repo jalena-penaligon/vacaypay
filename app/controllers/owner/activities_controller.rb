@@ -17,6 +17,7 @@ class Owner::ActivitiesController < ApplicationController
 
   def create
     @vacation = Vacation.find(params[:vacation_id])
+    # binding.pry
     @activity = @vacation.activities.new(activity_params)
     if @activity.save
       UserActivity.create(user_id: current_user.id, quantity: 1, price: @activity.price_calculation, paid: true, activity_id: @activity.id)
@@ -79,8 +80,56 @@ class Owner::ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit([:name, :description, :price, :cutoff_date, :no_of_days, :type]).merge(user_id: current_user.id, vacation_id: @vacation.id)
+    params.require(:activity)
+          .permit([:name,
+                  :description,
+                  :street,
+                  :city,
+                  :state,
+                  :postal_code,
+                  :country,
+                  :price,
+                  :cutoff_date,
+                  :no_of_days,
+                  :type])
+            .merge(user_id: current_user.id,
+                  vacation_id: @vacation.id)
+                  # latitude: ActivityGeoFacade.new(params[:street],
+                  #                                 params[:city],
+                  #                                 params[:state])
+                  #                           .get_coordinates[0],
+                  # longitude: ActivityGeoFacade.new(params[:street],
+                  #                                 params[:city],
+                  #                                 params[:state])
+                  #                           .get_coordinates[1])
   end
+
+  # def activity_params
+  #   activity_params = {}
+  #   coordinates = ActivityGeoFacade.new(params[:street],
+  #                                   params[:city],
+  #                                   params[:state])
+  #   activity_params[:name] = initial_params[:name]
+  #   activity_params[:description] = initial_params[:description]
+  #   activity_params[:street] = initial_params[:street]
+  #   activity_params[:city] = initial_params[:city]
+  #   activity_params[:state] = initial_params[:state]
+  #   activity_params[:postal_code] = initial_params[:postal_code]
+  #   activity_params[:country] = initial_params[:country]
+  #   activity_params[:price] = initial_params[:price]
+  #   activity_params[:cutoff_date] = initial_params[:name]
+  #   activity_params[:no_of_days] = initial_params[:no_of_days]
+  #   activity_params[:type] = initial_params[:type]
+  #   activity_params[:latitude] = coordinates.get_coordinates[0]
+  #   activity_params[:longitude] = coordinates.get_coordinates[1]
+  # end
+
+  # def coordinates
+  #   binding.pry
+  #   ActivityGeoFacade.new(params[:street],
+  #                         params[:city],
+  #                         params[:state])
+  # end
 
   def update_params
     if params.has_key?(:fixed_cost)

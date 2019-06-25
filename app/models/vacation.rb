@@ -5,7 +5,7 @@ class Vacation < ApplicationRecord
   has_many :messages
 
   validates_presence_of :name,
-                        :location,
+                        # :location,
                         :start_date,
                         :end_date
 
