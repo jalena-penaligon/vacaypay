@@ -5,6 +5,7 @@ class Users::VacationsController < ApplicationController
   end
 
   def show
+    
     render locals: {
       facade: VacationsFacade.new(params[:id])
     }
