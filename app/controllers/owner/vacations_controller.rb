@@ -2,6 +2,9 @@ class Owner::VacationsController < ApplicationController
 
   def show
     if Vacation.find(params[:id]).host == current_user
+      destination = Vacation.find(params[:id])
+      @locations = [[destination.city, destination.latitude, destination.longitude]]
+      # binding.pry
       render locals: {
         facade: VacationsFacade.new(params[:id])
       }

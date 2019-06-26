@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_30_001840) do
+ActiveRecord::Schema.define(version: 2019_06_22_035122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 2019_05_30_001840) do
     t.date "cutoff_date"
     t.integer "no_of_days", default: 1
     t.string "type", null: false
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "postal_code"
+    t.string "country"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_activities_on_user_id"
     t.index ["vacation_id"], name: "index_activities_on_vacation_id"
   end
@@ -77,11 +84,15 @@ ActiveRecord::Schema.define(version: 2019_05_30_001840) do
 
   create_table "vacations", force: :cascade do |t|
     t.string "name"
-    t.string "location"
+    t.string "city"
     t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state"
+    t.string "country"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   add_foreign_key "activities", "users"

@@ -26,7 +26,7 @@
     </section>
     <h2><%= facade.vacation.start_date.strftime("%m/%d/%Y") %> - <%= facade.vacation.end_date.strftime("%m/%d/%Y") %></h2>
     <h4>Hosted By: <%= facade.vacation_host %></h4><br />
-    <h4>Location: <%= facade.vacation.location %></h4>
+    <h4>Location: <%= facade.vacation.city %></h4>
     <h2>Activities:</h2>
     <section class="vacay-container">
       <% facade.all_activities.each do |activity| %>
@@ -59,5 +59,17 @@
         <% end %>
       </section>
     </div>
+
+    <div id="map"></div>
+    <script type="text/javascript"></script>
+    <script>
+      var locations = <%= @locations.inspect.html_safe %>;
+    </script>
+    <script>
+      var center = {lat: <%= @locations[0][1] %>, lng: <%= @locations[0][2] %>};
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoi4djUiwmzFeOzjJbnZ-xSLREITHPqBY&callback=initMap">
+    </script>
   <% end %>
   </body>
