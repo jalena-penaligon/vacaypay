@@ -40,7 +40,6 @@ class Owner::ActivitiesController < ApplicationController
       end
     end
     if Vacation.find(params[:id]).host.id == current_user.id
-      binding.pry
       redirect_to owner_vacation_path(Vacation.find(params[:id]))
     else
       redirect_to users_vacation_path(Vacation.find(params[:id]))
