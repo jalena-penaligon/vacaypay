@@ -22,7 +22,6 @@ class Owner::ActivitiesController < ApplicationController
      create_multi_day(activity_params)
    else
      if @activity.save
-       binding.pry
        UserActivity.create(user_id: current_user.id, quantity: 1, price: @activity.price_calculation, paid: true, activity_id: @activity.id)
        if @vacation.host == current_user
          redirect_to owner_vacation_path(@vacation)
