@@ -18,5 +18,7 @@ class DwollaTransferService
 
   def create_transfer
     transfer = @token.post "transfers", @request_body
+    binding.pry
   end
+
 end
