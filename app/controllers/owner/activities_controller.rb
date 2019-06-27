@@ -17,7 +17,6 @@ class Owner::ActivitiesController < ApplicationController
 
   def create
     @vacation = Vacation.find(params[:vacation_id])
-    # binding.pry
     @activity = @vacation.activities.new(activity_params)
     if @activity.save
       UserActivity.create(user_id: current_user.id, quantity: 1, price: @activity.price_calculation, paid: true, activity_id: @activity.id)
@@ -36,6 +35,9 @@ class Owner::ActivitiesController < ApplicationController
     Vacation.find(params[:id]).users.where.not(id: ids).distinct.each do |user|
       mass_invite_activity.increment!(:num_attendees)
       UserActivity.create(user_id: user.id, quantity: 1, price: mass_invite_activity.price_calculation, paid: false, activity_id: mass_invite_activity.id)
+      mass_invite_activity.user_activities.each do |ua|
+        ua.price = mass_invite_activity.price_calculation
+      end
     end
     if Vacation.find(params[:id]).host.id == current_user.id
       redirect_to owner_vacation_path(Vacation.find(params[:id]))
