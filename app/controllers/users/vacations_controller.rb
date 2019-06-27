@@ -5,7 +5,9 @@ class Users::VacationsController < ApplicationController
   end
 
   def show
-    
+    destination = Vacation.find(params[:id])
+    @locations = [[destination.city, destination.latitude, destination.longitude]]
+    @key = ENV['google_key']
     render locals: {
       facade: VacationsFacade.new(params[:id])
     }

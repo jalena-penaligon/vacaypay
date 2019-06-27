@@ -16,7 +16,6 @@ class Users::ActivitiesController < ApplicationController
   end
 
   def create
-    binding.pry
     @vacation = Vacation.find(params[:vacation_id])
     @activity = @vacation.activities.new(activity_params)
     if @activity.save
