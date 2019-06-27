@@ -26,7 +26,7 @@ describe 'as a registered user that has connected with a dwolla funding source' 
 
     visit vacations_path
     expect(page).to have_content(vacation.name)
-    expect(page).to have_content(vacation.location)
+    expect(page).to have_content(vacation.city)
     expect(page).to have_content(vacation.start_date.strftime("%m/%d/%Y"))
     expect(page).to have_content(vacation.end_date.strftime("%m/%d/%Y"))
 
