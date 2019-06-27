@@ -44,7 +44,7 @@ class Owner::ActivitiesController < ApplicationController
      activity.price = daily_price
      no_of_days -= 1
      if activity.save
-       UserActivity.create(user_id: current_user.id, quantity: 1, price: @activity.price_calculation, paid: true, activity_id: @activity.id)
+       UserActivity.create(user_id: current_user.id, quantity: 1, price: activity.price_calculation, paid: true, activity_id: activity.id)
      end
    end
    if @vacation.host == current_user
