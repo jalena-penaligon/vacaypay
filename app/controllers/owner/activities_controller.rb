@@ -17,7 +17,6 @@ class Owner::ActivitiesController < ApplicationController
 
   def create
     @vacation = Vacation.find(params[:vacation_id])
-    binding.pry
     @activity = @vacation.activities.new(activity_params)
     if @activity.save
       UserActivity.create(user_id: current_user.id, quantity: 1, price: @activity.price_calculation, paid: true, activity_id: @activity.id)
