@@ -21,7 +21,7 @@ end
 
 def get_google_data
   # Rails.cache.fetch("#{@location}/get_data_from_google", :expires_in => 15.minutes) do
-    conn = Faraday.new("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAoi4djUiwmzFeOzjJbnZ-xSLREITHPqBY&address=#{location}") do |f|
+    conn = Faraday.new("https://maps.googleapis.com/maps/api/geocode/json?key=#{ENV['google_key']}&address=#{location}") do |f|
       f.adapter Faraday.default_adapter
     end
     response = conn.get

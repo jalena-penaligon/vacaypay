@@ -57,19 +57,20 @@
           </div>
           <% end %>
         <% end %>
+
+        <div id="map"></div>
+        <script type="text/javascript"></script>
+        <script>
+          var locations = <%= @locations.inspect.html_safe %>;
+        </script>
+        <script>
+          var center = {lat: <%= @locations[0][1] %>, lng: <%= @locations[0][2] %>};
+        </script>
+        <script async defer
+           src="https://maps.googleapis.com/maps/api/js?key=<%= @key %>&callback=initMap" >
+        </script>
       </section>
     </div>
 
-    <div id="map"></div>
-    <script type="text/javascript"></script>
-    <script>
-      var locations = <%= @locations.inspect.html_safe %>;
-    </script>
-    <script>
-      var center = {lat: <%= @locations[0][1] %>, lng: <%= @locations[0][2] %>};
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoi4djUiwmzFeOzjJbnZ-xSLREITHPqBY&callback=initMap">
-    </script>
   <% end %>
   </body>

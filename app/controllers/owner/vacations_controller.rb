@@ -4,7 +4,7 @@ class Owner::VacationsController < ApplicationController
     if Vacation.find(params[:id]).host == current_user
       destination = Vacation.find(params[:id])
       @locations = [[destination.city, destination.latitude, destination.longitude]]
-      # binding.pry
+      @key = ENV['google_key']
       render locals: {
         facade: VacationsFacade.new(params[:id])
       }
