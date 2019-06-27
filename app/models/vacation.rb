@@ -19,7 +19,10 @@ class Vacation < ApplicationRecord
   end
 
   def calculate_balance(user)
-    find_activities(user).where(user_id: user.id).where.not('activities.user_id' => user.id).sum(:price)
+    find_activities(user)
+    .where(user_id: user.id)
+    .where.not('activities.user_id' => user.id)
+    .sum(:price)
   end
 
   def find_activities(user)
@@ -30,7 +33,9 @@ class Vacation < ApplicationRecord
   end
 
   def calculate_owed_balance(user)
-    find_activities(user).where('activities.user_id' => user.id).sum(:price)
+    find_activities(user)
+    .where('activities.user_id' => user.id)
+    .sum(:price)
   end
 
   def owner?(user)
