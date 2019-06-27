@@ -16,19 +16,44 @@ class Owner::ActivitiesController < ApplicationController
   end
 
   def create
-    @vacation = Vacation.find(params[:vacation_id])
-    @activity = @vacation.activities.new(activity_params)
-    if @activity.save
-      UserActivity.create(user_id: current_user.id, quantity: 1, price: @activity.price_calculation, paid: true, activity_id: @activity.id)
-      if @vacation.host == current_user
-        redirect_to owner_vacation_path(@vacation)
-      else
-        redirect_to users_vacation_path(@vacation)
-      end
-    else
-      render :new
-    end
-  end
+   @vacation = Vacation.find(params[:vacation_id])
+   @activity = @vacation.activities.new(activity_params)
+   if @activity.no_of_days > 1
+     create_multi_day(activity_params)
+   else
+     if @activity.save
+       binding.pry
+       UserActivity.create(user_id: current_user.id, quantity: 1, price: @activity.price_calculation, paid: true, activity_id: @activity.id)
+       if @vacation.host == current_user
+         redirect_to owner_vacation_path(@vacation)
+       else
+         redirect_to users_vacation_path(@vacation)
+       end
+     else
+       render :new
+     end
+   end
+ end
+
+ def create_multi_day(activity_params)
+   day_count = 1
+   no_of_days = activity_params["no_of_days"].to_i
+   daily_price = activity_params["price"].to_i / no_of_days
+   no_of_days.times do
+     activity = Activity.new(activity_params)
+     activity.name = "#{activity.name} Day #{no_of_days}"
+     activity.price = daily_price
+     no_of_days -= 1
+     if activity.save
+       UserActivity.create(user_id: current_user.id, quantity: 1, price: @activity.price_calculation, paid: true, activity_id: @activity.id)
+     end
+   end
+   if @vacation.host == current_user
+     redirect_to owner_vacation_path(@vacation)
+   else @vacation.host != current_user
+     redirect_to users_vacation_path(@vacation)
+   end
+ end
 
   def mass_invite
     ids = mass_invite_activity.user_activities.pluck(:user_id)
