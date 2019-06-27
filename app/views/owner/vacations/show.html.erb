@@ -63,14 +63,6 @@
         <script>
           var locations = <%= @locations.inspect.html_safe %>;
         </script>
-<!--
-        <script>
-          var my_key = < %= @key %>;
-        </script>
-        <script>
-          var google_url = < %= @url %>
-        </script>
--->
         <script>
           var center = {lat: <%= @locations[0][1] %>, lng: <%= @locations[0][2] %>};
         </script>
