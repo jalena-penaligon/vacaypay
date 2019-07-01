@@ -19,7 +19,7 @@ describe 'A Registered User' do
 
         fill_in :address, with: "Address"
         fill_in :city, with: "City"
-        fill_in :state, with: "CO"
+        select "CO", :from => "state"
         fill_in :postal_code, with: "11111"
         fill_in :dob, with: "1980-01-01"
         fill_in :ssn, with: "1234"

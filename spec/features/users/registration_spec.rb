@@ -65,7 +65,7 @@ describe 'as a visitor' do
 
         fill_in "address", with: "123 Address St."
         fill_in "city", with: "Denver"
-        fill_in "state", with: "CO"
+        select "CO", :from => "state"
         fill_in "postal_code", with: "80206"
         fill_in "dob", with: "1980-07-11"
         fill_in "ssn", with: "1234"

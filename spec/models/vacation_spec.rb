@@ -10,14 +10,16 @@ RSpec.describe Vacation, type: :model do
 
   describe 'validations' do
     it { should validate_presence_of :name }
-    it { should validate_presence_of :location }
+    it { should validate_presence_of :city }
+    it { should validate_presence_of :state }
+    it { should validate_presence_of :country }
     it { should validate_presence_of :start_date }
     it { should validate_presence_of :end_date }
   end
 
   describe 'helper methods' do
     it '.new_vacation returns true when a vacation has no activities' do
-      vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 100.days.from_now, end_date: 107.days.from_now)
+      vacation = Vacation.create(name: "Family Reunion", city: "Miami", state: "FL", country: "US", latitude: 25.7617, longitude: 80.1918, start_date: 10.days.from_now, end_date: 15.days.from_now)
       expect(vacation.new_vacation?).to be true
 
       user = create(:user)
@@ -31,7 +33,7 @@ RSpec.describe Vacation, type: :model do
       user_1 = create(:user)
       user_2 = create(:user)
 
-      vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 100.days.from_now, end_date: 107.days.from_now)
+      vacation = Vacation.create(name: "Family Reunion", city: "Miami", state: "FL", country: "US", latitude: 25.7617, longitude: 80.1918, start_date: 10.days.from_now, end_date: 15.days.from_now)
       activity_1 = vacation.activities.create!(price: 100.00, num_attendees: 2, name: "Activity 1", description: "It's an activity", vacation: vacation, user: user_1, type: FixedCost, cutoff_date: 100.days.from_now)
       activity_2 = vacation.activities.create!(price: 50.00, num_attendees: 2, name: "Activity 2", description: "It's an activity", vacation: vacation, user: user_2, type: FixedCost, cutoff_date: 100.days.from_now)
       user_activity_1 = user_1.user_activities.create!(quantity: 1, price:100.0, activity: activity_1, paid: true)
@@ -47,7 +49,7 @@ RSpec.describe Vacation, type: :model do
       user_1 = create(:user)
       user_2 = create(:user)
 
-      vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 100.days.from_now, end_date: 107.days.from_now)
+      vacation = Vacation.create(name: "Family Reunion", city: "Miami", state: "FL", country: "US", latitude: 25.7617, longitude: 80.1918, start_date: 10.days.from_now, end_date: 15.days.from_now)
       activity_1 = vacation.activities.create(price: 100.00, num_attendees: 2, name: "Activity 1", description: "It's an activity", vacation: vacation, user: user_1, type: FixedCost, cutoff_date: 100.days.from_now)
       activity_2 = vacation.activities.create(price: 50.00, num_attendees: 2, name: "Activity 2", description: "It's an activity", vacation: vacation, user: user_2, type: FixedCost, cutoff_date: 100.days.from_now)
       user_activity_1 = user_1.user_activities.create!(quantity: 1, price:100.0, activity: activity_1, paid: true)
@@ -61,8 +63,8 @@ RSpec.describe Vacation, type: :model do
 
     it '.owner? returns true when the current_user owns that vacation' do
       user = create(:user)
-      vacation_1 = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 100.days.from_now, end_date: 107.days.from_now)
-      vacation_2 = Vacation.create(name: "Friends Trip", location: "California", start_date: 100.days.from_now, end_date: 107.days.from_now)
+      vacation_1 = Vacation.create(name: "Family Reunion", city: "Miami", state: "FL", country: "US", latitude: 25.7617, longitude: 80.1918, start_date: 10.days.from_now, end_date: 15.days.from_now)
+      vacation_2 = Vacation.create(name: "Friends Trip", city: "San Diego", state: "CA", country: "US", latitude: 32.7157, longitude: 117.1611, start_date: 10.days.from_now, end_date: 15.days.from_now)
       vacation_user_1 = user.vacation_users.create(vacation: vacation_1, role: 0)
       vacation_user_2 = user.vacation_users.create(vacation: vacation_2, role: 1)
 
@@ -72,7 +74,7 @@ RSpec.describe Vacation, type: :model do
 
     it '.host returns the user that hosts a vacation' do
       user = create(:user)
-      vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 100.days.from_now, end_date: 107.days.from_now)
+      vacation = Vacation.create(name: "Family Reunion", city: "Key West", state: "FL", country: "US", latitude: 24.5551, longitude: 81.7800, start_date: 10.days.from_now, end_date: 15.days.from_now)
       vacation_user_1 = user.vacation_users.create(vacation: vacation, role: 1)
 
       expect(vacation.host).to eq(user)

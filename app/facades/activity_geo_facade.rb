@@ -10,8 +10,6 @@ class ActivityGeoFacade
   end
 
   def get_coordinates
-    # binding.pry
     ActivityGoogleService.new(@street, @city, @state).get_lat_long
   end
-
 end

@@ -3,7 +3,7 @@ require "rails_helper"
 describe 'vacation owner' do
   it 'can add participants' do
     user = create(:user, dwolla_id: "1234567", dwolla_funding_source: "ASD-123-ASDK-134")
-    miami = Vacation.create!(name: "spring break", location: "Miami", start_date: 18.days.from_now, end_date: 30.days.from_now)
+    miami = Vacation.create!(name: "spring break", city: "Miami", state: "FL", country: "US", latitude: 25.7617, longitude: 80.1918, start_date: 18.days.from_now, end_date: 30.days.from_now)
     v_u = VacationUser.create!(role: 1, user_id: user.id, vacation_id: miami.id)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)

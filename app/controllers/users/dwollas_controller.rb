@@ -55,11 +55,6 @@ class Users::DwollasController < ApplicationController
     service.create_transfer
   end
 
-
-  # def dwolla_transfer(token)
-  #   @_dwolla_transfer = dwolla_transfer_service(token).create_transfer
-  # end
-
   def user_params
     params.permit(:address, :city, :state, :postal_code, :dob, :ssn)
   end

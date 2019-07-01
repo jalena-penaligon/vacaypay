@@ -4,7 +4,7 @@ describe 'as a logged in user who is apart of a vacation' do
   it 'can create a new activity' do
     owner = create(:user)
     user = create(:user)
-    vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 10.days.from_now, end_date: 15.days.from_now)
+    vacation = Vacation.create(name: "Family Reunion", city: "Key West", state: "FL", country: "US", latitude: 24.5551, longitude: 81.7800, start_date: 10.days.from_now, end_date: 15.days.from_now)
     owner.vacation_users.create!(role: 1, vacation: vacation)
     user.vacation_users.create(role: 0, vacation: vacation)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -33,7 +33,7 @@ describe 'as a logged in user who is apart of a vacation' do
   it 'will correctly redirect the vacation owner after activity creation' do
     owner = create(:user)
     user = create(:user)
-    vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 10.days.from_now, end_date: 15.days.from_now)
+    vacation = Vacation.create(name: "Family Reunion", city: "Key West", state: "FL", country: "US", latitude: 24.5551, longitude: 81.7800, start_date: 10.days.from_now, end_date: 15.days.from_now)
     owner.vacation_users.create!(role: 1, vacation: vacation)
     user.vacation_users.create(role: 0, vacation: vacation)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(owner)
@@ -61,7 +61,7 @@ describe 'as a logged in user who is apart of a vacation' do
   it 'will not allow me to create an activity with missing information' do
     owner = create(:user)
     user = create(:user)
-    vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 10.days.from_now, end_date: 15.days.from_now)
+    vacation = Vacation.create(name: "Family Reunion", city: "Key West", state: "FL", country: "US", latitude: 24.5551, longitude: 81.7800, start_date: 10.days.from_now, end_date: 15.days.from_now)
     owner.vacation_users.create!(role: 1, vacation: vacation)
     user.vacation_users.create(role: 0, vacation: vacation)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(owner)
