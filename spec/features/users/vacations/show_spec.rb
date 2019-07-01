@@ -8,7 +8,7 @@ describe 'as a registered user' do
 
       owner = create(:user)
 
-      vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 10.days.from_now, end_date: 15.days.from_now)
+      vacation = Vacation.create(name: "Family Reunion", city: "Key West", state: "FL", country: "US", latitude: 24.5551, longitude: 81.7800, start_date: 10.days.from_now, end_date: 15.days.from_now)
       owner.vacation_users.create!(role: 1, vacation: vacation)
       user.vacation_users.create(role: 0, vacation: vacation)
       activity_1 = Activity.create(name: "Kayaking", price: 20.0, num_attendees: 1, description: "It'll be fun.", no_of_days: 1, vacation: vacation, user: owner, type: FixedCost, cutoff_date: 1.day.from_now)

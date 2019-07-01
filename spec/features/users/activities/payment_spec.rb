@@ -8,7 +8,7 @@ describe 'as a registered user who has added a dwolla funding source' do
         user_2 = User.create(first_name: "Earl", last_name: "Stephens", email: "earl@example.com", dwolla_id: "4e1dead1-19b2-47d0-a386-93253b990231", dwolla_funding_source: "ccd95555-fe25-4ba9-93a5-ac61c0d83e7a", password: "password")
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
-        vacation = Vacation.create!(name: "Family Reunion", location: "Hawaii", start_date: "2019-06-12", end_date: "2019-06-15")
+        vacation = Vacation.create(name: "Family Reunion", city: "Key West", state: "FL", country: "US", latitude: 24.5551, longitude: 81.7800, start_date: 10.days.from_now, end_date: 15.days.from_now)
         vacation_user_1 = vacation.vacation_users.create!(user_id: user_1.id, role: 1)
         vacation_user_2 = vacation.vacation_users.create!(user_id: user_2.id, role: 0)
         snorkeling = vacation.activities.create!(price: 40.00, num_attendees: 2, description: "Swim with the fishes", name: "Snorkeling", no_of_days: 1, cutoff_date: "2019-06-12", type: PerPersonCost, user_id: user_2.id)
@@ -18,8 +18,8 @@ describe 'as a registered user who has added a dwolla funding source' do
 
         within "#activity-#{snorkeling.id}" do
           click_button "Settle Up"
-          expect(page).to have_content("PAID")
         end
+        expect(page).to have_content("You successfully paid for Snorkeling.")
 
         expect(page).to have_content("You successfully paid for #{snorkeling.name}.")
         expect(page).to have_content("I Owe: $0.00")

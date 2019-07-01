@@ -12,7 +12,9 @@ describe 'as a registered user that has connected with a dwolla funding source' 
     expect(page).to have_content("Create a New Vacation")
 
     fill_in :Name, with: "Family Reunion"
-    fill_in :Location, with: "Florida"
+    fill_in :City, with: "Miami"
+    fill_in :State, with: "FL"
+    fill_in :Country, with: "US"
     fill_in 'Start date', with: 100.days.from_now
     fill_in 'End date', with: 107.days.from_now
 

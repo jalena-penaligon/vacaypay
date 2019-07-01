@@ -5,7 +5,7 @@ describe 'as a vacation owner' do
     #create vacation owner
     user_1 = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
-    vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 10.days.from_now, end_date: 15.days.from_now)
+    vacation = Vacation.create(name: "Family Reunion", city: "Key West", state: "FL", country: "US", latitude: 24.5551, longitude: 81.7800, start_date: 10.days.from_now, end_date: 15.days.from_now)
     vacation_user_1 = vacation.vacation_users.create!(user: user_1, role: 1)
 
     #create activity owned by vacation owner
@@ -32,7 +32,7 @@ describe 'as an activity owner' do
   it 'can invite all participants to an activity' do
     #create vacation owner
     user_1 = create(:user)
-    vacation = Vacation.create(name: "Family Reunion", location: "Florida", start_date: 10.days.from_now, end_date: 15.days.from_now)
+    vacation = Vacation.create(name: "Family Reunion", city: "Key West", state: "FL", country: "US", latitude: 24.5551, longitude: 81.7800, start_date: 10.days.from_now, end_date: 15.days.from_now)
     vacation_user_1 = vacation.vacation_users.create!(user: user_1, role: 1)
 
     #create activity owned by a vacation participant
@@ -48,7 +48,7 @@ describe 'as an activity owner' do
     vacation_user_3 = vacation.vacation_users.create!(user: user_3, role: 0)
 
     visit users_vacation_path(vacation)
-    
+
     click_link "+ Invite All Vacationers"
 
     activity.reload

@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  # @user is much more explicit I think I'll keep this, tyvm rubocop
-  # rubocop:disable Naming/MemoizedInstanceVariableName
   def new
     @user ||= User.new
   end
@@ -13,7 +11,7 @@ class SessionsController < ApplicationController
     else
       flash[:error] = 'Looks like your email or password is invalid'
       render :new
-    end 
+    end
   end
 
   def destroy
